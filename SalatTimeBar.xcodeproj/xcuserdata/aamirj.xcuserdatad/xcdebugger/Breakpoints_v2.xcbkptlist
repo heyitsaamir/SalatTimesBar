@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "AB3FB928-06C1-4749-97D5-1C1C066138A4"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F108516-D56C-4A73-A926-A361C3E8CB08"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SalatTimeBar/SalatTimeData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2743"
+            endingLineNumber = "2743"
+            landmarkName = "build()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "2F108516-D56C-4A73-A926-A361C3E8CB08 - 670891b88fe6344e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SalatTimeBar.printJson() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/SalatTimeData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2741"
+                  endingLineNumber = "2741"
+                  offsetFromSymbolStart = "292">
+               </Location>
+               <Location
+                  uuid = "2F108516-D56C-4A73-A926-A361C3E8CB08 - 670891b88fe6344e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SalatTimeBar.printJson() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/SalatTimeData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2741"
+                  endingLineNumber = "2741"
+                  offsetFromSymbolStart = "432">
+               </Location>
+               <Location
+                  uuid = "2F108516-D56C-4A73-A926-A361C3E8CB08 - 5b9c957979e3fbcf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SalatTimeBar.build() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/SalatTimeData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2743"
+                  endingLineNumber = "2743"
+                  offsetFromSymbolStart = "412">
+               </Location>
+               <Location
+                  uuid = "2F108516-D56C-4A73-A926-A361C3E8CB08 - 2c9f5a1a7c62ab55"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SalatTimeBar.SalatTimesJson.SalatTimeDay) -&gt; Swift.Array&lt;Swift.Optional&lt;SalatTimeBar.SalatTime&gt;&gt; in SalatTimeBar.build() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/SalatTimeData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2743"
+                  endingLineNumber = "2743"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "2F108516-D56C-4A73-A926-A361C3E8CB08 - 3400e95d13a71f7a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SalatTimeBar.SalatTimesJson.SalatTimeDay) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.Optional&lt;SalatTimeBar.SalatTime&gt;&gt;&gt; in SalatTimeBar.build() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/SalatTimeData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2743"
+                  endingLineNumber = "2743"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "2F108516-D56C-4A73-A926-A361C3E8CB08 - 5f3b438071cccb51"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SalatTimeBar.SalatTimesJson.SalatTimeDay) -&gt; Swift.Array&lt;SalatTimeBar.SalatTime&gt; in SalatTimeBar.build() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/SalatTimeData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2743"
+                  endingLineNumber = "2743"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7BBEEACD-4663-4BDC-953A-303D0E884F2D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SalatTimeBar/SalatTimeData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2755"
+            endingLineNumber = "2755"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "7BBEEACD-4663-4BDC-953A-303D0E884F2D - 5b9c957979e3fa05"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SalatTimeBar.build() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/SalatTimeData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2753"
+                  endingLineNumber = "2753"
+                  offsetFromSymbolStart = "580">
+               </Location>
+               <Location
+                  uuid = "7BBEEACD-4663-4BDC-953A-303D0E884F2D - 5b9c957979e3fa05"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SalatTimeBar.build() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/SalatTimeData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2753"
+                  endingLineNumber = "2753"
+                  offsetFromSymbolStart = "568">
+               </Location>
+               <Location
+                  uuid = "7BBEEACD-4663-4BDC-953A-303D0E884F2D - 5b9c957979e3fa7b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SalatTimeBar.build() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/SalatTimeData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2755"
+                  endingLineNumber = "2755"
+                  offsetFromSymbolStart = "664">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

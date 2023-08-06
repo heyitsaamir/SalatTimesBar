@@ -1,0 +1,590 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		375306EF2A7DD1650043091F /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375306EE2A7DD1650043091F /* AppIcon.swift */; };
+		37C6869E2A7EE1CC00771C45 /* SalatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6869D2A7EE1CC00771C45 /* SalatTime.swift */; };
+		37C686A02A7F210F00771C45 /* SalatTimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6869F2A7F210F00771C45 /* SalatTimeData.swift */; };
+		37D25ADA2A7B095700FFA2C2 /* SalatTimeBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AD92A7B095700FFA2C2 /* SalatTimeBarApp.swift */; };
+		37D25ADC2A7B095700FFA2C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25ADB2A7B095700FFA2C2 /* ContentView.swift */; };
+		37D25ADE2A7B095A00FFA2C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */; };
+		37D25AE12A7B095A00FFA2C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */; };
+		37D25AEC2A7B095A00FFA2C2 /* SalatTimeBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AEB2A7B095A00FFA2C2 /* SalatTimeBarTests.swift */; };
+		37D25AF62A7B095A00FFA2C2 /* SalatTimeBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AF52A7B095A00FFA2C2 /* SalatTimeBarUITests.swift */; };
+		37D25AF82A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AF72A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		37D25AE82A7B095A00FFA2C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37D25ACE2A7B095700FFA2C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37D25AD52A7B095700FFA2C2;
+			remoteInfo = SalatTimeBar;
+		};
+		37D25AF22A7B095A00FFA2C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37D25ACE2A7B095700FFA2C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37D25AD52A7B095700FFA2C2;
+			remoteInfo = SalatTimeBar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		375306EE2A7DD1650043091F /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		37C6869D2A7EE1CC00771C45 /* SalatTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTime.swift; sourceTree = "<group>"; };
+		37C6869F2A7F210F00771C45 /* SalatTimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeData.swift; sourceTree = "<group>"; };
+		37D25AD62A7B095700FFA2C2 /* SalatTimeBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalatTimeBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37D25AD92A7B095700FFA2C2 /* SalatTimeBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarApp.swift; sourceTree = "<group>"; };
+		37D25ADB2A7B095700FFA2C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		37D25AE22A7B095A00FFA2C2 /* SalatTimeBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SalatTimeBar.entitlements; sourceTree = "<group>"; };
+		37D25AE72A7B095A00FFA2C2 /* SalatTimeBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SalatTimeBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37D25AEB2A7B095A00FFA2C2 /* SalatTimeBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarTests.swift; sourceTree = "<group>"; };
+		37D25AF12A7B095A00FFA2C2 /* SalatTimeBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SalatTimeBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37D25AF52A7B095A00FFA2C2 /* SalatTimeBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarUITests.swift; sourceTree = "<group>"; };
+		37D25AF72A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		37D25AD32A7B095700FFA2C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D25AE42A7B095A00FFA2C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D25AEE2A7B095A00FFA2C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		37D25ACD2A7B095700FFA2C2 = {
+			isa = PBXGroup;
+			children = (
+				37D25AD82A7B095700FFA2C2 /* SalatTimeBar */,
+				37D25AEA2A7B095A00FFA2C2 /* SalatTimeBarTests */,
+				37D25AF42A7B095A00FFA2C2 /* SalatTimeBarUITests */,
+				37D25AD72A7B095700FFA2C2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		37D25AD72A7B095700FFA2C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				37D25AD62A7B095700FFA2C2 /* SalatTimeBar.app */,
+				37D25AE72A7B095A00FFA2C2 /* SalatTimeBarTests.xctest */,
+				37D25AF12A7B095A00FFA2C2 /* SalatTimeBarUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		37D25AD82A7B095700FFA2C2 /* SalatTimeBar */ = {
+			isa = PBXGroup;
+			children = (
+				375306EE2A7DD1650043091F /* AppIcon.swift */,
+				37D25AD92A7B095700FFA2C2 /* SalatTimeBarApp.swift */,
+				37D25ADB2A7B095700FFA2C2 /* ContentView.swift */,
+				37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */,
+				37D25AE22A7B095A00FFA2C2 /* SalatTimeBar.entitlements */,
+				37D25ADF2A7B095A00FFA2C2 /* Preview Content */,
+				37C6869D2A7EE1CC00771C45 /* SalatTime.swift */,
+				37C6869F2A7F210F00771C45 /* SalatTimeData.swift */,
+			);
+			path = SalatTimeBar;
+			sourceTree = "<group>";
+		};
+		37D25ADF2A7B095A00FFA2C2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		37D25AEA2A7B095A00FFA2C2 /* SalatTimeBarTests */ = {
+			isa = PBXGroup;
+			children = (
+				37D25AEB2A7B095A00FFA2C2 /* SalatTimeBarTests.swift */,
+			);
+			path = SalatTimeBarTests;
+			sourceTree = "<group>";
+		};
+		37D25AF42A7B095A00FFA2C2 /* SalatTimeBarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				37D25AF52A7B095A00FFA2C2 /* SalatTimeBarUITests.swift */,
+				37D25AF72A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift */,
+			);
+			path = SalatTimeBarUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		37D25AD52A7B095700FFA2C2 /* SalatTimeBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37D25AFB2A7B095A00FFA2C2 /* Build configuration list for PBXNativeTarget "SalatTimeBar" */;
+			buildPhases = (
+				37D25AD22A7B095700FFA2C2 /* Sources */,
+				37D25AD32A7B095700FFA2C2 /* Frameworks */,
+				37D25AD42A7B095700FFA2C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SalatTimeBar;
+			productName = SalatTimeBar;
+			productReference = 37D25AD62A7B095700FFA2C2 /* SalatTimeBar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		37D25AE62A7B095A00FFA2C2 /* SalatTimeBarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37D25AFE2A7B095A00FFA2C2 /* Build configuration list for PBXNativeTarget "SalatTimeBarTests" */;
+			buildPhases = (
+				37D25AE32A7B095A00FFA2C2 /* Sources */,
+				37D25AE42A7B095A00FFA2C2 /* Frameworks */,
+				37D25AE52A7B095A00FFA2C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37D25AE92A7B095A00FFA2C2 /* PBXTargetDependency */,
+			);
+			name = SalatTimeBarTests;
+			productName = SalatTimeBarTests;
+			productReference = 37D25AE72A7B095A00FFA2C2 /* SalatTimeBarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		37D25AF02A7B095A00FFA2C2 /* SalatTimeBarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37D25B012A7B095A00FFA2C2 /* Build configuration list for PBXNativeTarget "SalatTimeBarUITests" */;
+			buildPhases = (
+				37D25AED2A7B095A00FFA2C2 /* Sources */,
+				37D25AEE2A7B095A00FFA2C2 /* Frameworks */,
+				37D25AEF2A7B095A00FFA2C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37D25AF32A7B095A00FFA2C2 /* PBXTargetDependency */,
+			);
+			name = SalatTimeBarUITests;
+			productName = SalatTimeBarUITests;
+			productReference = 37D25AF12A7B095A00FFA2C2 /* SalatTimeBarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		37D25ACE2A7B095700FFA2C2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					37D25AD52A7B095700FFA2C2 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					37D25AE62A7B095A00FFA2C2 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 37D25AD52A7B095700FFA2C2;
+					};
+					37D25AF02A7B095A00FFA2C2 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 37D25AD52A7B095700FFA2C2;
+					};
+				};
+			};
+			buildConfigurationList = 37D25AD12A7B095700FFA2C2 /* Build configuration list for PBXProject "SalatTimeBar" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 37D25ACD2A7B095700FFA2C2;
+			productRefGroup = 37D25AD72A7B095700FFA2C2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				37D25AD52A7B095700FFA2C2 /* SalatTimeBar */,
+				37D25AE62A7B095A00FFA2C2 /* SalatTimeBarTests */,
+				37D25AF02A7B095A00FFA2C2 /* SalatTimeBarUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		37D25AD42A7B095700FFA2C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37D25AE12A7B095A00FFA2C2 /* Preview Assets.xcassets in Resources */,
+				37D25ADE2A7B095A00FFA2C2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D25AE52A7B095A00FFA2C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D25AEF2A7B095A00FFA2C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		37D25AD22A7B095700FFA2C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C686A02A7F210F00771C45 /* SalatTimeData.swift in Sources */,
+				37D25ADC2A7B095700FFA2C2 /* ContentView.swift in Sources */,
+				37D25ADA2A7B095700FFA2C2 /* SalatTimeBarApp.swift in Sources */,
+				37C6869E2A7EE1CC00771C45 /* SalatTime.swift in Sources */,
+				375306EF2A7DD1650043091F /* AppIcon.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D25AE32A7B095A00FFA2C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37D25AEC2A7B095A00FFA2C2 /* SalatTimeBarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D25AED2A7B095A00FFA2C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37D25AF62A7B095A00FFA2C2 /* SalatTimeBarUITests.swift in Sources */,
+				37D25AF82A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		37D25AE92A7B095A00FFA2C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37D25AD52A7B095700FFA2C2 /* SalatTimeBar */;
+			targetProxy = 37D25AE82A7B095A00FFA2C2 /* PBXContainerItemProxy */;
+		};
+		37D25AF32A7B095A00FFA2C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37D25AD52A7B095700FFA2C2 /* SalatTimeBar */;
+			targetProxy = 37D25AF22A7B095A00FFA2C2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		37D25AF92A7B095A00FFA2C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		37D25AFA2A7B095A00FFA2C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		37D25AFC2A7B095A00FFA2C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SalatTimeBar/SalatTimeBar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SalatTimeBar/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AamirJawaid.SalatTimeBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		37D25AFD2A7B095A00FFA2C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SalatTimeBar/SalatTimeBar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SalatTimeBar/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AamirJawaid.SalatTimeBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		37D25AFF2A7B095A00FFA2C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AamirJawaid.SalatTimeBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SalatTimeBar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SalatTimeBar";
+			};
+			name = Debug;
+		};
+		37D25B002A7B095A00FFA2C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AamirJawaid.SalatTimeBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SalatTimeBar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SalatTimeBar";
+			};
+			name = Release;
+		};
+		37D25B022A7B095A00FFA2C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AamirJawaid.SalatTimeBarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = SalatTimeBar;
+			};
+			name = Debug;
+		};
+		37D25B032A7B095A00FFA2C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AamirJawaid.SalatTimeBarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = SalatTimeBar;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		37D25AD12A7B095700FFA2C2 /* Build configuration list for PBXProject "SalatTimeBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37D25AF92A7B095A00FFA2C2 /* Debug */,
+				37D25AFA2A7B095A00FFA2C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37D25AFB2A7B095A00FFA2C2 /* Build configuration list for PBXNativeTarget "SalatTimeBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37D25AFC2A7B095A00FFA2C2 /* Debug */,
+				37D25AFD2A7B095A00FFA2C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37D25AFE2A7B095A00FFA2C2 /* Build configuration list for PBXNativeTarget "SalatTimeBarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37D25AFF2A7B095A00FFA2C2 /* Debug */,
+				37D25B002A7B095A00FFA2C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37D25B012A7B095A00FFA2C2 /* Build configuration list for PBXNativeTarget "SalatTimeBarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37D25B022A7B095A00FFA2C2 /* Debug */,
+				37D25B032A7B095A00FFA2C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 37D25ACE2A7B095700FFA2C2 /* Project object */;
+}
