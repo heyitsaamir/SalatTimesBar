@@ -8,14 +8,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "2F108516-D56C-4A73-A926-A361C3E8CB08"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SalatTimeBar/SalatTimeData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2743"
-            endingLineNumber = "2743"
+            startingLineNumber = "2744"
+            endingLineNumber = "2744"
             landmarkName = "build()"
             landmarkType = "9">
             <Locations>
@@ -122,10 +122,10 @@
             filePath = "SalatTimeBar/SalatTimeData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2755"
-            endingLineNumber = "2755"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "2756"
+            endingLineNumber = "2756"
+            landmarkName = "build()"
+            landmarkType = "9">
             <Locations>
                <Location
                   uuid = "7BBEEACD-4663-4BDC-953A-303D0E884F2D - 5b9c957979e3fa05"

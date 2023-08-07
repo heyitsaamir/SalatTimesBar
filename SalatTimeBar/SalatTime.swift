@@ -16,14 +16,18 @@ enum SalatType: String, Decodable {
     Isha
 }
 
-struct SalatTime {
+struct SalatTime: Hashable {
     var type: SalatType
     var time: Date
+    
+    var displayText: String {
+        return "\(self.type.rawValue) - \(self.time.formatted(date: .omitted, time: .shortened))"
+    }
 }
 
 struct CurrentSalatTimes {
     var salatTimes: [SalatTime]
-    private var currentSalatIndex: Int?
+    var currentSalatIndex: Int?
     
     mutating func computeCurrentSalatIndex() {
         let currentDate = Date()

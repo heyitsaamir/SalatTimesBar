@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct AppIcon: View {
-    @Binding var nextSalatTime: String
+    @Binding var currentSalatTimes: CurrentSalatTimes?
     
     var body: some View {
         HStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Asr")
-            Text(self.nextSalatTime)
+            if let currentSalatTimes = self.currentSalatTimes, let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex {
+                Text(currentSalatTimes.salatTimes[currentSalatTimeIndex].displayText)
+            }
         }
         .padding()
     }
 }
 
 #Preview {
-    AppIcon(nextSalatTime: .constant("1am"))
+    AppIcon(currentSalatTimes: .constant(nil))
 }
