@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 let JSON = """
 {
@@ -2738,8 +2739,45 @@ let jsonData = JSON.data(using: .utf8)
 
 let isoFormatter = ISO8601DateFormatter()
 
+enum NetworkError: Error {
+    // Throw when an invalid password is entered
+    case InvalidDate
+    
+    case InvalidData
+}
+
+struct Parameters: Encodable {
+    let address: String
+    let month: Int
+    let year: Int
+    let iso8601: Bool
+}
+
+func fetchAthanTime(for date: Date, onComplete: @escaping (_ data: SalatTimesJson?, _ error: NetworkError?) -> Void) {
+    let components = date.get(.year, .month)
+    guard let year = components.year, let month = components.month else {
+        onComplete(nil, .InvalidDate)
+        return
+    }
+    let parameters = Parameters(address: "621 Ilwaco Pl NE, Renton, WA", month: month, year: year, iso8601: true)
+    AF.request("http://api.aladhan.com/v1/calendarByAddress", method: .get, parameters: parameters).responseDecodable(of:SalatTimesJson.self) { response in
+        print(response)
+        switch response.result {
+        case .success(let salatTime):
+            onComplete(salatTime, nil)
+        case .failure:
+            onComplete(nil, .InvalidData)
+        }
+    }
+}
+
 func build() -> [SalatTime] {
-    // TODO: Get this from http://api.aladhan.com/v1/calendarByAddress/2023/1
+    fetchAthanTime(for: Date.now) { data, error in
+        guard let data = data else {
+            return;
+        }
+        print(data)
+    }
     let dataForJanuary: SalatTimesJson = try! JSONDecoder().decode(SalatTimesJson.self, from: jsonData!)
     let results = dataForJanuary.data.flatMap { salatTimeDay in
         return salatTimeDay.timings.compactMap { (key, value) -> SalatTime? in

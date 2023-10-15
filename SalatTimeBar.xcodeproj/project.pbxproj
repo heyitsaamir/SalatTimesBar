@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		375306EF2A7DD1650043091F /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375306EE2A7DD1650043091F /* AppIcon.swift */; };
+		376679A82ADB9A4100CF583F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 376679A72ADB9A4100CF583F /* Alamofire */; };
+		376679AB2ADB9D6300CF583F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376679AA2ADB9D6300CF583F /* Date.swift */; };
 		37C6869E2A7EE1CC00771C45 /* SalatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6869D2A7EE1CC00771C45 /* SalatTime.swift */; };
 		37C686A02A7F210F00771C45 /* SalatTimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6869F2A7F210F00771C45 /* SalatTimeData.swift */; };
 		37D25ADA2A7B095700FFA2C2 /* SalatTimeBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AD92A7B095700FFA2C2 /* SalatTimeBarApp.swift */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		375306EE2A7DD1650043091F /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		376679AA2ADB9D6300CF583F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		376679AC2ADBAA5A00CF583F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		37C6869D2A7EE1CC00771C45 /* SalatTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTime.swift; sourceTree = "<group>"; };
 		37C6869F2A7F210F00771C45 /* SalatTimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeData.swift; sourceTree = "<group>"; };
 		37D25AD62A7B095700FFA2C2 /* SalatTimeBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalatTimeBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				376679A82ADB9A4100CF583F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		376679A92ADB9D5500CF583F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				376679AA2ADB9D6300CF583F /* Date.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		37D25ACD2A7B095700FFA2C2 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +114,8 @@
 		37D25AD82A7B095700FFA2C2 /* SalatTimeBar */ = {
 			isa = PBXGroup;
 			children = (
+				376679AC2ADBAA5A00CF583F /* Info.plist */,
+				376679A92ADB9D5500CF583F /* Extensions */,
 				375306EE2A7DD1650043091F /* AppIcon.swift */,
 				37D25AD92A7B095700FFA2C2 /* SalatTimeBarApp.swift */,
 				37D25ADB2A7B095700FFA2C2 /* ContentView.swift */,
@@ -154,6 +169,9 @@
 			dependencies = (
 			);
 			name = SalatTimeBar;
+			packageProductDependencies = (
+				376679A72ADB9A4100CF583F /* Alamofire */,
+			);
 			productName = SalatTimeBar;
 			productReference = 37D25AD62A7B095700FFA2C2 /* SalatTimeBar.app */;
 			productType = "com.apple.product-type.application";
@@ -226,6 +244,9 @@
 				Base,
 			);
 			mainGroup = 37D25ACD2A7B095700FFA2C2;
+			packageReferences = (
+				376679A62ADB9A4100CF583F /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 37D25AD72A7B095700FFA2C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -269,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37C686A02A7F210F00771C45 /* SalatTimeData.swift in Sources */,
+				376679AB2ADB9D6300CF583F /* Date.swift in Sources */,
 				37D25ADC2A7B095700FFA2C2 /* ContentView.swift in Sources */,
 				37D25ADA2A7B095700FFA2C2 /* SalatTimeBarApp.swift in Sources */,
 				37C6869E2A7EE1CC00771C45 /* SalatTime.swift in Sources */,
@@ -439,6 +461,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SalatTimeBar/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SalatTimeBar/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -464,6 +487,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SalatTimeBar/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SalatTimeBar/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -585,6 +609,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		376679A62ADB9A4100CF583F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		376679A72ADB9A4100CF583F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 376679A62ADB9A4100CF583F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 37D25ACE2A7B095700FFA2C2 /* Project object */;
 }
