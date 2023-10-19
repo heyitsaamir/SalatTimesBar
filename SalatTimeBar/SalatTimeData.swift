@@ -2739,57 +2739,67 @@ let jsonData = JSON.data(using: .utf8)
 
 let isoFormatter = ISO8601DateFormatter()
 
-enum NetworkError: Error {
+enum NetworkError: String, Error {
     // Throw when an invalid password is entered
-    case InvalidDate
+    case InvalidDate = "InvalidDate"
     
-    case InvalidData
+    case InvalidData = "InvalidData"
+    
+    case NotAsked = "NotAsked"
 }
 
 struct Parameters: Encodable {
     let address: String
     let month: Int
     let year: Int
-    let iso8601: Bool
+    let iso8601: String
 }
 
-func fetchAthanTime(for date: Date, onComplete: @escaping (_ data: SalatTimesJson?, _ error: NetworkError?) -> Void) {
+func fetchAthanTime(for date: Date, onComplete: @escaping (Result<SalatTimesJson, NetworkError>) -> Void) {
     let components = date.get(.year, .month)
     guard let year = components.year, let month = components.month else {
-        onComplete(nil, .InvalidDate)
+        onComplete(.failure(.InvalidDate))
         return
     }
-    let parameters = Parameters(address: "621 Ilwaco Pl NE, Renton, WA", month: month, year: year, iso8601: true)
-    AF.request("http://api.aladhan.com/v1/calendarByAddress", method: .get, parameters: parameters).responseDecodable(of:SalatTimesJson.self) { response in
-        print(response)
+    let parameters = Parameters(address: "621 Ilwaco Pl NE, Renton, WA", month: month, year: year, iso8601: "true")
+    let task = AF.request("http://api.aladhan.com/v1/calendarByAddress", method: .get, parameters: parameters).responseDecodable(of:SalatTimesJson.self) { response in
         switch response.result {
         case .success(let salatTime):
-            onComplete(salatTime, nil)
+            onComplete(.success(salatTime))
         case .failure:
-            onComplete(nil, .InvalidData)
+            onComplete(.failure(.InvalidData))
         }
     }
+    task.resume()
 }
 
-func build() -> [SalatTime] {
-    fetchAthanTime(for: Date.now) { data, error in
-        guard let data = data else {
-            return;
-        }
-        print(data)
-    }
-    let dataForJanuary: SalatTimesJson = try! JSONDecoder().decode(SalatTimesJson.self, from: jsonData!)
-    let results = dataForJanuary.data.flatMap { salatTimeDay in
-        return salatTimeDay.timings.compactMap { (key, value) -> SalatTime? in
-            if let salatType = SalatType(rawValue: key), let salatTime = isoFormatter.date(from: value) {
-                return SalatTime(type: salatType, time: salatTime)
+class AthanTimings: ObservableObject {
+    @Published var salatTimes = Result<[SalatTime], NetworkError>.failure(.NotAsked)
+    @Published var currentSalatTimes = Result<CurrentSalatTimes, NetworkError>.failure(.NotAsked)
+    func fetch() {
+        fetchAthanTime(for: Date.now) { data in
+            switch data {
+            case .success(let json):
+                let results = json.data.flatMap { salatTimeDay in
+                    return salatTimeDay.timings.compactMap { (key, value) -> SalatTime? in
+                        if let salatType = SalatType(rawValue: key), let salatTime = isoFormatter.date(from: value) {
+                            return SalatTime(type: salatType, time: salatTime)
+                        }
+                        
+                        return nil
+                    }
+                }.sorted { a, b in
+                    a.time.compare(b.time) == .orderedAscending
+                }
+                
+                self.salatTimes = .success(results)
+                var currentSalatTime = CurrentSalatTimes(salatTimes: results)
+                currentSalatTime.computeCurrentSalatIndex()
+                self.currentSalatTimes = .success(currentSalatTime)
+            case .failure(let error):
+                self.salatTimes = .failure(error)
+                self.currentSalatTimes = .failure(error)
             }
-            
-            return nil
         }
-    }.sorted { a, b in
-        a.time.compare(b.time) == .orderedAscending
     }
-    
-    return results
 }

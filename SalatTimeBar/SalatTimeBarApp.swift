@@ -9,16 +9,13 @@ import SwiftUI
 
 @main
 struct SalatTimeBarApp: App {
-    @State var currentSalatTime: CurrentSalatTimes?
+    @StateObject var vm = AthanTimings()
     var body: some Scene {
         MenuBarExtra {
-            ContentView(currentSalatTimes: self.$currentSalatTime)
+            ContentView(currentSalatTimes: $vm.currentSalatTimes)
         } label: {
-            AppIcon(currentSalatTimes: self.$currentSalatTime).onAppear(perform: {
-                let salatTimes = build()
-                var currentSalatTimes = CurrentSalatTimes(salatTimes: salatTimes)
-                currentSalatTimes.computeCurrentSalatIndex()
-                self.currentSalatTime = currentSalatTimes
+            AppIcon(currentSalatTimes: $vm.currentSalatTimes).onAppear(perform: {
+                vm.fetch()
             })
         }
     }

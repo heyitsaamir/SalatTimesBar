@@ -12,29 +12,34 @@ func textForSalatTime(_ salatTime: SalatTime) -> String {
 }
 
 struct ContentView: View {
-    @Binding var currentSalatTimes: CurrentSalatTimes?
+    @Binding var currentSalatTimes: Result<CurrentSalatTimes, NetworkError>
     var body: some View {
         return VStack {
-            if let currentSalatTimes = self.currentSalatTimes, let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex {
-                let current = currentSalatTimes.salatTimes[currentSalatTimeIndex]
-                let arr = currentSalatTimes.salatTimes[currentSalatTimeIndex + 1...currentSalatTimeIndex + 6]
-                ForEach(arr, id: \.self) { elem in
-                    if (current.type != .Isha && elem.type == .Fajr) {
-                        VStack {
-                            Text("--")
+            switch self.currentSalatTimes {
+            case .success(let currentSalatTimes):
+                if let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex {
+                    let current = currentSalatTimes.salatTimes[currentSalatTimeIndex]
+                    let arr = currentSalatTimes.salatTimes[currentSalatTimeIndex + 1...currentSalatTimeIndex + 6]
+                    ForEach(arr, id: \.self) { elem in
+                        if (current.type != .Isha && elem.type == .Fajr) {
+                            VStack {
+                                Divider()
+                                Text(elem.displayText)
+                            }
+                        } else {
                             Text(elem.displayText)
                         }
-                    } else {
-                        Text(elem.displayText)
                     }
+                } else {
+                    Text("Unknown")
                 }
-            } else {
-                Text("Unknown")
+            case .failure(let error):
+                Text(error.localizedDescription)
             }
         }.padding()
     }
 }
 
-#Preview {
-    ContentView(currentSalatTimes: .constant(nil))
-}
+//#Preview {
+//    ContentView(currentSalatTimes: .constant(nil))
+//}
