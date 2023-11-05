@@ -11,8 +11,8 @@ func textForSalatTime(_ salatTime: SalatTime) -> String {
     return "\(salatTime.type.rawValue) - \(salatTime.time.formatted())"
 }
 
-struct ContentView: View {
-    @ObservedObject var currentSalatTimes: Result<CurrentSalatTimes, NetworkError>
+struct PrayerListContentView: View {
+    @Binding var currentSalatTimes: Result<CurrentSalatTimes, NetworkError>
     var body: some View {
         return VStack {
             switch self.currentSalatTimes {
@@ -31,15 +31,11 @@ struct ContentView: View {
                         }
                     }
                 } else {
-                    Text("Unknown")
+                    Text("Unknownn")
                 }
             case .failure(let error):
-                Text("Error - \(error.rawValue)")
+                Text(error.localizedDescription)
             }
         }.padding()
     }
 }
-
-//#Preview {
-//    ContentView(currentSalatTimes: .constant(nil))
-//}

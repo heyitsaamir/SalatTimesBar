@@ -2780,6 +2780,7 @@ class AthanTimings: ObservableObject {
         fetchAthanTime(for: Date.now) { data in
             switch data {
             case .success(let json):
+                print("Successfully retrieved")
                 let results = json.data.flatMap { salatTimeDay in
                     return salatTimeDay.timings.compactMap { (key, value) -> SalatTime? in
                         if let salatType = SalatType(rawValue: key), let salatTime = isoFormatter.date(from: value) {

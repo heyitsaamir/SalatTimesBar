@@ -19,6 +19,7 @@
 		37D25AEC2A7B095A00FFA2C2 /* SalatTimeBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AEB2A7B095A00FFA2C2 /* SalatTimeBarTests.swift */; };
 		37D25AF62A7B095A00FFA2C2 /* SalatTimeBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AF52A7B095A00FFA2C2 /* SalatTimeBarUITests.swift */; };
 		37D25AF82A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AF72A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift */; };
+		37F4F0C32AF2A56500D86AB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F4F0C22AF2A56500D86AB6 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		37D25AF12A7B095A00FFA2C2 /* SalatTimeBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SalatTimeBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D25AF52A7B095A00FFA2C2 /* SalatTimeBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarUITests.swift; sourceTree = "<group>"; };
 		37D25AF72A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		37F4F0C22AF2A56500D86AB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				37D25ADF2A7B095A00FFA2C2 /* Preview Content */,
 				37C6869D2A7EE1CC00771C45 /* SalatTime.swift */,
 				37C6869F2A7F210F00771C45 /* SalatTimeData.swift */,
+				37F4F0C22AF2A56500D86AB6 /* AppDelegate.swift */,
 			);
 			path = SalatTimeBar;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				376679AB2ADB9D6300CF583F /* Date.swift in Sources */,
 				37D25ADC2A7B095700FFA2C2 /* ContentView.swift in Sources */,
 				37D25ADA2A7B095700FFA2C2 /* SalatTimeBarApp.swift in Sources */,
+				37F4F0C32AF2A56500D86AB6 /* AppDelegate.swift in Sources */,
 				37C6869E2A7EE1CC00771C45 /* SalatTime.swift in Sources */,
 				375306EF2A7DD1650043091F /* AppIcon.swift in Sources */,
 			);

@@ -9,14 +9,9 @@ import SwiftUI
 
 @main
 struct SalatTimeBarApp: App {
-    @StateObject var vm = AthanTimings()
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
-        MenuBarExtra {
-            ContentView(currentSalatTimes: $vm.currentSalatTimes)
-        } label: {
-            AppIcon(currentSalatTimes: $vm.currentSalatTimes).onAppear(perform: {
-                vm.fetch()
-            })
-        }
+        WindowGroup {}
     }
 }
