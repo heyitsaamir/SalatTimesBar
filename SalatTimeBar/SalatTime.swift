@@ -14,6 +14,23 @@ enum SalatType: String, Decodable {
     Asr,
     Maghrib,
     Isha
+    
+    func getIcon() -> String {
+        switch (self) {
+        case .Fajr:
+            return "sun.horizon.fill"
+        case .Dhuhr:
+            return "sun.max"
+        case .Asr:
+            return "sun.haze"
+        case .Maghrib:
+            return "sun.horizon"
+        case .Isha:
+            return "moon.fill"
+        case .Sunrise:
+            return "sunrise.fill"
+        }
+    }
 }
 
 struct SalatTime: Hashable {

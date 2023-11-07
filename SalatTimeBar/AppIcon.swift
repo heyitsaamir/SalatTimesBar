@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct AppIcon: View {
-    @Binding var currentSalatTimes: Result<CurrentSalatTimes, NetworkError>
+    @EnvironmentObject var vm: AthanTimings
+    
+    private func buildIcon(for salatTime: SalatTime) -> some View {
+        Image(systemName: salatTime.type.getIcon())
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+    }
     
     var body: some View {
         HStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            switch self.currentSalatTimes {
+            switch self.vm.currentSalatTimes {
             case .success(let currentSalatTimes):
                 if let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex {
+                    self.buildIcon(for: currentSalatTimes.salatTimes[currentSalatTimeIndex])
                     Text(currentSalatTimes.salatTimes[currentSalatTimeIndex].displayText)
                 }
             default:
@@ -27,7 +31,3 @@ struct AppIcon: View {
         .padding()
     }
 }
-
-//#Preview {
-//    AppIcon(currentSalatTimes: .constant(nil))
-//}

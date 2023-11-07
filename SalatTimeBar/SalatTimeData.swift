@@ -2793,13 +2793,26 @@ class AthanTimings: ObservableObject {
                 }
                 
                 self.salatTimes = .success(results)
-                var currentSalatTime = CurrentSalatTimes(salatTimes: results)
-                currentSalatTime.computeCurrentSalatIndex()
-                self.currentSalatTimes = .success(currentSalatTime)
             case .failure(let error):
                 self.salatTimes = .failure(error)
-                self.currentSalatTimes = .failure(error)
             }
+            
+            self.computeCurrentSalatIndex()
         }
+    }
+    
+    func computeCurrentSalatIndex() {
+        switch (self.salatTimes) {
+        case .success(let salatTimes):
+            var currentSalatTime = CurrentSalatTimes(salatTimes: salatTimes)
+            currentSalatTime.computeCurrentSalatIndex()
+            self.currentSalatTimes = .success(currentSalatTime)
+        case .failure(let error):
+            self.currentSalatTimes = .failure(error)
+        }
+    }
+    
+    func fetchIfNecessary() {
+        
     }
 }

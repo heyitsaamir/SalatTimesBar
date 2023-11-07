@@ -12,22 +12,30 @@ func textForSalatTime(_ salatTime: SalatTime) -> String {
 }
 
 struct ContentView: View {
-    @Binding var currentSalatTimes: Result<CurrentSalatTimes, NetworkError>
+    @EnvironmentObject var athanTimings: AthanTimings
+    fileprivate func buildMenuContent(for salatTime: SalatTime) -> some View {
+        return HStack {
+            Image(systemName: salatTime.type.getIcon())
+            Text(salatTime.displayText)
+        }.padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+    }
+    
     var body: some View {
         return VStack {
-            switch self.currentSalatTimes {
+            switch self.athanTimings.currentSalatTimes {
             case .success(let currentSalatTimes):
-                if let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex {
+                if let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex, currentSalatTimes.salatTimes.count > currentSalatTimeIndex {
                     let current = currentSalatTimes.salatTimes[currentSalatTimeIndex]
-                    let arr = currentSalatTimes.salatTimes[currentSalatTimeIndex + 1...currentSalatTimeIndex + 6]
-                    ForEach(arr, id: \.self) { elem in
-                        if (current.type != .Isha && elem.type == .Fajr) {
+                    let finalIndex = min(currentSalatTimeIndex + 5, currentSalatTimes.salatTimes.count - 1)
+                    let arr = currentSalatTimes.salatTimes[currentSalatTimeIndex + 1...finalIndex]
+                    ForEach(arr, id: \.self) { futureSalatTime in
+                        if (current.type != .Isha && futureSalatTime.type == .Fajr) {
                             VStack {
                                 Divider()
-                                Text(elem.displayText)
+                                buildMenuContent(for: futureSalatTime)
                             }
                         } else {
-                            Text(elem.displayText)
+                            buildMenuContent(for: futureSalatTime)
                         }
                     }
                 } else {
@@ -36,7 +44,7 @@ struct ContentView: View {
             case .failure(let error):
                 Text(error.localizedDescription)
             }
-        }.padding()
+        }.padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
     }
 }
 

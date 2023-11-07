@@ -12,11 +12,12 @@ struct SalatTimeBarApp: App {
     @StateObject var vm = AthanTimings()
     var body: some Scene {
         MenuBarExtra {
-            ContentView(currentSalatTimes: $vm.currentSalatTimes)
+            ContentView().environmentObject(vm)
         } label: {
-            AppIcon(currentSalatTimes: $vm.currentSalatTimes).onAppear(perform: {
+            AppIcon().environmentObject(vm).onAppear(perform: {
                 vm.fetch()
             })
         }
+        .menuBarExtraStyle(.window)
     }
 }
