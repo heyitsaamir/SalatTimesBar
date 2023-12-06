@@ -11,14 +11,18 @@ func textForSalatTime(_ salatTime: SalatTime) -> String {
     return "\(salatTime.type.rawValue) - \(salatTime.time.formatted())"
 }
 
-struct ContentView: View {
-    @EnvironmentObject var athanTimings: AthanTimings
-    fileprivate func buildMenuContent(for salatTime: SalatTime) -> some View {
+fileprivate struct SingleSalatTimeView: View {
+    var salatTime: SalatTime
+    var body: some View {
         return HStack {
-            Image(systemName: salatTime.type.getIcon())
-            Text(salatTime.displayText)
-        }.padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+            Image(systemName: self.salatTime.type.getIcon())
+            Text(self.salatTime.displayText)
+        }.padding(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2))
     }
+}
+
+struct PopupWindow: View {
+    @EnvironmentObject var athanTimings: AthanTimings
     
     var body: some View {
         return VStack {
@@ -31,11 +35,11 @@ struct ContentView: View {
                     ForEach(arr, id: \.self) { futureSalatTime in
                         if (current.type != .Isha && futureSalatTime.type == .Fajr) {
                             VStack {
-                                Divider()
-                                buildMenuContent(for: futureSalatTime)
+                                Divider().frame(width: 80)
+                                SingleSalatTimeView(salatTime: futureSalatTime)
                             }
                         } else {
-                            buildMenuContent(for: futureSalatTime)
+                            SingleSalatTimeView(salatTime: futureSalatTime)
                         }
                     }
                 } else {
@@ -44,7 +48,7 @@ struct ContentView: View {
             case .failure(let error):
                 Text(error.localizedDescription)
             }
-        }.padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+        }.padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
     }
 }
 

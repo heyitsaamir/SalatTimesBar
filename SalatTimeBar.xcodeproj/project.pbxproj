@@ -7,52 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372E247C2B1CD7FA00A05199 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E247B2B1CD7FA00A05199 /* SampleData.swift */; };
 		375306EF2A7DD1650043091F /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375306EE2A7DD1650043091F /* AppIcon.swift */; };
 		376679A82ADB9A4100CF583F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 376679A72ADB9A4100CF583F /* Alamofire */; };
 		376679AB2ADB9D6300CF583F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376679AA2ADB9D6300CF583F /* Date.swift */; };
 		37C6869E2A7EE1CC00771C45 /* SalatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6869D2A7EE1CC00771C45 /* SalatTime.swift */; };
 		37C686A02A7F210F00771C45 /* SalatTimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C6869F2A7F210F00771C45 /* SalatTimeData.swift */; };
-		37D25ADA2A7B095700FFA2C2 /* SalatTimeBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AD92A7B095700FFA2C2 /* SalatTimeBarApp.swift */; };
-		37D25ADC2A7B095700FFA2C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25ADB2A7B095700FFA2C2 /* ContentView.swift */; };
+		37D25ADA2A7B095700FFA2C2 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AD92A7B095700FFA2C2 /* MainApp.swift */; };
+		37D25ADC2A7B095700FFA2C2 /* PopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25ADB2A7B095700FFA2C2 /* PopupWindow.swift */; };
 		37D25ADE2A7B095A00FFA2C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */; };
 		37D25AE12A7B095A00FFA2C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */; };
-		37D25AEC2A7B095A00FFA2C2 /* SalatTimeBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AEB2A7B095A00FFA2C2 /* SalatTimeBarTests.swift */; };
-		37D25AF62A7B095A00FFA2C2 /* SalatTimeBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AF52A7B095A00FFA2C2 /* SalatTimeBarUITests.swift */; };
-		37D25AF82A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25AF72A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		37D25AE82A7B095A00FFA2C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 37D25ACE2A7B095700FFA2C2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 37D25AD52A7B095700FFA2C2;
-			remoteInfo = SalatTimeBar;
-		};
-		37D25AF22A7B095A00FFA2C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 37D25ACE2A7B095700FFA2C2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 37D25AD52A7B095700FFA2C2;
-			remoteInfo = SalatTimeBar;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		372E247B2B1CD7FA00A05199 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		375306EE2A7DD1650043091F /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		376679AA2ADB9D6300CF583F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		376679AC2ADBAA5A00CF583F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		37C6869D2A7EE1CC00771C45 /* SalatTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTime.swift; sourceTree = "<group>"; };
 		37C6869F2A7F210F00771C45 /* SalatTimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeData.swift; sourceTree = "<group>"; };
 		37D25AD62A7B095700FFA2C2 /* SalatTimeBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SalatTimeBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		37D25AD92A7B095700FFA2C2 /* SalatTimeBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarApp.swift; sourceTree = "<group>"; };
-		37D25ADB2A7B095700FFA2C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		37D25AD92A7B095700FFA2C2 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
+		37D25ADB2A7B095700FFA2C2 /* PopupWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupWindow.swift; sourceTree = "<group>"; };
 		37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		37D25AE22A7B095A00FFA2C2 /* SalatTimeBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SalatTimeBar.entitlements; sourceTree = "<group>"; };
-		37D25AE72A7B095A00FFA2C2 /* SalatTimeBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SalatTimeBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D25AEB2A7B095A00FFA2C2 /* SalatTimeBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarTests.swift; sourceTree = "<group>"; };
-		37D25AF12A7B095A00FFA2C2 /* SalatTimeBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SalatTimeBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D25AF52A7B095A00FFA2C2 /* SalatTimeBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarUITests.swift; sourceTree = "<group>"; };
 		37D25AF72A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,23 +46,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		37D25AE42A7B095A00FFA2C2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		37D25AEE2A7B095A00FFA2C2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		372E247F2B20F93200A05199 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				37C6869D2A7EE1CC00771C45 /* SalatTime.swift */,
+				37C6869F2A7F210F00771C45 /* SalatTimeData.swift */,
+				372E247B2B1CD7FA00A05199 /* SampleData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		376679A92ADB9D5500CF583F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,8 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				37D25AD62A7B095700FFA2C2 /* SalatTimeBar.app */,
-				37D25AE72A7B095A00FFA2C2 /* SalatTimeBarTests.xctest */,
-				37D25AF12A7B095A00FFA2C2 /* SalatTimeBarUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,14 +90,13 @@
 			children = (
 				376679AC2ADBAA5A00CF583F /* Info.plist */,
 				376679A92ADB9D5500CF583F /* Extensions */,
+				372E247F2B20F93200A05199 /* Data */,
 				375306EE2A7DD1650043091F /* AppIcon.swift */,
-				37D25AD92A7B095700FFA2C2 /* SalatTimeBarApp.swift */,
-				37D25ADB2A7B095700FFA2C2 /* ContentView.swift */,
+				37D25AD92A7B095700FFA2C2 /* MainApp.swift */,
+				37D25ADB2A7B095700FFA2C2 /* PopupWindow.swift */,
 				37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */,
 				37D25AE22A7B095A00FFA2C2 /* SalatTimeBar.entitlements */,
 				37D25ADF2A7B095A00FFA2C2 /* Preview Content */,
-				37C6869D2A7EE1CC00771C45 /* SalatTime.swift */,
-				37C6869F2A7F210F00771C45 /* SalatTimeData.swift */,
 			);
 			path = SalatTimeBar;
 			sourceTree = "<group>";
@@ -176,42 +149,6 @@
 			productReference = 37D25AD62A7B095700FFA2C2 /* SalatTimeBar.app */;
 			productType = "com.apple.product-type.application";
 		};
-		37D25AE62A7B095A00FFA2C2 /* SalatTimeBarTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 37D25AFE2A7B095A00FFA2C2 /* Build configuration list for PBXNativeTarget "SalatTimeBarTests" */;
-			buildPhases = (
-				37D25AE32A7B095A00FFA2C2 /* Sources */,
-				37D25AE42A7B095A00FFA2C2 /* Frameworks */,
-				37D25AE52A7B095A00FFA2C2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				37D25AE92A7B095A00FFA2C2 /* PBXTargetDependency */,
-			);
-			name = SalatTimeBarTests;
-			productName = SalatTimeBarTests;
-			productReference = 37D25AE72A7B095A00FFA2C2 /* SalatTimeBarTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		37D25AF02A7B095A00FFA2C2 /* SalatTimeBarUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 37D25B012A7B095A00FFA2C2 /* Build configuration list for PBXNativeTarget "SalatTimeBarUITests" */;
-			buildPhases = (
-				37D25AED2A7B095A00FFA2C2 /* Sources */,
-				37D25AEE2A7B095A00FFA2C2 /* Frameworks */,
-				37D25AEF2A7B095A00FFA2C2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				37D25AF32A7B095A00FFA2C2 /* PBXTargetDependency */,
-			);
-			name = SalatTimeBarUITests;
-			productName = SalatTimeBarUITests;
-			productReference = 37D25AF12A7B095A00FFA2C2 /* SalatTimeBarUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -224,14 +161,6 @@
 				TargetAttributes = {
 					37D25AD52A7B095700FFA2C2 = {
 						CreatedOnToolsVersion = 15.0;
-					};
-					37D25AE62A7B095A00FFA2C2 = {
-						CreatedOnToolsVersion = 15.0;
-						TestTargetID = 37D25AD52A7B095700FFA2C2;
-					};
-					37D25AF02A7B095A00FFA2C2 = {
-						CreatedOnToolsVersion = 15.0;
-						TestTargetID = 37D25AD52A7B095700FFA2C2;
 					};
 				};
 			};
@@ -252,8 +181,6 @@
 			projectRoot = "";
 			targets = (
 				37D25AD52A7B095700FFA2C2 /* SalatTimeBar */,
-				37D25AE62A7B095A00FFA2C2 /* SalatTimeBarTests */,
-				37D25AF02A7B095A00FFA2C2 /* SalatTimeBarUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -268,20 +195,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		37D25AE52A7B095A00FFA2C2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		37D25AEF2A7B095A00FFA2C2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -291,44 +204,15 @@
 			files = (
 				37C686A02A7F210F00771C45 /* SalatTimeData.swift in Sources */,
 				376679AB2ADB9D6300CF583F /* Date.swift in Sources */,
-				37D25ADC2A7B095700FFA2C2 /* ContentView.swift in Sources */,
-				37D25ADA2A7B095700FFA2C2 /* SalatTimeBarApp.swift in Sources */,
+				372E247C2B1CD7FA00A05199 /* SampleData.swift in Sources */,
+				37D25ADC2A7B095700FFA2C2 /* PopupWindow.swift in Sources */,
+				37D25ADA2A7B095700FFA2C2 /* MainApp.swift in Sources */,
 				37C6869E2A7EE1CC00771C45 /* SalatTime.swift in Sources */,
 				375306EF2A7DD1650043091F /* AppIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		37D25AE32A7B095A00FFA2C2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				37D25AEC2A7B095A00FFA2C2 /* SalatTimeBarTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		37D25AED2A7B095A00FFA2C2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				37D25AF62A7B095A00FFA2C2 /* SalatTimeBarUITests.swift in Sources */,
-				37D25AF82A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		37D25AE92A7B095A00FFA2C2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 37D25AD52A7B095700FFA2C2 /* SalatTimeBar */;
-			targetProxy = 37D25AE82A7B095A00FFA2C2 /* PBXContainerItemProxy */;
-		};
-		37D25AF32A7B095A00FFA2C2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 37D25AD52A7B095700FFA2C2 /* SalatTimeBar */;
-			targetProxy = 37D25AF22A7B095A00FFA2C2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		37D25AF92A7B095A00FFA2C2 /* Debug */ = {
@@ -462,6 +346,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SalatTimeBar/Info.plist;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -488,6 +373,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SalatTimeBar/Info.plist;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -498,74 +384,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		37D25AFF2A7B095A00FFA2C2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AamirJawaid.SalatTimeBarTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SalatTimeBar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SalatTimeBar";
-			};
-			name = Debug;
-		};
-		37D25B002A7B095A00FFA2C2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AamirJawaid.SalatTimeBarTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SalatTimeBar.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SalatTimeBar";
-			};
-			name = Release;
-		};
-		37D25B022A7B095A00FFA2C2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AamirJawaid.SalatTimeBarUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = SalatTimeBar;
-			};
-			name = Debug;
-		};
-		37D25B032A7B095A00FFA2C2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AamirJawaid.SalatTimeBarUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = SalatTimeBar;
 			};
 			name = Release;
 		};
@@ -586,24 +404,6 @@
 			buildConfigurations = (
 				37D25AFC2A7B095A00FFA2C2 /* Debug */,
 				37D25AFD2A7B095A00FFA2C2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		37D25AFE2A7B095A00FFA2C2 /* Build configuration list for PBXNativeTarget "SalatTimeBarTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				37D25AFF2A7B095A00FFA2C2 /* Debug */,
-				37D25B002A7B095A00FFA2C2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		37D25B012A7B095A00FFA2C2 /* Build configuration list for PBXNativeTarget "SalatTimeBarUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				37D25B022A7B095A00FFA2C2 /* Debug */,
-				37D25B032A7B095A00FFA2C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

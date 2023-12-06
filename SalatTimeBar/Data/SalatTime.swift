@@ -46,6 +46,14 @@ struct CurrentSalatTimes {
     var salatTimes: [SalatTime]
     var currentSalatIndex: Int?
     
+    var currentSalatTime: SalatTime? {
+        guard let currentSalatIndex = self.currentSalatIndex else {
+            return nil
+        }
+        
+        return self.salatTimes[currentSalatIndex]
+    }
+    
     mutating func computeCurrentSalatIndex() {
         let currentDate = Date()
         self.currentSalatIndex = self.salatTimes.firstIndex { salatTime in

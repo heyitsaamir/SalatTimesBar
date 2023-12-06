@@ -1,12 +1,11 @@
 //
-//  SalatTimeData.swift
+//  ScheduledTask.swift
 //  SalatTimeBar
 //
-//  Created by Aamir Jawaid on 8/5/23.
+//  Created by Aamir Jawaid on 12/3/23.
 //
 
 import Foundation
-import Alamofire
 
 let JSON = """
 {
@@ -2713,106 +2712,3 @@ let JSON = """
     ]
 }
 """
-
-struct SalatTimesJson: Decodable {
-    struct SalatTimeDay: Decodable {
-        struct SalatTimeDate: Decodable {
-            var readable: String
-            var timestamp: String
-            
-            var date: Date? {
-                if let timeIntervalSince1970 = Double(self.timestamp) {
-                    return Date(timeIntervalSince1970: timeIntervalSince1970)
-                }
-                
-                return nil
-            }
-        }
-        var timings: [String: String]
-        var date: SalatTimeDate
-    }
-    
-    var data:[SalatTimeDay]
-}
-
-let jsonData = JSON.data(using: .utf8)
-
-let isoFormatter = ISO8601DateFormatter()
-
-enum NetworkError: String, Error {
-    // Throw when an invalid password is entered
-    case InvalidDate = "InvalidDate"
-    
-    case InvalidData = "InvalidData"
-    
-    case NotAsked = "NotAsked"
-}
-
-struct Parameters: Encodable {
-    let address: String
-    let month: Int
-    let year: Int
-    let iso8601: String
-}
-
-func fetchAthanTime(for date: Date, onComplete: @escaping (Result<SalatTimesJson, NetworkError>) -> Void) {
-    let components = date.get(.year, .month)
-    guard let year = components.year, let month = components.month else {
-        onComplete(.failure(.InvalidDate))
-        return
-    }
-    let parameters = Parameters(address: "621 Ilwaco Pl NE, Renton, WA", month: month, year: year, iso8601: "true")
-    let task = AF.request("http://api.aladhan.com/v1/calendarByAddress", method: .get, parameters: parameters).responseDecodable(of:SalatTimesJson.self) { response in
-        switch response.result {
-        case .success(let salatTime):
-            onComplete(.success(salatTime))
-        case .failure:
-            onComplete(.failure(.InvalidData))
-        }
-    }
-    task.resume()
-}
-
-class AthanTimings: ObservableObject {
-    @Published var salatTimes = Result<[SalatTime], NetworkError>.failure(.NotAsked)
-    @Published var currentSalatTimes = Result<CurrentSalatTimes, NetworkError>.failure(.NotAsked)
-    func fetch() {
-        fetchAthanTime(for: Date.now) { data in
-            switch data {
-            case .success(let json):
-                let results = json.data.flatMap { salatTimeDay in
-                    return salatTimeDay.timings.compactMap { (key, value) -> SalatTime? in
-                        if let salatType = SalatType(rawValue: key), let salatTime = isoFormatter.date(from: value) {
-                            return SalatTime(type: salatType, time: salatTime)
-                        }
-                        
-                        return nil
-                    }
-                }.sorted { a, b in
-                    a.time.compare(b.time) == .orderedAscending
-                }
-                
-                self.salatTimes = .success(results)
-            case .failure(let error):
-                self.salatTimes = .failure(error)
-            }
-            
-            self.computeCurrentSalatIndex()
-        }
-    }
-    
-    func computeCurrentSalatIndex() {
-        switch (self.salatTimes) {
-        case .success(let salatTimes):
-            var currentSalatTime = CurrentSalatTimes(salatTimes: salatTimes)
-            currentSalatTime.computeCurrentSalatIndex()
-            self.currentSalatTimes = .success(currentSalatTime)
-        case .failure(let error):
-            self.currentSalatTimes = .failure(error)
-        }
-    }
-    
-    func fetchIfNecessary() {
-        
-    }
-}

@@ -9,14 +9,14 @@ import SwiftUI
 
 @main
 struct SalatTimeBarApp: App {
-    @StateObject var vm = AthanTimings()
+    @StateObject var vm = AthanTimings.shared
     var body: some Scene {
         MenuBarExtra {
-            ContentView().environmentObject(vm)
+            PopupWindow().environmentObject(vm)
         } label: {
-            AppIcon().environmentObject(vm).onAppear(perform: {
-                vm.fetch()
-            })
+            AppIcon().environmentObject(vm).task {
+                await vm.fetch()
+            }
         }
         .menuBarExtraStyle(.window)
     }
