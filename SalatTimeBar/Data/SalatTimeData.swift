@@ -9,24 +9,25 @@ import Foundation
 import Alamofire
 import BackgroundTasks
 
-struct SalatTimesJson: Decodable {
-    struct SalatTimeDay: Decodable {
-        struct SalatTimeDate: Decodable {
-            var readable: String
-            var timestamp: String
-            
-            var date: Date? {
-                if let timeIntervalSince1970 = Double(self.timestamp) {
-                    return Date(timeIntervalSince1970: timeIntervalSince1970)
-                }
-                
-                return nil
-            }
-        }
-        var timings: [String: String]
-        var date: SalatTimeDate
-    }
+struct SalatTimeDate: Decodable {
+    var readable: String
+    var timestamp: String
     
+    var date: Date? {
+        if let timeIntervalSince1970 = Double(self.timestamp) {
+            return Date(timeIntervalSince1970: timeIntervalSince1970)
+        }
+        
+        return nil
+    }
+}
+
+struct SalatTimeDay: Decodable {
+    var timings: [String: String]
+    var date: SalatTimeDate
+}
+
+struct SalatTimesJson: Decodable {
     var data:[SalatTimeDay]
 }
 
@@ -59,21 +60,22 @@ class AthanTimings: ObservableObject {
     
     private let fetcher: AthanNetworkFetcher
     private var timer: Timer?
+    private let dispatchQueue = DispatchQueue(label: "Salat Time Serial Queue")
     @Published var currentSalatTimes = Result<CurrentSalatTimes, NetworkError>.failure(.NotAsked)
     
     init() {
-        self.fetcher = AthanNetworkFetcher()
+        fetcher = AthanNetworkFetcher()
     }
     
     deinit {
         print("Invalidating timer");
-        self.timer?.invalidate()
+        timer?.invalidate()
     }
     
     func fetch() async -> Void {
         let currentMonth = Date.now.startOfMonth
         let nextMonth = currentMonth.computeDate(byAdding: .month, value: 1).startOfMonth
-        print("fetching for \(currentMonth.description) \(nextMonth.description)")
+        print("[\(Date.now.ISO8601Format())] fetching for \(currentMonth.description) \(nextMonth.description)")
         do {
             let dataForCurrentDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: currentMonth)
             let dataForNextMonthDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: nextMonth)
@@ -88,13 +90,53 @@ class AthanTimings: ObservableObject {
                     }
                 }
                 
-                let currentSalatTime = CurrentSalatTimes(salatTimes: salatTimes)
-                self.currentSalatTimes = .success(currentSalatTime)
-                self.computeCurrentSalatIndex()
-                self.scheduleRefresh()
+                DispatchQueue.main.async {
+                    let currentSalatTime = CurrentSalatTimes(salatTimes: salatTimes)
+                    self.currentSalatTimes = .success(currentSalatTime)
+                    self.computeCurrentSalatIndex()
+                }
             }
         } catch let error {
             print(error.localizedDescription)
+        }
+    }
+    
+    func scheduleTimer() {
+        self.timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { [weak self] timer in
+            guard let self = self, timer.isValid else {
+                return
+            }
+            
+            // Do I need to run again?
+            if !self.shouldRun() {
+                print("[\(Date.now)] No need to run.")
+                return
+            } else {
+                print("[\(Date.now)] Running")
+            }
+            
+            self.dispatchQueue.async {
+                Task {
+                    await self.fetch()
+                }
+            }
+        })
+        
+        timer?.fire()
+    }
+    
+    private func shouldRun() -> Bool {
+        switch (self.currentSalatTimes) {
+        case .success(let salatTimes):
+            let currentSalatTime = salatTimes.currentSalatTime
+            if let currentSalatTime = currentSalatTime {
+                return currentSalatTime.time < Date.now
+            } else {
+                return true
+            }
+        case .failure:
+            return true
         }
     }
     
@@ -107,41 +149,6 @@ class AthanTimings: ObservableObject {
         case .failure(let error):
             print("No exisiting salat time because of \(error.localizedDescription)")
         }
-    }
-    
-    private func scheduleRefresh() {
-        self.timer?.invalidate()
-        guard let timer = self.getRefreshBackgroundTask() else {
-            return
-        }
-        
-        
-        self.timer = timer
-        RunLoop.current.add(timer, forMode: .common)
-    }
-    
-    private func getRefreshBackgroundTask() -> Timer? {
-        switch (self.currentSalatTimes) {
-        case .success(let currentTimes):
-            if let currentSalatTime = currentTimes.currentSalatTime {
-                print("Scheduled task \(currentSalatTime.time.timeIntervalSinceNow) seconds from now")
-                return Timer(fire: currentSalatTime.time, interval: 0, repeats: false, block: { [weak self] timer in
-                    guard let self = self, timer.isValid else {
-                        print("Returning early")
-                        return
-                    }
-                    print("Running a block")
-                    Task {
-                        print("Running a task")
-                        await self.fetch()
-                    }
-                })
-            }
-        case .failure(let error):
-            print("Not scheduling a task because of \(error.localizedDescription)")
-        }
-        
-        return nil
     }
 }
 
@@ -189,6 +196,7 @@ fileprivate class AthanNetworkFetcher {
     
     private func fetchAthanTime(for parameters: Parameters) async throws -> Result<SalatTimesJson, NetworkError> {
         return try await withCheckedThrowingContinuation { continuation in
+//            continuation.resume(returning: .success(generatePrayerTimingsForMonth(currentTime: Date.now) as! SalatTimesJson))
             AF.request("http://api.aladhan.com/v1/calendarByAddress", method: .get, parameters: parameters).responseDecodable(of:SalatTimesJson.self) { response in
                 switch response.result {
                 case .success(let salatTime):

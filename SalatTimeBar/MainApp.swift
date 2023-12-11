@@ -15,9 +15,13 @@ struct SalatTimeBarApp: App {
             PopupWindow().environmentObject(vm)
         } label: {
             AppIcon().environmentObject(vm).task {
-                await vm.fetch()
+                vm.scheduleTimer()
             }
         }
         .menuBarExtraStyle(.window)
+        
+        Window("Settings", id: "UserSettings", content: {
+            UserSettingsContentView()
+        })
     }
 }
