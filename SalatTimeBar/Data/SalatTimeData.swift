@@ -42,6 +42,8 @@ enum NetworkError: String, Error {
     case InvalidData = "InvalidData"
     
     case NotAsked = "NotAsked"
+    
+    case AddressNotSet = "AddressNotSet"
 }
 
 struct Parameters: Encodable {
@@ -51,20 +53,25 @@ struct Parameters: Encodable {
     let iso8601: String
 }
 
-let address = "621 Ilwaco Pl NE, Renton, WA"
+struct CurrentParameter: Hashable {
+    let address: String
+}
 
 fileprivate typealias StoredSalatTimes = (startOfMonthDate: Date, times: [SalatTime])
 
 class AthanTimings: ObservableObject {
     static let shared = AthanTimings()
     
+    private let userSettings: UserSettings
     private let fetcher: AthanNetworkFetcher
     private var timer: Timer?
     private let dispatchQueue = DispatchQueue(label: "Salat Time Serial Queue")
+    private var currentParameter: CurrentParameter?
     @Published var currentSalatTimes = Result<CurrentSalatTimes, NetworkError>.failure(.NotAsked)
     
-    init() {
+    init(userSettings: UserSettings = .shared) {
         fetcher = AthanNetworkFetcher()
+        self.userSettings = userSettings
     }
     
     deinit {
@@ -77,14 +84,15 @@ class AthanTimings: ObservableObject {
         let nextMonth = currentMonth.computeDate(byAdding: .month, value: 1).startOfMonth
         print("[\(Date.now.ISO8601Format())] fetching for \(currentMonth.description) \(nextMonth.description)")
         do {
-            let dataForCurrentDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: currentMonth)
-            let dataForNextMonthDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: nextMonth)
+            let dataForCurrentDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: currentMonth, address: self.userSettings.address)
+            let dataForNextMonthDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: nextMonth, address: self.userSettings.address)
             DispatchQueue.main.async {
                 var salatTimes: [SalatTime] = []
                 [dataForCurrentDate, dataForNextMonthDate].forEach { data in
                     switch data {
                     case .success(let json):
                         salatTimes += json.times
+                        self.currentParameter = CurrentParameter(address: self.userSettings.address)
                     case .failure(let error):
                         self.currentSalatTimes = .failure(error)
                     }
@@ -127,6 +135,9 @@ class AthanTimings: ObservableObject {
     }
     
     private func shouldRun() -> Bool {
+        if let currentParameter = self.currentParameter, currentParameter.address != self.userSettings.address {
+            return true
+        }
         switch (self.currentSalatTimes) {
         case .success(let salatTimes):
             let currentSalatTime = salatTimes.currentSalatTime
@@ -154,18 +165,24 @@ class AthanTimings: ObservableObject {
 
 fileprivate class AthanNetworkFetcher {
     private var cache: Dictionary<String, [SalatTime]>
+    private let userSettings: UserSettings
     
-    init() {
+    init(userSettings: UserSettings = .shared) {
         self.cache = Dictionary()
+        self.userSettings = userSettings
     }
     
-    func fetchAthanTimesIfNecessary(for date: Date) async throws -> Result<StoredSalatTimes, NetworkError> {
+    func fetchAthanTimesIfNecessary(for date: Date, address: String) async throws -> Result<StoredSalatTimes, NetworkError> {
         let components = date.get(.year, .month)
         guard let year = components.year, let month = components.month else {
             return .failure(.InvalidDate)
         }
+        
+        guard userSettings.address != "" else {
+            return .failure(.AddressNotSet)
+        }
     
-        let cacheKey = "\(year)|\(month)"
+        let cacheKey = "\(year)|\(month)|\(address)"
         
         if let existingResult = self.cache[cacheKey] {
             return .success((startOfMonthDate: date.startOfMonth, times: existingResult))

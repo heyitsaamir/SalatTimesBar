@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct SalatTimeBarApp: App {
     @StateObject var vm = AthanTimings.shared
+    @UserSetting(\.address) var address
+    
     var body: some Scene {
         MenuBarExtra {
             PopupWindow().environmentObject(vm)
@@ -19,9 +21,13 @@ struct SalatTimeBarApp: App {
             }
         }
         .menuBarExtraStyle(.window)
+        .onChange(of: address) {
+            print("Updated")
+            vm.scheduleTimer()
+        }
         
         Window("Settings", id: "UserSettings", content: {
-            UserSettingsContentView()
-        })
+            UserSettingsContentView().fixedSize()
+        }).windowResizability(.contentSize).windowStyle(.hiddenTitleBar)
     }
 }
