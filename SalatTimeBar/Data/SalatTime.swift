@@ -9,11 +9,11 @@ import Foundation
 
 enum SalatType: String, Decodable {
     case Fajr,
-    Sunrise,
-    Dhuhr,
-    Asr,
-    Maghrib,
-    Isha
+         Sunrise,
+         Dhuhr,
+         Asr,
+         Maghrib,
+         Isha
     
     var longDescription: String {
         return self.rawValue

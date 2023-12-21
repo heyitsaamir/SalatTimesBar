@@ -37,7 +37,7 @@ struct PopupWindow: View {
     @EnvironmentObject var athanTimings: AthanTimings
     
     var body: some View {
-       return VStack {
+        return VStack {
             switch self.athanTimings.currentSalatTimes {
             case .success(let currentSalatTimes):
                 if let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex, currentSalatTimes.salatTimes.count > currentSalatTimeIndex {
@@ -61,18 +61,18 @@ struct PopupWindow: View {
             case .failure(let error):
                 Text(error.localizedDescription)
             }
-           Menu(content: {
-               Button("Settings") {
-                   openWindow(id: "UserSettings")
-               }
-               Button("Quit") {
-                   NSApplication.shared.terminate(nil)
-               }
-           }) {
-               Image(systemName: "gear")
-                   .imageScale(.small)
-           }.buttonStyle(.accessoryBar)
-               .foregroundStyle(.secondary)
+            Menu(content: {
+                Button("Settings") {
+                    openWindow(id: "UserSettings")
+                }
+                Button("Quit") {
+                    NSApplication.shared.terminate(nil)
+                }
+            }) {
+                Image(systemName: "gear")
+                    .imageScale(.small)
+            }.buttonStyle(.accessoryBar)
+                .foregroundStyle(.secondary)
         }
         .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
         .background(Color.background)

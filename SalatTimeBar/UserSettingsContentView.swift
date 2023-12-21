@@ -41,7 +41,7 @@ struct SettingLocationField: View {
         VStack {
             TextField(
                 "Location",
-                    text: $val
+                text: $val
             ).onSubmit {
                 self.locationSearch.searchTerm = val
             }
@@ -102,8 +102,8 @@ struct SettingToggleField: View {
         VStack {
             Toggle(
                 self.label,
-                    isOn: $val
-                )
+                isOn: $val
+            )
             .onChange(of: val) {
                 userSettings[keyPath: keyPath] = val
             }

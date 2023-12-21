@@ -13,8 +13,8 @@ struct AppIcon: View {
     
     private func buildIcon(for salatTime: SalatTime) -> some View {
         Image(systemName: salatTime.type.icon)
-                .imageScale(.large)
-                .foregroundStyle(.tint)
+            .imageScale(.large)
+            .foregroundStyle(.tint)
     }
     
     var body: some View {

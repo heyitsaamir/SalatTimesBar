@@ -50,12 +50,12 @@ public struct UserSetting<T>: DynamicProperty {
         self.keyPath = keyPath
         self.userSettings = userSettings
     }
-
+    
     public var wrappedValue: T {
         get { userSettings[keyPath: keyPath] }
         nonmutating set { userSettings[keyPath: keyPath] = newValue }
     }
-
+    
     public var projectedValue: Binding<T> {
         Binding(
             get: { userSettings[keyPath: keyPath] },

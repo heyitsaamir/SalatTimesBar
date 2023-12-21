@@ -30,7 +30,7 @@ struct Location: Identifiable, Hashable {
 
 class LocationSearch: NSObject, ObservableObject {
     private var cancellables : Set<AnyCancellable> = []
-        
+    
     private var searchCompleter = MKLocalSearchCompleter()
     private var currentPromise : ((Result<[MKLocalSearchCompletion], Error>) -> Void)?
     
@@ -38,25 +38,25 @@ class LocationSearch: NSObject, ObservableObject {
     @Published var searchTerm = ""
     
     override init() {
-    super.init()
-    searchCompleter.delegate = self
-    
-    $searchTerm
-        .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
-        .removeDuplicates()
-        .flatMap({ (currentSearchTerm) in
-            self.searchTermToResults(searchTerm: currentSearchTerm)
-        })
-        .sink(receiveCompletion: { (completion) in
-            //handle error
-        }, receiveValue: { (results) in
-            self.locationResults = results.filter({ result in
-                return result.title.contains(",")
-            }).map({ res in
-                Location(title: res.title, description: res.subtitle)
+        super.init()
+        searchCompleter.delegate = self
+        
+        $searchTerm
+            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .flatMap({ (currentSearchTerm) in
+                self.searchTermToResults(searchTerm: currentSearchTerm)
             })
-        })
-        .store(in: &cancellables)
+            .sink(receiveCompletion: { (completion) in
+                //handle error
+            }, receiveValue: { (results) in
+                self.locationResults = results.filter({ result in
+                    return result.title.contains(",")
+                }).map({ res in
+                    Location(title: res.title, description: res.subtitle)
+                })
+            })
+            .store(in: &cancellables)
     }
     
     func searchTermToResults(searchTerm: String) -> Future<[MKLocalSearchCompletion], Error> {

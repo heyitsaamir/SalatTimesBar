@@ -181,7 +181,7 @@ fileprivate class AthanNetworkFetcher {
         guard userSettings.address != "" else {
             return .failure(.AddressNotSet)
         }
-    
+        
         let cacheKey = "\(year)|\(month)|\(address)"
         
         if let existingResult = self.cache[cacheKey] {
@@ -213,7 +213,7 @@ fileprivate class AthanNetworkFetcher {
     
     private func fetchAthanTime(for parameters: Parameters) async throws -> Result<SalatTimesJson, NetworkError> {
         return try await withCheckedThrowingContinuation { continuation in
-//            continuation.resume(returning: .success(generatePrayerTimingsForMonth(currentTime: Date.now) as! SalatTimesJson))
+            //            continuation.resume(returning: .success(generatePrayerTimingsForMonth(currentTime: Date.now) as! SalatTimesJson))
             AF.request("http://api.aladhan.com/v1/calendarByAddress", method: .get, parameters: parameters).responseDecodable(of:SalatTimesJson.self) { response in
                 switch response.result {
                 case .success(let salatTime):
