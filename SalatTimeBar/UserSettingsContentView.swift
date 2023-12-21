@@ -11,43 +11,38 @@ struct UserSettingsContentView: View {
     @Environment(\.openWindow) private var openWindow
     var body: some View {
         HStack {
+            Spacer()
             Form {
                 Section {
-                    SettingToggleField(\.isShortFormat, label: "Short Form")
-                    SettingLocationField(\.address, label: "Address", description: "Your address")
+                    SettingFormatField(\.format)
+                    SettingLocationField(\.address)
                 }
             }
+            Spacer()
         }.frame(width: 300)
             .padding(20)
     }
 }
 
 struct SettingLocationField: View {
-    let label: String
-    let description: String
     private let keyPath: ReferenceWritableKeyPath<UserSettings, String>
     @ObservedObject private var userSettings: UserSettings
     @StateObject private var locationSearch = LocationSearch()
-    @State private var isPopoverVisible: Bool
     @State private var selection: Int?
     
     @State var val: String
-    init(_ keyPath: ReferenceWritableKeyPath<UserSettings, String>, label: String, description: String, userSettings: UserSettings = .shared) {
-        self.label = label
-        self.description = description
+    init(_ keyPath: ReferenceWritableKeyPath<UserSettings, String>, userSettings: UserSettings = .shared) {
         self.keyPath = keyPath
         self.userSettings = userSettings
         self.val = userSettings[keyPath: keyPath]
-        self.isPopoverVisible = false
     }
     
     var body: some View {
         VStack {
             TextField(
-                self.label,
+                "Address",
                     text: $val
             ).onSubmit {
-                self.isPopoverVisible = true
                 self.locationSearch.searchTerm = val
             }
             
@@ -62,6 +57,30 @@ struct SettingLocationField: View {
                 userSettings[keyPath: keyPath] = newValue.title
                 val = newValue.title
             }.listItemTint(.accentColor).frame(height: 300)
+        }
+    }
+}
+
+struct SettingFormatField: View {
+    private let keyPath: ReferenceWritableKeyPath<UserSettings, Format>
+    @ObservedObject private var userSettings: UserSettings
+    
+    @State var val: Format
+    init(_ keyPath: ReferenceWritableKeyPath<UserSettings, Format>, userSettings: UserSettings = .shared) {
+        self.keyPath = keyPath
+        self.userSettings = userSettings
+        self.val = userSettings[keyPath: keyPath]
+    }
+    
+    var body: some View {
+        Picker(selection: $val, content: {
+            ForEach(Format.allFormats) { format in
+                Text(format.description)
+            }
+        }, label:  {
+            Text("Format")
+        }).pickerStyle(.inline).onChange(of: val) {
+            userSettings[keyPath: keyPath] = val
         }
     }
 }

@@ -7,11 +7,39 @@
 
 import SwiftUI
 
+public enum Format: String, Identifiable {
+    
+    public var id: Self {
+        return self
+    }
+    
+    case Long, Short, IconOnly
+    
+    var description: String {
+        switch (self) {
+        case .Long:
+            return "Long (Maghrib)"
+        case .Short:
+            return "Short (M)"
+        case .IconOnly:
+            return "Icon only"
+        }
+    }
+    
+    static var allFormats: [Format] {
+        return [
+            Format.Long,
+            Format.Short,
+            Format.IconOnly
+        ]
+    }
+}
+
 public class UserSettings: ObservableObject {
     public static let shared = UserSettings()
     
     @AppStorage("address") var address: String = ""
-    @AppStorage("isShort") var isShortFormat: Bool = false
+    @AppStorage("format") var format: Format = .Long
 }
 
 @propertyWrapper

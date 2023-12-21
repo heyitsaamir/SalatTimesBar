@@ -9,9 +9,10 @@ import SwiftUI
 
 struct AppIcon: View {
     @EnvironmentObject var vm: AthanTimings
+    @UserSetting(\.format) var format
     
     private func buildIcon(for salatTime: SalatTime) -> some View {
-        Image(systemName: salatTime.type.getIcon())
+        Image(systemName: salatTime.type.icon)
                 .imageScale(.large)
                 .foregroundStyle(.tint)
     }
@@ -22,7 +23,7 @@ struct AppIcon: View {
             case .success(let currentSalatTimes):
                 if let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex {
                     self.buildIcon(for: currentSalatTimes.salatTimes[currentSalatTimeIndex])
-                    Text(currentSalatTimes.salatTimes[currentSalatTimeIndex].displayText)
+                    Text(currentSalatTimes.salatTimes[currentSalatTimeIndex].displayText(format: format))
                 }
             default:
                 Text("Unknown")

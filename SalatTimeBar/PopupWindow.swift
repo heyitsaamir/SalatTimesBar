@@ -22,8 +22,8 @@ fileprivate struct SingleSalatTimeView: View {
     var isNext: Bool
     var body: some View {
         return HStack {
-            Image(systemName: self.salatTime.type.getIcon())
-            Text(self.salatTime.displayText)
+            Image(systemName: self.salatTime.type.icon)
+            Text(self.salatTime.displayText(format: .Long))
         }
         .padding(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2))
         .foregroundStyle(hasPassed && salatTime.type != .Sunrise ? Color.accentColor : isNext ? .primary : .secondary)

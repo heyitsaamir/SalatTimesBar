@@ -50,7 +50,9 @@ class LocationSearch: NSObject, ObservableObject {
         .sink(receiveCompletion: { (completion) in
             //handle error
         }, receiveValue: { (results) in
-            self.locationResults = results.map({ res in
+            self.locationResults = results.filter({ result in
+                return result.title.contains(",")
+            }).map({ res in
                 Location(title: res.title, description: res.subtitle)
             })
         })

@@ -15,7 +15,28 @@ enum SalatType: String, Decodable {
     Maghrib,
     Isha
     
-    func getIcon() -> String {
+    var longDescription: String {
+        return self.rawValue
+    }
+    
+    var shortDescription: String {
+        switch (self) {
+        case .Fajr:
+            return "F"
+        case .Dhuhr:
+            return "D"
+        case .Asr:
+            return "A"
+        case .Maghrib:
+            return "M"
+        case .Isha:
+            return "I"
+        case .Sunrise:
+            return "SR"
+        }
+    }
+    
+    var icon: String {
         switch (self) {
         case .Fajr:
             return "sun.horizon.fill"
@@ -37,8 +58,10 @@ struct SalatTime: Hashable {
     var type: SalatType
     var time: Date
     
-    var displayText: String {
-        return "\(self.type.rawValue) - \(self.time.formatted(date: .omitted, time: .shortened))"
+    func displayText(format: Format) -> String {
+        let type = format == .Short ? self.type.shortDescription : format == .IconOnly ? "" : self.type.longDescription
+        let delimiter = type != "" ? " - " : ""
+        return "\(type)\(delimiter)\(self.time.formatted(date: .omitted, time: .shortened))"
     }
 }
 
