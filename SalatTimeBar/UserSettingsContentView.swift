@@ -40,7 +40,7 @@ struct SettingLocationField: View {
     var body: some View {
         VStack {
             TextField(
-                "Address",
+                "Location",
                     text: $val
             ).onSubmit {
                 self.locationSearch.searchTerm = val
@@ -56,7 +56,7 @@ struct SettingLocationField: View {
                 }
                 userSettings[keyPath: keyPath] = newValue.title
                 val = newValue.title
-            }.listItemTint(.accentColor).frame(height: 300)
+            }.listItemTint(.accentColor).frame(height: 150)
         }
     }
 }

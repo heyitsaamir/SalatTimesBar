@@ -61,15 +61,18 @@ struct PopupWindow: View {
             case .failure(let error):
                 Text(error.localizedDescription)
             }
-            Divider().frame(width: 120)
-           HStack {
+           Menu(content: {
                Button("Settings") {
                    openWindow(id: "UserSettings")
                }
                Button("Quit") {
                    NSApplication.shared.terminate(nil)
                }
-           }
+           }) {
+               Image(systemName: "gear")
+                   .imageScale(.small)
+           }.buttonStyle(.accessoryBar)
+               .foregroundStyle(.secondary)
         }
         .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
         .background(Color.background)
