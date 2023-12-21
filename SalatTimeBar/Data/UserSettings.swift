@@ -8,7 +8,6 @@
 import SwiftUI
 
 public enum Format: String, Identifiable {
-    
     public var id: Self {
         return self
     }
@@ -23,14 +22,38 @@ public enum Format: String, Identifiable {
             return "Short (M)"
         case .IconOnly:
             return "Icon only"
-        }
+}
     }
     
-    static var allFormats: [Format] {
+    static var allCases: [Format] {
         return [
             Format.Long,
             Format.Short,
             Format.IconOnly
+        ]
+    }
+}
+
+public enum VisibleTime: String, Identifiable {
+    public var id: Self {
+        return self
+    }
+    
+    case Previous, Current
+    
+    var description: String {
+        switch (self) {
+        case .Previous:
+            return "Current Salat"
+        case .Current:
+            return "Upcoming Salat"
+        }
+    }
+    
+    static var allCases: [VisibleTime] {
+        return [
+            VisibleTime.Previous,
+            VisibleTime.Current
         ]
     }
 }
@@ -40,6 +63,7 @@ public class UserSettings: ObservableObject {
     
     @AppStorage("address") var address: String = ""
     @AppStorage("format") var format: Format = .Long
+    @AppStorage("visibleTime") var visibleTime: VisibleTime = .Current
 }
 
 @propertyWrapper

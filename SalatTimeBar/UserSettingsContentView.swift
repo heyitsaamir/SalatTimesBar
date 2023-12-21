@@ -15,6 +15,9 @@ struct UserSettingsContentView: View {
             Form {
                 Section {
                     SettingFormatField(\.format)
+                    SettingVisibleTimeField(\.visibleTime)
+                }
+                Section {
                     SettingLocationField(\.address)
                 }
             }
@@ -74,11 +77,35 @@ struct SettingFormatField: View {
     
     var body: some View {
         Picker(selection: $val, content: {
-            ForEach(Format.allFormats) { format in
+            ForEach(Format.allCases) { format in
                 Text(format.description)
             }
         }, label:  {
             Text("Format")
+        }).pickerStyle(.inline).onChange(of: val) {
+            userSettings[keyPath: keyPath] = val
+        }
+    }
+}
+
+struct SettingVisibleTimeField: View {
+    private let keyPath: ReferenceWritableKeyPath<UserSettings, VisibleTime>
+    @ObservedObject private var userSettings: UserSettings
+    
+    @State var val: VisibleTime
+    init(_ keyPath: ReferenceWritableKeyPath<UserSettings, VisibleTime>, userSettings: UserSettings = .shared) {
+        self.keyPath = keyPath
+        self.userSettings = userSettings
+        self.val = userSettings[keyPath: keyPath]
+    }
+    
+    var body: some View {
+        Picker(selection: $val, content: {
+            ForEach(VisibleTime.allCases) { format in
+                Text(format.description)
+            }
+        }, label:  {
+            Text("Time to show")
         }).pickerStyle(.inline).onChange(of: val) {
             userSettings[keyPath: keyPath] = val
         }

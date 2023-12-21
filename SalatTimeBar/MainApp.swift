@@ -28,6 +28,6 @@ struct SalatTimeBarApp: App {
         
         Window("Settings", id: "UserSettings", content: {
             UserSettingsContentView().fixedSize()
-        }).windowResizability(.contentSize).windowStyle(.hiddenTitleBar)
+        }).windowResizability(.contentSize).windowStyle(.titleBar)
     }
 }

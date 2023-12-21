@@ -52,6 +52,23 @@ enum SalatType: String, Decodable {
             return "sunrise.fill"
         }
     }
+    
+    var arabicDescription: String {
+        switch (self) {
+        case .Fajr:
+            return "فَجْر"
+        case .Dhuhr:
+            return "ظُهْر"
+        case .Asr:
+            return "عَصْر"
+        case .Maghrib:
+            return "مَغْرِب‎"
+        case .Isha:
+            return "عِشَاء"
+        case .Sunrise:
+            return "شروق"
+        }
+    }
 }
 
 struct SalatTime: Hashable {
@@ -59,7 +76,16 @@ struct SalatTime: Hashable {
     var time: Date
     
     func displayText(format: Format) -> String {
-        let type = format == .Short ? self.type.shortDescription : format == .IconOnly ? "" : self.type.longDescription
+        let type: String
+        switch (format) {
+        case .Short:
+            type = self.type.shortDescription
+        case .Long:
+            type = self.type.longDescription
+        case .IconOnly:
+            type = ""
+        }
+        
         let delimiter = type != "" ? " - " : ""
         return "\(type)\(delimiter)\(self.time.formatted(date: .omitted, time: .shortened))"
     }
