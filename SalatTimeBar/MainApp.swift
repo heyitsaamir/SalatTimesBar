@@ -11,6 +11,7 @@ import SwiftUI
 struct SalatTimeBarApp: App {
     @StateObject var vm = AthanTimings.shared
     @UserSetting(\.address) var address
+    @UserSetting(\.salatSchool) var salatSchool
     
     var body: some Scene {
         MenuBarExtra {
@@ -22,7 +23,8 @@ struct SalatTimeBarApp: App {
         }
         .menuBarExtraStyle(.window)
         .onChange(of: address) {
-            print("Updated")
+            vm.scheduleTimer()
+        }.onChange(of: salatSchool) {
             vm.scheduleTimer()
         }
         

@@ -16,6 +16,7 @@ struct UserSettingsContentView: View {
                 Section {
                     SettingFormatField(\.format)
                     SettingVisibleTimeField(\.visibleTime)
+                    SettingSalatSchoolField(\.salatSchool)
                 }
                 Section {
                     SettingLocationField(\.address)
@@ -82,6 +83,30 @@ struct SettingFormatField: View {
             }
         }, label:  {
             Text("Format")
+        }).pickerStyle(.inline).onChange(of: val) {
+            userSettings[keyPath: keyPath] = val
+        }
+    }
+}
+
+struct SettingSalatSchoolField: View {
+    private let keyPath: ReferenceWritableKeyPath<UserSettings, SalatSchool>
+    @ObservedObject private var userSettings: UserSettings
+    
+    @State var val: SalatSchool
+    init(_ keyPath: ReferenceWritableKeyPath<UserSettings, SalatSchool>, userSettings: UserSettings = .shared) {
+        self.keyPath = keyPath
+        self.userSettings = userSettings
+        self.val = userSettings[keyPath: keyPath]
+    }
+    
+    var body: some View {
+        Picker(selection: $val, content: {
+            ForEach(SalatSchool.allCases) { format in
+                Text(format.description)
+            }
+        }, label:  {
+            Text("School")
         }).pickerStyle(.inline).onChange(of: val) {
             userSettings[keyPath: keyPath] = val
         }

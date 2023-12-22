@@ -58,12 +58,37 @@ public enum VisibleTime: String, Identifiable {
     }
 }
 
+public enum SalatSchool: Int, Identifiable {
+    public var id: Self {
+        return self
+    }
+    
+    case Shafi = 0, Hanafi = 1
+    
+    var description: String {
+        switch (self) {
+        case .Shafi:
+            return "Shafi (Earlier Asr)"
+        case .Hanafi:
+            return "Hanafi (Later Asr)"
+        }
+    }
+    
+    static var allCases: [SalatSchool] {
+        return [
+            SalatSchool.Shafi,
+            SalatSchool.Hanafi
+        ]
+    }
+}
+
 public class UserSettings: ObservableObject {
     public static let shared = UserSettings()
     
     @AppStorage("address") var address: String = ""
     @AppStorage("format") var format: Format = .Long
     @AppStorage("visibleTime") var visibleTime: VisibleTime = .Current
+    @AppStorage("salatSchool") var salatSchool: SalatSchool = .Shafi
 }
 
 @propertyWrapper

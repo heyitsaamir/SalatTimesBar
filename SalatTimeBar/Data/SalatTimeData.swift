@@ -51,10 +51,12 @@ struct Parameters: Encodable {
     let month: Int
     let year: Int
     let iso8601: String
+    let school: Int
 }
 
 struct CurrentParameter: Hashable {
     let address: String
+    let salatSchool: SalatSchool
 }
 
 fileprivate typealias StoredSalatTimes = (startOfMonthDate: Date, times: [SalatTime])
@@ -84,15 +86,15 @@ class AthanTimings: ObservableObject {
         let nextMonth = currentMonth.computeDate(byAdding: .month, value: 1).startOfMonth
         print("[\(Date.now.ISO8601Format())] fetching for \(currentMonth.description) \(nextMonth.description)")
         do {
-            let dataForCurrentDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: currentMonth, address: self.userSettings.address)
-            let dataForNextMonthDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: nextMonth, address: self.userSettings.address)
+            let dataForCurrentDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: currentMonth, address: self.userSettings.address, salatSchool: self.userSettings.salatSchool)
+            let dataForNextMonthDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: nextMonth, address: self.userSettings.address, salatSchool: self.userSettings.salatSchool)
             DispatchQueue.main.async {
                 var salatTimes: [SalatTime] = []
                 [dataForCurrentDate, dataForNextMonthDate].forEach { data in
                     switch data {
                     case .success(let json):
                         salatTimes += json.times
-                        self.currentParameter = CurrentParameter(address: self.userSettings.address)
+                        self.currentParameter = CurrentParameter(address: self.userSettings.address, salatSchool: self.userSettings.salatSchool)
                     case .failure(let error):
                         self.currentSalatTimes = .failure(error)
                     }
@@ -117,7 +119,7 @@ class AthanTimings: ObservableObject {
             }
             
             // Do I need to run again?
-            if !self.shouldRun() {
+            if !self.shouldRun {
                 print("[\(Date.now)] No need to run.")
                 return
             } else {
@@ -134,8 +136,8 @@ class AthanTimings: ObservableObject {
         timer?.fire()
     }
     
-    private func shouldRun() -> Bool {
-        if let currentParameter = self.currentParameter, currentParameter.address != self.userSettings.address {
+    private var shouldRun: Bool {
+        if let currentParameter = self.currentParameter, (currentParameter.address != self.userSettings.address || currentParameter.salatSchool != self.userSettings.salatSchool) {
             return true
         }
         switch (self.currentSalatTimes) {
@@ -172,7 +174,7 @@ fileprivate class AthanNetworkFetcher {
         self.userSettings = userSettings
     }
     
-    func fetchAthanTimesIfNecessary(for date: Date, address: String) async throws -> Result<StoredSalatTimes, NetworkError> {
+    func fetchAthanTimesIfNecessary(for date: Date, address: String, salatSchool: SalatSchool) async throws -> Result<StoredSalatTimes, NetworkError> {
         let components = date.get(.year, .month)
         guard let year = components.year, let month = components.month else {
             return .failure(.InvalidDate)
@@ -182,13 +184,13 @@ fileprivate class AthanNetworkFetcher {
             return .failure(.AddressNotSet)
         }
         
-        let cacheKey = "\(year)|\(month)|\(address)"
+        let cacheKey = "\(year)|\(month)|\(address)|\(salatSchool.rawValue)"
         
         if let existingResult = self.cache[cacheKey] {
             return .success((startOfMonthDate: date.startOfMonth, times: existingResult))
         }
         
-        let networkResult = try await self.fetchAthanTime(for: Parameters(address: address, month: month, year: year, iso8601: "true"))
+        let networkResult = try await self.fetchAthanTime(for: Parameters(address: address, month: month, year: year, iso8601: "true", school: salatSchool.rawValue))
         
         switch networkResult {
         case .success(let json):
