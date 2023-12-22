@@ -160,15 +160,6 @@ func generatePrayerTimingsForMonth(currentTime: Date, intervalBetweenEach: Int =
     return SalatTimesJson(data: prayerTimingsForMonth)
 }
 
-// Rest of the code remains the same as in the previous example...
-
-
-// Helper function to get prayer times based on the prayer name
-func prayerTime(for name: String) -> String {
-    // Replace this logic with your prayer time calculation logic based on the prayer name
-    return "00:00:00"
-}
-
 // Helper function to create the "date" object
 func createDateObject(date: Date) -> SalatTimeDate {
     let dateFormatter = DateFormatter()

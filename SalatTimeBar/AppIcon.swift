@@ -7,29 +7,38 @@
 
 import SwiftUI
 
-struct AppIcon: View {
-    @EnvironmentObject var vm: AthanTimings
+fileprivate struct AppIconForSalatTime: View {
+    let salatTime: SalatTime
     @UserSetting(\.format) var format
-    @UserSetting(\.visibleTime) var visibleTime
-    
-    private func buildIcon(for salatTime: SalatTime) -> some View {
-        Image(systemName: salatTime.type.icon)
-            .imageScale(.large)
-            .foregroundStyle(.tint)
-    }
     
     var body: some View {
         HStack {
-            switch self.vm.currentSalatTimes {
-            case .success(let currentSalatTimes):
-                if let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex {
-                    self.buildIcon(for: currentSalatTimes.salatTimes[currentSalatTimeIndex])
-                    Text(currentSalatTimes.salatTimes[ visibleTime == .Previous && currentSalatTimeIndex - 1 >= 0 ? currentSalatTimeIndex - 1 : currentSalatTimeIndex].displayText(format: format))
-                }
-            default:
-                Text("Unknown")
-            }
+            Image(systemName: salatTime.type.icon)
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text(salatTime.fullDisplay(format: format))
         }
-        .padding()
+    }
+}
+
+struct AppIcon: View {
+    @EnvironmentObject var vm: AthanTimings
+    @UserSetting(\.visibleTime) var visibleTime
+    
+    var body: some View {
+        switch self.vm.currentSalatTimes {
+        case .success(let currentSalatTimes):
+            if let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex {
+                var salatTime = currentSalatTimes.salatTimes[ visibleTime == .Previous && currentSalatTimeIndex - 1 >= 0 ? currentSalatTimeIndex - 1 : currentSalatTimeIndex]
+                if (visibleTime == .Previous && salatTime.type == .Sunrise && currentSalatTimeIndex - 2 >= 0) {
+                    salatTime = currentSalatTimes.salatTimes[currentSalatTimeIndex - 2]
+                }
+                return AnyView(AppIconForSalatTime(salatTime: salatTime))
+            } else {
+                return AnyView(Text("Unknown"))
+            }
+        default:
+            return AnyView(Text("Unknown"))
+        }
     }
 }

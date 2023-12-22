@@ -23,7 +23,9 @@ fileprivate struct SingleSalatTimeView: View {
     var body: some View {
         return HStack {
             Image(systemName: self.salatTime.type.icon)
-            Text(self.salatTime.displayText(format: .Long))
+            Text(self.salatTime.typeDisplayText(format: .Long))
+            Spacer()
+            Text(self.salatTime.timeDisplayText)
         }
         .padding(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2))
         .foregroundStyle(hasPassed && salatTime.type != .Sunrise ? Color.accentColor : isNext ? .primary : .secondary)
@@ -32,8 +34,28 @@ fileprivate struct SingleSalatTimeView: View {
     }
 }
 
-struct PopupWindow: View {
+fileprivate struct SettingsMenu: View {
     @Environment(\.openWindow) private var openWindow
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            Menu(content: {
+                Button("Settings") {
+                    openWindow(id: "UserSettings")
+                }
+                Button("Quit") {
+                    NSApplication.shared.terminate(nil)
+                }
+            }) {
+                Image(systemName: "gear")
+                    .imageScale(.small)
+            }.buttonStyle(.accessoryBar)
+        }
+    }
+}
+
+struct PopupWindow: View {
     @EnvironmentObject var athanTimings: AthanTimings
     
     var body: some View {
@@ -41,7 +63,7 @@ struct PopupWindow: View {
             switch self.athanTimings.currentSalatTimes {
             case .success(let currentSalatTimes):
                 if let currentSalatTimeIndex = currentSalatTimes.currentSalatIndex, currentSalatTimes.salatTimes.count > currentSalatTimeIndex {
-                    var firstIndex = getFirstIndex(currentSalatTimes: currentSalatTimes, currentSalatTimeIndex: currentSalatTimeIndex)
+                    let firstIndex = getFirstIndex(currentSalatTimes: currentSalatTimes, currentSalatTimeIndex: currentSalatTimeIndex)
                     let finalIndex = min(currentSalatTimeIndex + Constants.MAX_NEXT_TIMES_TO_SHOW, currentSalatTimes.salatTimes.count - 1)
                     let indices = firstIndex...finalIndex
                     ForEach(indices, id: \.self) { idx in
@@ -61,21 +83,11 @@ struct PopupWindow: View {
             case .failure(let error):
                 Text(error.localizedDescription)
             }
-            Menu(content: {
-                Button("Settings") {
-                    openWindow(id: "UserSettings")
-                }
-                Button("Quit") {
-                    NSApplication.shared.terminate(nil)
-                }
-            }) {
-                Image(systemName: "gear")
-                    .imageScale(.small)
-            }.buttonStyle(.accessoryBar)
-                .foregroundStyle(.secondary)
+            SettingsMenu()
         }
         .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
         .background(Color.background)
+        .frame(width: 200)
     }
     
     func getFirstIndex(currentSalatTimes: CurrentSalatTimes, currentSalatTimeIndex: Int) -> Int {

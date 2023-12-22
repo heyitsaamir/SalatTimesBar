@@ -75,19 +75,25 @@ struct SalatTime: Hashable {
     var type: SalatType
     var time: Date
     
-    func displayText(format: Format) -> String {
-        let type: String
+    func fullDisplay(format: Format) -> String {
+        let type = self.typeDisplayText(format: format)
+        let delimiter = type != "" ? " - " : ""
+        return "\(type)\(delimiter)\(self.timeDisplayText)"
+    }
+    
+    func typeDisplayText(format: Format) -> String {
         switch (format) {
         case .Short:
-            type = self.type.shortDescription
+            return self.type.shortDescription
         case .Long:
-            type = self.type.longDescription
+            return self.type.longDescription
         case .IconOnly:
-            type = ""
+            return ""
         }
-        
-        let delimiter = type != "" ? " - " : ""
-        return "\(type)\(delimiter)\(self.time.formatted(date: .omitted, time: .shortened))"
+    }
+    
+    var timeDisplayText: String {
+        return self.time.formatted(date: .omitted, time: .shortened)
     }
 }
 
