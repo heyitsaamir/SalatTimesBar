@@ -31,6 +31,7 @@
 		372E24862B268C9500A05199 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		372E248C2B2AA33600A05199 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		372E248E2B31057D00A05199 /* LocationSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearch.swift; sourceTree = "<group>"; };
+		372E24902B35F34C00A05199 /* SalatTimeBarRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SalatTimeBarRelease.entitlements; sourceTree = "<group>"; };
 		375306EE2A7DD1650043091F /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		376679AA2ADB9D6300CF583F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		376679AC2ADBAA5A00CF583F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -102,6 +103,7 @@
 		37D25AD82A7B095700FFA2C2 /* SalatTimeBar */ = {
 			isa = PBXGroup;
 			children = (
+				372E24902B35F34C00A05199 /* SalatTimeBarRelease.entitlements */,
 				376679AC2ADBAA5A00CF583F /* Info.plist */,
 				376679A92ADB9D5500CF583F /* Extensions */,
 				372E247F2B20F93200A05199 /* Data */,
@@ -359,10 +361,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SalatTimeBar/SalatTimeBar.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SalatTimeBar/Preview Content\"";
+				DEVELOPMENT_TEAM = 2GG48ZWT8T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SalatTimeBar/Info.plist;
@@ -385,11 +389,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = SalatTimeBar/SalatTimeBar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SalatTimeBar/SalatTimeBarRelease.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SalatTimeBar/Preview Content\"";
+				DEVELOPMENT_TEAM = 2GG48ZWT8T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SalatTimeBar/Info.plist;
