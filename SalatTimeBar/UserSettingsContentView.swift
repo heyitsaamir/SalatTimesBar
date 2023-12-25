@@ -8,23 +8,28 @@
 import SwiftUI
 
 struct UserSettingsContentView: View {
+    private enum Tabs: Hashable {
+        case LookAndFeel, SalatSettings
+    }
+    
     @Environment(\.openWindow) private var openWindow
     var body: some View {
-        HStack {
-            Spacer()
+        TabView {
             Form {
-                Section {
-                    SettingFormatField(\.format)
-                    SettingVisibleTimeField(\.visibleTime)
-                    SettingSalatSchoolField(\.salatSchool)
-                }
-                Section {
-                    SettingLocationField(\.address)
-                }
+                SettingSalatSchoolField(\.salatSchool)
+                SettingLocationField(\.address)
             }
-            Spacer()
-        }.frame(width: 300)
-            .padding(20)
+            .tabItem { Label("Salat settings", systemImage: "gear").font(.title3) }
+            .tag(Tabs.SalatSettings)
+            Form {
+                SettingFormatField(\.format)
+                SettingVisibleTimeField(\.visibleTime)
+            }
+            .tabItem { Label("Look and feel", systemImage: "paintpalette").font(.title3) }
+            .tag(Tabs.LookAndFeel)
+        }
+        .frame(width: 300)
+        .padding(20)
     }
 }
 

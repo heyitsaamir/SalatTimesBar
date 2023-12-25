@@ -151,7 +151,6 @@ func generatePrayerTimingsForMonth(currentTime: Date, intervalBetweenEach: Int =
             prayerTime = prayerTime.computeDate(byAdding: .second, value: intervalBetweenEach)
         }
         
-        let dateString = dateFormatter.string(from: currentDate)
         prayerTimingsForMonth.append(SalatTimeDay(timings: prayerTimings, date: createDateObject(date: currentDate)))
         
         currentDate = calendar.date(byAdding: .day, value: 1, to: currentDate)!
