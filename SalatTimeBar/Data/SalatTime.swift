@@ -109,6 +109,14 @@ struct CurrentSalatTimes {
         return self.salatTimes[currentSalatIndex]
     }
     
+    var nextSalatTime: SalatTime? {
+        guard let currentSalatIndex = self.currentSalatIndex, currentSalatIndex + 1 <=  self.salatTimes.count - 1 else {
+            return nil
+        }
+        
+        return self.salatTimes[currentSalatIndex + 1]
+    }
+    
     mutating func computeCurrentSalatIndex() {
         let currentDate = Date()
         self.currentSalatIndex = self.salatTimes.firstIndex { salatTime in

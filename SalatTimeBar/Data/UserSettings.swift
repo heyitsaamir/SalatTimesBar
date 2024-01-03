@@ -22,7 +22,7 @@ public enum Format: String, Identifiable {
             return "Short (M)"
         case .IconOnly:
             return "Icon only"
-}
+        }
     }
     
     static var allCases: [Format] {
@@ -89,6 +89,7 @@ public class UserSettings: ObservableObject {
     @AppStorage("format") var format: Format = .Long
     @AppStorage("visibleTime") var visibleTime: VisibleTime = .Current
     @AppStorage("salatSchool") var salatSchool: SalatSchool = .Shafi
+    @AppStorage("enableNotifications") var enableNotifications: Bool = false
 }
 
 @propertyWrapper

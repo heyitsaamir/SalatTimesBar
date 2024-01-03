@@ -24,12 +24,45 @@ struct UserSettingsContentView: View {
             Form {
                 SettingFormatField(\.format)
                 SettingVisibleTimeField(\.visibleTime)
+                SettingsNotifications(\.enableNotifications)
             }
             .tabItem { Label("Look and feel", systemImage: "paintpalette").font(.title3) }
             .tag(Tabs.LookAndFeel)
         }
         .frame(width: 300)
         .padding(20)
+    }
+}
+
+struct SettingsNotifications: View {
+    private let keyPath: ReferenceWritableKeyPath<UserSettings, Bool>
+    @ObservedObject private var userSettings: UserSettings
+    @ObservedObject private var appNotifications: AppNotifications
+    
+    @State var val: Bool
+    init(_ keyPath: ReferenceWritableKeyPath<UserSettings, Bool>, userSettings: UserSettings = .shared, appNotifications: AppNotifications = .shared) {
+        self.appNotifications = appNotifications
+        self.keyPath = keyPath
+        self.userSettings = userSettings
+        self.val = userSettings[keyPath: keyPath]
+    }
+    
+    var body: some View {
+        Section {
+            Toggle(isOn: $val) {
+                Text("Notifications")
+            }.toggleStyle(.switch).onChange(of: val) {
+                userSettings[keyPath: keyPath] = val
+                if (val) {
+                    appNotifications.requestAuth()
+                }
+            }
+            LabeledContent("") {
+                appNotifications.error == nil || !val ?
+                Text("").fixedSize(horizontal: false, vertical: true).frame(width: 150)
+                : Text(appNotifications.error ?? "").fixedSize(horizontal: false, vertical: true).frame(width: 150)
+            }
+        }
     }
 }
 

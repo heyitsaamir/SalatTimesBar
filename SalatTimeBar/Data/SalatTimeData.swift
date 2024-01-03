@@ -65,15 +65,17 @@ class AthanTimings: ObservableObject {
     static let shared = AthanTimings()
     
     private let userSettings: UserSettings
+    private let notifications: AppNotifications
     private let fetcher: AthanNetworkFetcher
     private var timer: Timer?
     private let dispatchQueue = DispatchQueue(label: "Salat Time Serial Queue")
     private var currentParameter: CurrentParameter?
     @Published var currentSalatTimes = Result<CurrentSalatTimes, NetworkError>.failure(.NotAsked)
     
-    init(userSettings: UserSettings = .shared) {
+    init(userSettings: UserSettings = .shared, notifications: AppNotifications = .shared) {
         fetcher = AthanNetworkFetcher()
         self.userSettings = userSettings
+        self.notifications = notifications
     }
     
     deinit {
@@ -100,10 +102,12 @@ class AthanTimings: ObservableObject {
                     }
                 }
                 
-                DispatchQueue.main.async {
-                    let currentSalatTime = CurrentSalatTimes(salatTimes: salatTimes)
-                    self.currentSalatTimes = .success(currentSalatTime)
-                    self.computeCurrentSalatIndex()
+                let currentSalatTimes = CurrentSalatTimes(salatTimes: salatTimes)
+                self.currentSalatTimes = .success(currentSalatTimes)
+                self.computeCurrentSalatIndex()
+                
+                if self.userSettings.enableNotifications {
+                    self.scheduleNotification()
                 }
             }
         } catch let error {
@@ -161,6 +165,18 @@ class AthanTimings: ObservableObject {
             self.currentSalatTimes = .success(currentSalatTime)
         case .failure(let error):
             print("No exisiting salat time because of \(error.localizedDescription)")
+        }
+    }
+    
+    private func scheduleNotification() {
+        switch (self.currentSalatTimes) {
+        case .success(let salatTimes):
+            if let currentSalatTime = salatTimes.currentSalatTime, let nextSalatTime = salatTimes.nextSalatTime {
+                notifications.resetNotifications()
+                notifications.scheduleNotification(for: currentSalatTime, nextSalat: nextSalatTime)
+            }
+        case .failure:
+            break
         }
     }
 }

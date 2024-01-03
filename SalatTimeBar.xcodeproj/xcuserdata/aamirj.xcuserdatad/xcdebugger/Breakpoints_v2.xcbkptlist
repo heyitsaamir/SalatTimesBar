@@ -3,4 +3,54 @@
    uuid = "AB3FB928-06C1-4749-97D5-1C1C066138A4"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9FDB53E3-3C80-4F3B-8F1B-B6051B947CD7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SalatTimeBar/Data/AppNotifications.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "requestAuth()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9FDB53E3-3C80-4F3B-8F1B-B6051B947CD7 - dd69a60e0f34a0a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SalatTimeBar.AppNotifications.requestAuth() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/Data/AppNotifications.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "9FDB53E3-3C80-4F3B-8F1B-B6051B947CD7 - dd69a60e0f34a0a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SalatTimeBar.AppNotifications.requestAuth() -&gt; ()"
+                  moduleName = "SalatTimeBar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aamirj/Documents/ws/SalatTimeBar/SalatTimeBar/Data/AppNotifications.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "144">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
