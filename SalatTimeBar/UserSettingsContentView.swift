@@ -14,23 +14,28 @@ struct UserSettingsContentView: View {
     
     @Environment(\.openWindow) private var openWindow
     var body: some View {
-        TabView {
-            Form {
-                SettingSalatSchoolField(\.salatSchool)
-                SettingLocationField(\.address)
+        VStack {
+            Image("IconOfApp").resizable()
+                .frame(width: 64.0, height: 64.0)
+                .safeAreaPadding(EdgeInsets(top: 20.0, leading: 0, bottom: 0, trailing: 0))
+            TabView {
+                Form {
+                    SettingSalatSchoolField(\.salatSchool)
+                    SettingLocationField(\.address)
+                }
+                .tabItem { Label("Salat settings", systemImage: "gear").font(.title3) }
+                .tag(Tabs.SalatSettings)
+                Form {
+                    SettingFormatField(\.format)
+                    SettingVisibleTimeField(\.visibleTime)
+                    SettingsNotifications(\.enableNotifications)
+                }
+                .tabItem { Label("Look and feel", systemImage: "paintpalette").font(.title3) }
+                .tag(Tabs.LookAndFeel)
             }
-            .tabItem { Label("Salat settings", systemImage: "gear").font(.title3) }
-            .tag(Tabs.SalatSettings)
-            Form {
-                SettingFormatField(\.format)
-                SettingVisibleTimeField(\.visibleTime)
-                SettingsNotifications(\.enableNotifications)
-            }
-            .tabItem { Label("Look and feel", systemImage: "paintpalette").font(.title3) }
-            .tag(Tabs.LookAndFeel)
+            .frame(width: 300)
+            .padding(20)
         }
-        .frame(width: 300)
-        .padding(20)
     }
 }
 
@@ -81,11 +86,18 @@ struct SettingLocationField: View {
     
     var body: some View {
         VStack {
-            TextField(
-                "Location",
-                text: $val
-            ).onSubmit {
-                self.locationSearch.searchTerm = val
+            HStack {
+                TextField(
+                    "Location",
+                    text: $val
+                ).onSubmit {
+                    self.locationSearch.searchTerm = val
+                }.submitLabel(.search)
+                Button {
+                    self.locationSearch.searchTerm = val
+                } label: {
+                    Text("Search")
+                }
             }
             
             List(locationSearch.locationResults, id: \.hashValue, selection: $selection) { location in

@@ -45,9 +45,6 @@
 		37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		37D25AE22A7B095A00FFA2C2 /* SalatTimeBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SalatTimeBar.entitlements; sourceTree = "<group>"; };
-		37D25AEB2A7B095A00FFA2C2 /* SalatTimeBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarTests.swift; sourceTree = "<group>"; };
-		37D25AF52A7B095A00FFA2C2 /* SalatTimeBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarUITests.swift; sourceTree = "<group>"; };
-		37D25AF72A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalatTimeBarUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				37D25AD82A7B095700FFA2C2 /* SalatTimeBar */,
-				37D25AEA2A7B095A00FFA2C2 /* SalatTimeBarTests */,
-				37D25AF42A7B095A00FFA2C2 /* SalatTimeBarUITests */,
 				37D25AD72A7B095700FFA2C2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -127,23 +122,6 @@
 				37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		37D25AEA2A7B095A00FFA2C2 /* SalatTimeBarTests */ = {
-			isa = PBXGroup;
-			children = (
-				37D25AEB2A7B095A00FFA2C2 /* SalatTimeBarTests.swift */,
-			);
-			path = SalatTimeBarTests;
-			sourceTree = "<group>";
-		};
-		37D25AF42A7B095A00FFA2C2 /* SalatTimeBarUITests */ = {
-			isa = PBXGroup;
-			children = (
-				37D25AF52A7B095A00FFA2C2 /* SalatTimeBarUITests.swift */,
-				37D25AF72A7B095A00FFA2C2 /* SalatTimeBarUITestsLaunchTests.swift */,
-			);
-			path = SalatTimeBarUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

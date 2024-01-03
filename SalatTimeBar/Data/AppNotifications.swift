@@ -19,12 +19,14 @@ public class AppNotifications: ObservableObject {
             DispatchQueue.main.async {
                 guard (settings.authorizationStatus == .authorized) else {
                     self.error = "Permission was not granted for notifications"
+                    self.addTipToUseNotificationSettings(force: true)
                     return
                 }
                 
                 
                 if settings.alertSetting != .enabled {
                     self.error = "Permission was not granted for notifications"
+                    self.addTipToUseNotificationSettings(force: true)
                 }
             }
         }
@@ -43,7 +45,11 @@ public class AppNotifications: ObservableObject {
         
         let timeLeft = nextSalat.time.timeIntervalSinceNow
         content.title = salatTime.type.longDescription
-        content.body = "Next prayer in \(formatter.string(from: timeLeft) ?? "")"
+        if nextSalat.type == .Sunrise {
+            content.body = "Sunrise in \(formatter.string(from: timeLeft) ?? "")"
+        } else {
+            content.body = "Next salat starts in \(formatter.string(from: timeLeft) ?? "")"
+        }
         
         // Configure the recurring date.
         var dateComponents = DateComponents()
@@ -80,7 +86,7 @@ public class AppNotifications: ObservableObject {
                 if let error = error {
                     // Handle the error here.
                     self.error = error.localizedDescription
-                    print(error.localizedDescription)
+                    self.addTipToUseNotificationSettings()
                     return
                 }
                 
@@ -91,5 +97,12 @@ public class AppNotifications: ObservableObject {
     
     func resetNotifications() {
         notificationCenter.removeAllPendingNotificationRequests()
+    }
+    
+    private func addTipToUseNotificationSettings(force: Bool = false) {
+        guard let error = self.error, (force || ((try? error.contains(Regex("not allowed"))) ?? false) != false) else {
+            return
+        }
+        self.error?.append(" You may need to enable notifications for this app from system notification settings")
     }
 }
