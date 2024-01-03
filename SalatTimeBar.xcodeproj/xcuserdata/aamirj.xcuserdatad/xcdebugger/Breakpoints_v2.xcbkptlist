@@ -14,9 +14,9 @@
             filePath = "SalatTimeBar/Data/AppNotifications.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "requestAuth()"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "requestAuth(onSuccess:)"
             landmarkType = "7">
             <Locations>
                <Location

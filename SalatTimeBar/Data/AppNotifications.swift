@@ -63,7 +63,6 @@ public class AppNotifications: ObservableObject {
         dateComponents.minute = components.minute
         dateComponents.second = components.second
         
-        // Create the trigger as a repeating event.
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         
         let uuidString = "\(salatTime.time.timeIntervalSince1970)|\(salatTime.type.shortDescription)"
@@ -71,16 +70,21 @@ public class AppNotifications: ObservableObject {
                                             content: content, trigger: trigger)
         
         
-        self.requestAuth()
-        // Schedule the request with the system.
-        notificationCenter.add(request) { (error) in
-            if error != nil {
-                print("Error queuing a notification \(error?.localizedDescription ?? "")")
+        func completion() {
+            notificationCenter.add(request) { (error) in
+                if error != nil {
+                    print("Error queuing a notification \(error?.localizedDescription ?? "")")
+                }
             }
+        }
+        if (self.error ?? "") != "" {
+            completion()
+        } else {
+            self.requestAuth(onSuccess: completion)
         }
     }
     
-    func requestAuth() {
+    func requestAuth(onSuccess: (() -> Void)? = nil) {
         notificationCenter.requestAuthorization(options: [.alert]) { granted, error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -91,6 +95,7 @@ public class AppNotifications: ObservableObject {
                 }
                 
                 self.error = nil
+                onSuccess?()
             }
         }
     }

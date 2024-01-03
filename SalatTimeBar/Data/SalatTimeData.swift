@@ -44,6 +44,21 @@ enum NetworkError: String, Error {
     case NotAsked = "NotAsked"
     
     case AddressNotSet = "AddressNotSet"
+    
+    var description: String {
+        get {
+            switch self {
+            case .AddressNotSet:
+                return "Address was not set. Please check Settings"
+            case .InvalidData:
+                return "There was some trouble getting information from the service. Please try again in a bit"
+            case .InvalidDate:
+                return "Something went wrong with the date"
+            case .NotAsked:
+                return "The salat times are being retrieved"
+            }
+        }
+    }
 }
 
 struct Parameters: Encodable {

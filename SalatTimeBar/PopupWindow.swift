@@ -81,7 +81,7 @@ struct PopupWindow: View {
                     Text("Unknown")
                 }
             case .failure(let error):
-                Text(error.localizedDescription)
+                Text(error.description).italic()
             }
             SettingsMenu()
         }
