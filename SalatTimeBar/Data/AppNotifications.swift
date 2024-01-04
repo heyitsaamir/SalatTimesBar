@@ -43,7 +43,7 @@ public class AppNotifications: ObservableObject {
         formatter.unitsStyle = .full
         formatter.allowedUnits = [.hour, .minute]
         
-        let timeLeft = nextSalat.time.timeIntervalSinceNow
+        let timeLeft = nextSalat.time.timeIntervalSince(salatTime.time)
         content.title = salatTime.type.longDescription
         if nextSalat.type == .Sunrise {
             content.body = "Sunrise in \(formatter.string(from: timeLeft) ?? "")"

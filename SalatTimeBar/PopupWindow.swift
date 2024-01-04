@@ -9,7 +9,7 @@ import SwiftUI
 
 fileprivate class Constants {
     static let MIN_PREV_TIMES_TO_SHOW = 1
-    static let MAX_NEXT_TIMES_TO_SHOW = 3
+    static let MAX_NEXT_TIMES_TO_SHOW = 4
 }
 
 func textForSalatTime(_ salatTime: SalatTime) -> String {
