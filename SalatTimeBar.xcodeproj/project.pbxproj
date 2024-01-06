@@ -23,6 +23,7 @@
 		37D25ADC2A7B095700FFA2C2 /* PopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D25ADB2A7B095700FFA2C2 /* PopupWindow.swift */; };
 		37D25ADE2A7B095A00FFA2C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */; };
 		37D25AE12A7B095A00FFA2C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */; };
+		37F3ADF32B47AAAE005D0A61 /* Visualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3ADF22B47AAAE005D0A61 /* Visualizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		37D25AE22A7B095A00FFA2C2 /* SalatTimeBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SalatTimeBar.entitlements; sourceTree = "<group>"; };
+		37F3ADF22B47AAAE005D0A61 /* Visualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visualizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				37D25AD92A7B095700FFA2C2 /* MainApp.swift */,
 				372E24842B2192CD00A05199 /* UserSettingsContentView.swift */,
 				37D25ADB2A7B095700FFA2C2 /* PopupWindow.swift */,
+				37F3ADF22B47AAAE005D0A61 /* Visualizer.swift */,
 				37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */,
 				37D25AE22A7B095A00FFA2C2 /* SalatTimeBar.entitlements */,
 				37D25ADF2A7B095A00FFA2C2 /* Preview Content */,
@@ -207,6 +210,7 @@
 				372E24812B2113A000A05199 /* SampleTestData.swift in Sources */,
 				37D25ADC2A7B095700FFA2C2 /* PopupWindow.swift in Sources */,
 				372E24852B2192CD00A05199 /* UserSettingsContentView.swift in Sources */,
+				37F3ADF32B47AAAE005D0A61 /* Visualizer.swift in Sources */,
 				372E24942B39C58500A05199 /* AppNotifications.swift in Sources */,
 				37D25ADA2A7B095700FFA2C2 /* MainApp.swift in Sources */,
 				37C6869E2A7EE1CC00771C45 /* SalatTime.swift in Sources */,

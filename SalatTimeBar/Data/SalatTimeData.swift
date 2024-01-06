@@ -121,9 +121,7 @@ class AthanTimings: ObservableObject {
                 self.currentSalatTimes = .success(currentSalatTimes)
                 self.computeCurrentSalatIndex()
                 
-                if self.userSettings.enableNotifications {
-                    self.scheduleNotification()
-                }
+                self.scheduleNotification()
             }
         } catch let error {
             print(error.localizedDescription)
@@ -184,6 +182,10 @@ class AthanTimings: ObservableObject {
     }
     
     private func scheduleNotification() {
+        guard self.userSettings.enableNotifications else {
+            return
+        }
+        
         switch (self.currentSalatTimes) {
         case .success(let salatTimes):
             if let currentSalatTime = salatTimes.currentSalatTime, let nextSalatTime = salatTimes.nextSalatTime {

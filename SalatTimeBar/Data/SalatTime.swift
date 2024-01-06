@@ -117,6 +117,29 @@ struct CurrentSalatTimes {
         return self.salatTimes[currentSalatIndex + 1]
     }
     
+    var recentlyPassedSalatTime: SalatTime? {
+        guard let currentSalatIndex = self.currentSalatIndex, currentSalatIndex - 1 >= 0 else {
+            return nil
+        }
+        
+        return self.salatTimes[currentSalatIndex - 1]
+    }
+    
+    var salatsForToday: [SalatTime]? {
+        guard let currentSalatIndex = self.currentSalatIndex else {
+            return nil
+        }
+        
+        // Find fajr
+        var fajrIndex = currentSalatIndex - 1
+        while (fajrIndex >= 0 && salatTimes[fajrIndex].type != .Fajr) {
+            fajrIndex -= 1
+        }
+        
+        let lastIndex = min(salatTimes.count - 1, fajrIndex + 5)    // Fajr + Sunrise + 4 other prayers
+        return Array(salatTimes[fajrIndex...lastIndex])
+    }
+    
     mutating func computeCurrentSalatIndex() {
         let currentDate = Date()
         self.currentSalatIndex = self.salatTimes.firstIndex { salatTime in
