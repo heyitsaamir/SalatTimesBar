@@ -92,7 +92,7 @@ struct PopupWindow: View {
         }
         .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
         .background(Color.background)
-        .frame(width: 200)
+        .frame(width: 230)
     }
     
     func getFirstIndex(currentSalatTimes: CurrentSalatTimes, currentSalatTimeIndex: Int) -> Int {
