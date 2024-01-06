@@ -18,6 +18,7 @@ struct VisualizerPoint: Identifiable {
     var icon: String?
     var hasPassed: Bool?
     var isActive: Bool?
+    var isNext: Bool?
 }
 
 struct Position: Identifiable {
@@ -30,6 +31,7 @@ struct Position: Identifiable {
     var icon: String?
     var hasPassed: Bool
     var isActive: Bool
+    var isNext: Bool
 }
 
 struct Visualizer: View {
@@ -51,9 +53,15 @@ struct Visualizer: View {
                     path.addLine(to: CGPoint(x: position.end, y: height / 2.0))
                     path.closeSubpath()
                 }
-                .stroke(position.hasPassed ? Color.accentColor : Color.primary, lineWidth: position.hasPassed ? 2.0 : 1.0)
+                .stroke(position.hasPassed ? Color.accentColor : Color.secondary, lineWidth: 1.0)
                 if let icon = position.icon {
-                    Image(systemName: icon).position(x: position.end + PADDING / 2.0, y: height / 2.0).bold(position.isActive).foregroundColor(position.isActive ? Color.accentColor : Color.secondary)
+                    Image(systemName: icon)
+                        .position(x: position.end + PADDING / 2.0, y: height / 2.0)
+                        .bold(position.isActive || position.isNext)
+                        .foregroundColor(position.isActive ? Color.accentColor : position.isNext ? Color.primary : Color.secondary)
+                        .opacity(position.isActive || position.isNext ? 1.0 : 0.2)
+                        .font(.system(size: 8))
+                        .glow(radius: position.isActive ? 20 : 0)
                 }
             }
         }
@@ -69,17 +77,17 @@ struct Visualizer: View {
             let n = (point.time.timeIntervalSince1970 - firstTime) / totalTime
             let nextX = n * totalWidth
             x = nextX + PADDING
-            return Position(start: firstX, end: nextX, icon: point.icon, hasPassed: point.hasPassed ?? false, isActive: point.isActive ?? false)
+            return Position(start: firstX, end: nextX, icon: point.icon, hasPassed: point.hasPassed ?? false, isActive: point.isActive ?? false, isNext: point.isNext ?? false)
         }
     }
 }
 
 #Preview {
     Visualizer(points: [
-        VisualizerPoint(time: Date.now.computeDate(byAdding: .hour, value: 7), icon: "sun.max", hasPassed: true),
-        VisualizerPoint(time: Date.now.computeDate(byAdding: .hour, value: 4), icon: "sun.max"),
-        VisualizerPoint(time: Date.now.computeDate(byAdding: .hour, value: 1), icon: "sun.max", hasPassed: true),
-        VisualizerPoint(time: Date.now.computeDate(byAdding: .hour, value: 12), icon: "sun.max"),
-        VisualizerPoint(time: Date.now.computeDate(byAdding: .hour, value: 24), icon: "sun.max")
+        VisualizerPoint(time: Date.now.computeDate(byAdding: .hour, value: 7), icon: "sun.haze", hasPassed: true, isActive: true),
+        VisualizerPoint(time: Date.now.computeDate(byAdding: .hour, value: 4), icon: "sun.max", hasPassed: true),
+        VisualizerPoint(time: Date.now.computeDate(byAdding: .hour, value: 1), icon: "sun.horizon.fill", hasPassed: true),
+        VisualizerPoint(time: Date.now.computeDate(byAdding: .hour, value: 12), icon: "sun.horizon", isNext: true),
+        VisualizerPoint(time: Date.now.computeDate(byAdding: .hour, value: 24), icon: "moon.fill")
     ])
 }

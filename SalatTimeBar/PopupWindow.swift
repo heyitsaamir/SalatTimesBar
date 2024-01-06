@@ -79,7 +79,7 @@ struct PopupWindow: View {
                     }
                     if let salatsForToday = currentSalatTimes.salatsForToday {
                         Visualizer(points: salatsForToday.map({ time in
-                            VisualizerPoint(time: time.time, icon: time.type.icon, hasPassed: time.time.timeIntervalSinceNow < 0, isActive: currentSalatTimes.recentlyPassedSalatTime?.type == time.type)
+                            VisualizerPoint(time: time.time, icon: time.type.icon, hasPassed: time.time.timeIntervalSinceNow < 0, isActive: currentSalatTimes.recentlyPassedSalatTime?.type == time.type, isNext: currentSalatTimes.currentSalatTime?.type == time.type)
                         }))
                     }
                 } else {

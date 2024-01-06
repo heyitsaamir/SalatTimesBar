@@ -24,6 +24,7 @@
 		37D25ADE2A7B095A00FFA2C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */; };
 		37D25AE12A7B095A00FFA2C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */; };
 		37F3ADF32B47AAAE005D0A61 /* Visualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3ADF22B47AAAE005D0A61 /* Visualizer.swift */; };
+		37F3ADF52B49C245005D0A61 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3ADF42B49C245005D0A61 /* View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		37D25AE02A7B095A00FFA2C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		37D25AE22A7B095A00FFA2C2 /* SalatTimeBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SalatTimeBar.entitlements; sourceTree = "<group>"; };
 		37F3ADF22B47AAAE005D0A61 /* Visualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visualizer.swift; sourceTree = "<group>"; };
+		37F3ADF42B49C245005D0A61 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				376679AA2ADB9D6300CF583F /* Date.swift */,
 				372E24862B268C9500A05199 /* Color.swift */,
+				37F3ADF42B49C245005D0A61 /* View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			files = (
 				37C686A02A7F210F00771C45 /* SalatTimeData.swift in Sources */,
 				376679AB2ADB9D6300CF583F /* Date.swift in Sources */,
+				37F3ADF52B49C245005D0A61 /* View.swift in Sources */,
 				372E247C2B1CD7FA00A05199 /* SampleData.swift in Sources */,
 				372E24872B268C9500A05199 /* Color.swift in Sources */,
 				372E24812B2113A000A05199 /* SampleTestData.swift in Sources */,
