@@ -22,14 +22,14 @@ fileprivate struct SingleSalatTimeView: View {
     var isNext: Bool
     var body: some View {
         return HStack {
-            Image(systemName: self.salatTime.type.icon)
+            Image(systemName: self.salatTime.type.icon).frame(width: 14.0)
             Text(self.salatTime.typeDisplayText(format: .Long))
             Spacer()
             Text(self.salatTime.timeDisplayText)
         }
         .padding(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2))
         .foregroundStyle(hasPassed && salatTime.type != .Sunrise ? Color.accentColor : isNext ? .primary : .secondary)
-        .fontWeight(isNext ? .bold : .regular)
+        .fontWeight(isNext || (hasPassed && salatTime.type != .Sunrise) ? .bold : .regular)
         .opacity(hasPassed ? 0.7 : 1.0)
     }
 }
