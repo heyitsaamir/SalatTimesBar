@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func glow(color: Color = .white, radius: CGFloat = 12) -> some View {
+    func glow(color: Color = .primary, radius: CGFloat = 12) -> some View {
         self
             .shadow(color: color, radius: radius / 3)
             .shadow(color: color, radius: radius / 3)
