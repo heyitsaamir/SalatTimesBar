@@ -6,7 +6,13 @@
     <title>{{ page.title }} - {{ site.title }}</title>
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
   </head>
-  <body>
-    {{ content }}
+  <body class="dark-theme">
+    <div id="container">
+      {% include header.html %}
+      <main>
+        {{ content }}
+      </main>
+      {% include footer.html %}
+    </div>
   </body>
 </html>
