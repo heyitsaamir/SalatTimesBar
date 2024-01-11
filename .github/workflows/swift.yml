@@ -16,5 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build
-      run: swift build -v
+    - name: xcocdebuild
+      uses: sersoft-gmbh/xcodebuild-action@v1
+      with:
+        project: SalatTimeBar.xcodeproj
+        scheme: SalatTimeBar
+        destination: platform=macOS
+        action: build
