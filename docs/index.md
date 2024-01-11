@@ -39,4 +39,4 @@ The app is distributed directly on Github. [Check out the releases page](https:/
 
 # Issues
 
-If you notice problems or issues, feel free to post an issue on Github. [Issues](https://developer.apple.com/)
+If you notice problems or issues, feel free to post an issue on Github. [Issues](https://github.com/heyitsaamir/SalatTimesBar/issues)
