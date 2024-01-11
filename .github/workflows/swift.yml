@@ -19,7 +19,6 @@ jobs:
     - name: xcocdebuild
       uses: sersoft-gmbh/xcodebuild-action@v1
       with:
-        project: SalatTimeBar.xcodeproj
         scheme: SalatTimeBar
         destination: platform=macOS
         action: build
