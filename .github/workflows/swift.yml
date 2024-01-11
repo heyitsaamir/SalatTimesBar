@@ -20,5 +20,5 @@ jobs:
       uses: mxcl/xcodebuild@v1
       with:
         scheme: SalatTimeBar
-        destination: platform=macOS
+        platform: macOS
         action: build
