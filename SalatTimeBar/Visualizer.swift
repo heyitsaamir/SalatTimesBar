@@ -65,7 +65,7 @@ struct Visualizer: View {
                         Image(systemName: icon)
                             .position(x: position.end + PADDING / 2.0, y: height / 2.0)
                             .bold(position.isActive || position.isNext)
-                            .foregroundColor(position.isActive ? Color.accentColor : position.isNext ? Color.primary : Color.secondary)
+                            .foregroundColor(position.isActive || position.hasPassed ? Color.accentColor : position.isNext ? Color.primary : Color.secondary)
                             .opacity(position.isActive || position.isNext ? 1.0 : 0.9)
                             .font(.system(size: 8))
                         //                        .glow(radius: position.isActive ? 20 : 0)
