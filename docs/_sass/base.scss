@@ -24,7 +24,25 @@ body {
   width: 100%;
 }
 
+/* unvisited link */
+a:link {
+  color: #994636;
+}
 
+/* visited link */
+a:visited {
+  color: #CA907E;
+}
+
+/* mouse over link */
+a:hover {
+  color: #895B1E;
+}
+
+/* selected link */
+a:active {
+  color: #DBD8AE;
+}
 
 #container {
   width: $regular-width;
