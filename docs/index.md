@@ -35,7 +35,7 @@ Not enabled by default, but if you choose, you can enable notifications to alert
 
 # Download
 
-The app is distributed directly on Github. [Check out the releases page](https://developer.apple.com/).
+The app is distributed directly on Github. [Check out the releases page](https://github.com/heyitsaamir/SalatTimesBar/releases).
 
 # Issues
 
