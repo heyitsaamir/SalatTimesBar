@@ -3,7 +3,7 @@ layout: default
 title: "Simple Salat Menubar"
 ---
 
-<img src="{{site.baseurl}}/assets/images/dark-screenshot-large.png" alt="Screenshot for the menubar" style="width:500px;"/>
+<img src="{{site.baseurl}}/assets/images/dark-screenshot-large.png" alt="Screenshot for the menubar" class="image-full"/>
 
 
 Simple Salat Times is a small menubar for Mac that displays the upcoming salat times.
@@ -17,15 +17,15 @@ Simple Salat Times keeps features to what is essential so that you can keep up w
 The app follows Apple's guidance on clean, simple design and style. It supports both light and dark mode.
 
 <section class="info">
-<img src="{{site.baseurl}}/assets/images/dark-screenshot.png" alt="Dark screenshot for the menubar" style="width:250px;"/>
-<img src="{{site.baseurl}}/assets/images/light-screenshot.png" alt="Light screenshot for the menubar" style="width:250px;"/>
+<img src="{{site.baseurl}}/assets/images/dark-screenshot.png" alt="Dark screenshot for the menubar"/>
+<img src="{{site.baseurl}}/assets/images/light-screenshot.png" alt="Light screenshot for the menubar"/>
 </section>
 
 ### Introduce more simplicity as needed
 
 You can choose how long you would like the salat label to be
 
-<img src="{{site.baseurl}}/assets/images/label-demo.gif" alt="Screenshot showing different sized labels" style="width:500px;"/>
+<img src="{{site.baseurl}}/assets/images/label-demo.gif" alt="Screenshot showing different sized labels" class="image-full"/>
 
 ### Notifications
 

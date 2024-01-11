@@ -1,3 +1,4 @@
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "/SalatTimesBar" # the subpath of your site, e.g. /blog
-title: "Salat Times Bar" # the name of your site, e.g. ACME Corp.
+title: "A simple macOS menubar" # the name of your site, e.g. ACME Corp.
+description: "A simple macOS menubar to display the current prayer times for your location" # A short description of your site's purpose
