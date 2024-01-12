@@ -52,13 +52,14 @@ a:active {
 
   @media (max-width: $breakpoint-mobile) {
     width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
   }
 }
 
 main {
-  flex: 1
+  flex: 1;
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 10px
+  }
 }
 
 header {
