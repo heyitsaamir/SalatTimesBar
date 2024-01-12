@@ -12,6 +12,10 @@ Simple Salat Times is a small menubar for Mac that displays the upcoming salat t
 
 Simple Salat Times keeps features to what is essential so that you can keep up with your prayers in a timely manner. It intentionally does not contain extra features for the sake of simplicity.
 
+## Accurate Salat Times
+
+Powered by the excellent [AlAthan api](https://aladhan.com/prayer-times-api), which is an actively supported API used by a miriad of prayer times apps out there. It supports a tremendous number of toggles and features. This app only exposes a number of them, but if you feel like it's lacking, please feel free to post an [issue](#issues).
+
 ### Native Look & Feel
 
 The app follows Apple's guidance on clean, simple design and style. It supports both light and dark mode.
@@ -40,3 +44,7 @@ The app is distributed directly on Github. [Check out the releases page](https:/
 # Issues
 
 If you notice problems or issues, feel free to post an issue on Github. [Issues](https://github.com/heyitsaamir/SalatTimesBar/issues)
+
+# Why?
+
+I'm a developer and I wanted to learn SwiftUI. This seemed like a simple and yet very helpful project to help me do that.
