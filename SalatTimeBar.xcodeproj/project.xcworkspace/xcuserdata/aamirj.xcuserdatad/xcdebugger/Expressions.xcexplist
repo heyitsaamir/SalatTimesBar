@@ -3,10 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "printJson():SalatTimeData.swift">
+         contextName = "closure #1 in AthanNetworkFetcher.fetchAthanTime(for:):SalatTimeData.swift">
          <PersistentStrings>
             <PersistentString
-               value = "dataForJanuary.data[0].date.date">
+               value = "parameters.address">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -15,6 +15,14 @@
          <PersistentStrings>
             <PersistentString
                value = "error.localizedDescription">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "printJson():SalatTimeData.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dataForJanuary.data[0].date.date">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

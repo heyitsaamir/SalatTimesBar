@@ -35,10 +35,19 @@ struct AppIcon: View {
                 }
                 return AnyView(AppIconForSalatTime(salatTime: salatTime))
             } else {
+                return AnyView(Text("Foo"))
+            }
+        case .failure(let error):
+            switch error {
+            case .AddressNotSet:
+                return AnyView(Text("Update settings"))
+            case .InvalidData:
+                return AnyView(Text("API Error"))
+            case .NotAsked:
+                return AnyView(ProgressView())
+            case .InvalidDate:
                 return AnyView(Text("Unknown"))
             }
-        default:
-            return AnyView(Text("Unknown"))
         }
     }
 }

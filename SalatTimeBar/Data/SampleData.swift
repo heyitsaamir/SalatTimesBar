@@ -7,7 +7,7 @@
 
 import Foundation
 
-let JSON = """
+let JXXSON = """
 {
     "code": 200,
     "status": "OK",

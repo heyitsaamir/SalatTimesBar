@@ -31,27 +31,31 @@ struct SalatTimesJson: Decodable {
     var data:[SalatTimeDay]
 }
 
-let jsonData = JSON.data(using: .utf8)
+struct SalatTimeErrorJson: Decodable {
+    var code: Int
+    var status: String
+    var data: String?
+}
 
 let isoFormatter = ISO8601DateFormatter()
 
-enum NetworkError: String, Error {
+enum NetworkError: Error {
     // Throw when an invalid password is entered
-    case InvalidDate = "InvalidDate"
+    case InvalidDate(internalError: String? = nil)
     
-    case InvalidData = "InvalidData"
+    case InvalidData(internalError: String? = nil)
     
-    case NotAsked = "NotAsked"
+    case NotAsked(internalError: String? = nil)
     
-    case AddressNotSet = "AddressNotSet"
+    case AddressNotSet(internalError: String? = nil)
     
     var description: String {
         get {
             switch self {
             case .AddressNotSet:
                 return "Address was not set. Please check Settings"
-            case .InvalidData:
-                return "There was some trouble getting information from the service. Please try again in a bit"
+            case .InvalidData(let internalError):
+                return "There was some trouble getting information from the service. Please try again in a bit \(internalError != nil ? " - \(internalError!)" : "")"
             case .InvalidDate:
                 return "Something went wrong with the date"
             case .NotAsked:
@@ -85,7 +89,7 @@ class AthanTimings: ObservableObject {
     private var timer: Timer?
     private let dispatchQueue = DispatchQueue(label: "Salat Time Serial Queue")
     private var currentParameter: CurrentParameter?
-    @Published var currentSalatTimes = Result<CurrentSalatTimes, NetworkError>.failure(.NotAsked)
+    @Published var currentSalatTimes = Result<CurrentSalatTimes, NetworkError>.failure(.NotAsked(internalError: nil))
     
     init(userSettings: UserSettings = .shared, notifications: AppNotifications = .shared) {
         fetcher = AthanNetworkFetcher()
@@ -107,6 +111,7 @@ class AthanTimings: ObservableObject {
             let dataForNextMonthDate = try await self.fetcher.fetchAthanTimesIfNecessary(for: nextMonth, address: self.userSettings.address, salatSchool: self.userSettings.salatSchool)
             DispatchQueue.main.async {
                 var salatTimes: [SalatTime] = []
+                var hasErrored = false
                 [dataForCurrentDate, dataForNextMonthDate].forEach { data in
                     switch data {
                     case .success(let json):
@@ -114,12 +119,15 @@ class AthanTimings: ObservableObject {
                         self.currentParameter = CurrentParameter(address: self.userSettings.address, salatSchool: self.userSettings.salatSchool)
                     case .failure(let error):
                         self.currentSalatTimes = .failure(error)
+                        hasErrored = true
                     }
                 }
                 
-                let currentSalatTimes = CurrentSalatTimes(salatTimes: salatTimes)
-                self.currentSalatTimes = .success(currentSalatTimes)
-                self.computeCurrentSalatIndex()
+                if !hasErrored {
+                    let currentSalatTimes = CurrentSalatTimes(salatTimes: salatTimes)
+                    self.currentSalatTimes = .success(currentSalatTimes)
+                    self.computeCurrentSalatIndex()
+                }
                 
                 self.scheduleNotification()
             }
@@ -201,6 +209,7 @@ class AthanTimings: ObservableObject {
 fileprivate class AthanNetworkFetcher {
     private var cache: Dictionary<String, [SalatTime]>
     private let userSettings: UserSettings
+    private let errorDecoder = JSONDecoder()
     
     init(userSettings: UserSettings = .shared) {
         self.cache = Dictionary()
@@ -210,11 +219,11 @@ fileprivate class AthanNetworkFetcher {
     func fetchAthanTimesIfNecessary(for date: Date, address: String, salatSchool: SalatSchool) async throws -> Result<StoredSalatTimes, NetworkError> {
         let components = date.get(.year, .month)
         guard let year = components.year, let month = components.month else {
-            return .failure(.InvalidDate)
+            return .failure(.InvalidDate(internalError: "Invalid year \(components.year ?? -1) or month \(components.month ?? -1)"))
         }
         
         guard userSettings.address != "" else {
-            return .failure(.AddressNotSet)
+            return .failure(.AddressNotSet(internalError: nil))
         }
         
         let cacheKey = "\(year)|\(month)|\(address)|\(salatSchool.rawValue)"
@@ -249,12 +258,24 @@ fileprivate class AthanNetworkFetcher {
     private func fetchAthanTime(for parameters: Parameters) async throws -> Result<SalatTimesJson, NetworkError> {
         return try await withCheckedThrowingContinuation { continuation in
             //            continuation.resume(returning: .success(generatePrayerTimingsForMonth(currentTime: Date.now) as! SalatTimesJson))
-            AF.request("https://api.aladhan.com/v1/calendarByAddress", method: .get, parameters: parameters).responseDecodable(of:SalatTimesJson.self) { response in
+            AF.request("https://api.aladhan.com/v1/calendarByAddress", method: .get, parameters: parameters)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of:SalatTimesJson.self) { response in
                 switch response.result {
                 case .success(let salatTime):
                     continuation.resume(returning: .success(salatTime))
-                case .failure:
-                    continuation.resume(returning: .failure(.InvalidData))
+                case .failure(let error):
+                    var internalError: String? = nil
+                    if let data = response.data {
+                        do {
+                            let json = try self.errorDecoder.decode(SalatTimeErrorJson.self, from: data)
+                            internalError = json.data != nil ? json.data! : nil
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    
+                    continuation.resume(returning: .failure(NetworkError.InvalidData(internalError: internalError ?? error.localizedDescription)))
                 }
             }
         }
