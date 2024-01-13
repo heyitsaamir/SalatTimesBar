@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		372E247C2B1CD7FA00A05199 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E247B2B1CD7FA00A05199 /* SampleData.swift */; };
-		372E24812B2113A000A05199 /* SampleTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E24802B2113A000A05199 /* SampleTestData.swift */; };
 		372E24852B2192CD00A05199 /* UserSettingsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E24842B2192CD00A05199 /* UserSettingsContentView.swift */; };
 		372E24872B268C9500A05199 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E24862B268C9500A05199 /* Color.swift */; };
 		372E248D2B2AA33600A05199 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E248C2B2AA33600A05199 /* UserSettings.swift */; };
@@ -29,7 +28,6 @@
 
 /* Begin PBXFileReference section */
 		372E247B2B1CD7FA00A05199 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
-		372E24802B2113A000A05199 /* SampleTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTestData.swift; sourceTree = "<group>"; };
 		372E24842B2192CD00A05199 /* UserSettingsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsContentView.swift; sourceTree = "<group>"; };
 		372E24862B268C9500A05199 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		372E248C2B2AA33600A05199 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 				37C6869D2A7EE1CC00771C45 /* SalatTime.swift */,
 				37C6869F2A7F210F00771C45 /* SalatTimeData.swift */,
 				372E247B2B1CD7FA00A05199 /* SampleData.swift */,
-				372E24802B2113A000A05199 /* SampleTestData.swift */,
 				372E248E2B31057D00A05199 /* LocationSearch.swift */,
 				372E24932B39C58500A05199 /* AppNotifications.swift */,
 			);
@@ -211,7 +208,6 @@
 				37F3ADF52B49C245005D0A61 /* View.swift in Sources */,
 				372E247C2B1CD7FA00A05199 /* SampleData.swift in Sources */,
 				372E24872B268C9500A05199 /* Color.swift in Sources */,
-				372E24812B2113A000A05199 /* SampleTestData.swift in Sources */,
 				37D25ADC2A7B095700FFA2C2 /* PopupWindow.swift in Sources */,
 				372E24852B2192CD00A05199 /* UserSettingsContentView.swift in Sources */,
 				37F3ADF32B47AAAE005D0A61 /* Visualizer.swift in Sources */,
