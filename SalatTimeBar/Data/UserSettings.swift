@@ -44,7 +44,7 @@ public enum VisibleTime: String, Identifiable {
     var description: String {
         switch (self) {
         case .Previous:
-            return "Current Salat"
+            return "Previous Athan"
         case .Current:
             return "Upcoming Salat"
         }

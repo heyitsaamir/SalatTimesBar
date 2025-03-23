@@ -39,7 +39,8 @@ Not enabled by default, but if you choose, you can enable notifications to alert
 
 # Download
 
-The app is distributed directly on Github. [Check out the releases page](https://github.com/heyitsaamir/SalatTimesBar/releases).
+The app is distributed directly on Github. [Check out the releases page](https://github.com/heyitsaamir/SalatTimesBar/releases). 
+Simply go to the latest release, download the dmg file and run it to install.
 
 # Issues
 
@@ -47,4 +48,8 @@ If you notice problems or issues, feel free to post an issue on Github. [Issues]
 
 # Why?
 
-I'm a developer and I wanted to learn SwiftUI. This seemed like a simple and yet very helpful project to help me do that.
+I'm a developer and I wanted to learn SwiftUI. This seemed like a simple and yet very helpful project to help me do that. 
+
+Inspirations:
+- [ThePillarsApp](https://www.thepillarsapp.com/) - I loved their the simple approach to solving this problem
+- [ItsyCal](https://www.mowglii.com/itsycal/) - One of my favorite app-bar apps. I use this on a daily basis.
