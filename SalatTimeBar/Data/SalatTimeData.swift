@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import BackgroundTasks
+import UserNotifications
 
 struct SalatTimeDate: Decodable {
     var readable: String
@@ -86,7 +87,7 @@ class AthanTimings: ObservableObject {
     private let userSettings: UserSettings
     private let notifications: AppNotifications
     private let fetcher: AthanNetworkFetcher
-    private var timer: Timer?
+    private var midnightTimer: Timer?
     private let dispatchQueue = DispatchQueue(label: "Salat Time Serial Queue")
     private var currentParameter: CurrentParameter?
     @Published var currentSalatTimes = Result<CurrentSalatTimes, NetworkError>.failure(.NotAsked(internalError: nil))
@@ -95,14 +96,25 @@ class AthanTimings: ObservableObject {
         fetcher = AthanNetworkFetcher()
         self.userSettings = userSettings
         self.notifications = notifications
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
+                if let error = error {
+                    print("Notification permission error: \(error)")
+                }
+            }
+    }
+    
+    func refresh() {
+        setupTimers()
     }
     
     deinit {
         print("Invalidating timer");
-        timer?.invalidate()
+        midnightTimer?.invalidate()
     }
     
-    func fetch() async -> Void {
+    private func fetch() async -> Void {
+        print("[\(Date.now.ISO8601Format())] fetching salat times")
         let currentMonth = Date.now.startOfMonth
         let nextMonth = currentMonth.computeDate(byAdding: .month, value: 1).startOfMonth
         print("[\(Date.now.ISO8601Format())] fetching for \(currentMonth.description) \(nextMonth.description)")
@@ -136,29 +148,62 @@ class AthanTimings: ObservableObject {
         }
     }
     
-    func scheduleTimer() {
-        self.timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { [weak self] timer in
-            guard let self = self, timer.isValid else {
+    private func setupTimers() {
+        // Schedule notifications immediately
+        scheduleAllNotifications()
+        
+        // Setup midnight timer for next refresh
+        let calendar = Calendar.current
+        let midnight = calendar.startOfDay(for: Date().addingTimeInterval(86400))
+        midnightTimer = Timer(fire: midnight,
+                             interval: 86400,
+                             repeats: true) { [weak self] midnightTimer in
+            guard let self = self, midnightTimer.isValid else {
                 return
             }
             
-            // Do I need to run again?
-            if !self.shouldRun {
-                print("[\(Date.now)] No need to run.")
-                return
-            } else {
-                print("[\(Date.now)] Running")
+            Task {
+                await self.fetch()
+                self.scheduleAllNotifications()
             }
+        }
+        RunLoop.main.add(midnightTimer!, forMode: .common)
+        midnightTimer?.fire()
+    }
+    
+    
+    private func scheduleAllNotifications() {
+        guard case .success(let times) = currentSalatTimes else { return }
+        
+        // Clear existing notifications
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+        // Schedule only future prayers for today
+        let upcomingTimes = times.salatTimes.filter { $0.time > Date() }
+        
+        upcomingTimes.forEach { time in
+            let content = UNMutableNotificationContent()
+            content.title = "Prayer Time"
+            content.body = "\(time.type.rawValue) time"
+            content.sound = .default
             
-            self.dispatchQueue.async {
-                Task {
-                    await self.fetch()
+            let components = Calendar.current.dateComponents([.hour, .minute],
+                                                          from: time.time)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components,
+                                                      repeats: false)
+            
+            let request = UNNotificationRequest(
+                identifier: "prayer-\(time.type.rawValue)-\(time.time.timeIntervalSince1970)",
+                content: content,
+                trigger: trigger
+            )
+            
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Failed to schedule \(time.type.rawValue): \(error)")
                 }
             }
-        })
-        
-        timer?.fire()
+        }
     }
     
     private var shouldRun: Bool {
@@ -191,6 +236,7 @@ class AthanTimings: ObservableObject {
     
     private func scheduleNotification() {
         guard self.userSettings.enableNotifications else {
+            print("Notifications are disabled")
             return
         }
         

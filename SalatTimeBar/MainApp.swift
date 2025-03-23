@@ -18,14 +18,14 @@ struct SalatTimeBarApp: App {
             PopupWindow().environmentObject(vm)
         } label: {
             AppIcon().environmentObject(vm).task {
-                vm.scheduleTimer()
+                vm.refresh()
             }
         }
         .menuBarExtraStyle(.window)
         .onChange(of: address) {
-            vm.scheduleTimer()
+            vm.refresh()
         }.onChange(of: salatSchool) {
-            vm.scheduleTimer()
+            vm.refresh()
         }
         
         Window("Settings", id: "UserSettings", content: {
