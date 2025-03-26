@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@main
 struct SalatTimeBarApp: App {
     @StateObject var vm = AthanTimings.shared
     @UserSetting(\.address) var address
@@ -31,5 +30,27 @@ struct SalatTimeBarApp: App {
         Window("Settings", id: "UserSettings", content: {
             UserSettingsContentView().fixedSize()
         }).windowResizability(.contentSize).windowStyle(.titleBar)
+    }
+}
+
+struct TestApp: App {
+    var body: some Scene {
+        WindowGroup {
+        }
+    }
+}
+
+@main
+struct MainEntryPoint {
+    static func main() {
+        guard isProduction() else {
+                    TestApp.main()
+                    return
+        }
+        SalatTimeBarApp.main()
+    }
+    
+    private static func isProduction() -> Bool {
+        return NSClassFromString("XCTestCase") == nil
     }
 }

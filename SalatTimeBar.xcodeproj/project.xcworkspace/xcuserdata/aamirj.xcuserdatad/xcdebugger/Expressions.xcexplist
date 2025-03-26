@@ -3,26 +3,13 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "closure #1 in AthanNetworkFetcher.fetchAthanTime(for:):SalatTimeData.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "parameters.address">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "AthanTimings.scheduleAllNotifications():SalatTimeData.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in AppNotifications.requestAuth():AppNotifications.swift">
          <PersistentStrings>
             <PersistentString
                value = "error.localizedDescription">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "printJson():SalatTimeData.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "dataForJanuary.data[0].date.date">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -35,12 +22,45 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "AthanTimings.scheduleNotification():SalatTimeData.swift">
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in AppNotifications.requestAuth() [inlined]:AppNotifications.swift">
          <PersistentStrings>
             <PersistentString
                value = "">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in AthanNetworkFetcher.fetchAthanTime(for:):SalatTimeData.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "parameters.address">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TimingsTests.testTimerUpdate():SalatTimeBarTests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sut">
+            </PersistentString>
+            <PersistentString
+               value = "times.currentSalatTime">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "printJson():SalatTimeData.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dataForJanuary.data[0].date.date">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AthanTimings.setupTimers():SalatTimeData.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
