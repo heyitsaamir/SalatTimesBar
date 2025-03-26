@@ -136,6 +136,15 @@ struct CurrentSalatTimes {
             fajrIndex -= 1
         }
         
+        // Return nil if no Fajr prayer is found
+        if fajrIndex < 0 {
+            if salatTimes[currentSalatIndex].type == .Fajr {
+                fajrIndex = currentSalatIndex
+            } else {
+                return nil
+            }
+        }
+        
         let lastIndex = min(salatTimes.count - 1, fajrIndex + 5)    // Fajr + Sunrise + 4 other prayers
         return Array(salatTimes[fajrIndex...lastIndex])
     }

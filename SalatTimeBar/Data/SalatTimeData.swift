@@ -79,7 +79,7 @@ struct CurrentParameter: Hashable {
     let salatSchool: SalatSchool
 }
 
-fileprivate typealias StoredSalatTimes = (startOfMonthDate: Date, times: [SalatTime])
+typealias StoredSalatTimes = (startOfMonthDate: Date, times: [SalatTime])
 
 class AthanTimings: ObservableObject {
     static let shared = AthanTimings()
@@ -88,6 +88,7 @@ class AthanTimings: ObservableObject {
     private let notifications: AppNotifications
     private let fetcher: AthanNetworkFetcher
     private var midnightTimer: Timer?
+    private var uiTimer: Timer?
     private let dispatchQueue = DispatchQueue(label: "Salat Time Serial Queue")
     private var currentParameter: CurrentParameter?
     @Published var currentSalatTimes = Result<CurrentSalatTimes, NetworkError>.failure(.NotAsked(internalError: nil))
@@ -169,11 +170,24 @@ class AthanTimings: ObservableObject {
         }
         RunLoop.main.add(midnightTimer!, forMode: .common)
         midnightTimer?.fire()
+        let now = Date()
+            let nextMinute = calendar.date(bySetting: .second, value: 1, of: now)?.addingTimeInterval(60) ?? now
+            let delay = nextMinute.timeIntervalSince(now)
+        
+        uiTimer?.invalidate() // Clean up existing timer if any
+        uiTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            self.computeCurrentSalatIndex()
+        }
+        
+        // Delay the timer start to align with minute boundary
+        uiTimer?.fireDate = nextMinute
+        RunLoop.main.add(uiTimer!, forMode: .common)
     }
     
     
     private func scheduleAllNotifications() {
-        guard case .success(let times) = currentSalatTimes else { return }
+        guard case .success(let times) = self.currentSalatTimes else { return }
         
         // Clear existing notifications
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
@@ -252,7 +266,7 @@ class AthanTimings: ObservableObject {
     }
 }
 
-fileprivate class AthanNetworkFetcher {
+class AthanNetworkFetcher {
     private var cache: Dictionary<String, [SalatTime]>
     private let userSettings: UserSettings
     private let errorDecoder = JSONDecoder()

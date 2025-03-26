@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  PopupWindow.swift
 //  SalatTimeBar
 //
 //  Created by Aamir Jawaid on 8/2/23.
@@ -86,11 +86,12 @@ struct PopupWindow: View {
                     Text("Unknown")
                 }
             case .failure(let error):
-                Text(error.description).italic()
+                Image(systemName: "exclamationmark.triangle.fill").foregroundColor(.yellow)
+                Text(error.description).italic().multilineTextAlignment(.center)
             }
             SettingsMenu()
         }
-        .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+        .padding(EdgeInsets(top: 10, leading:8, bottom: 10, trailing:8))
         .background(Color.background)
         .frame(width: 230)
     }
@@ -103,4 +104,25 @@ struct PopupWindow: View {
         
         return firstIndex
     }
+}
+
+#Preview {
+    let mockAthanTimings = AthanTimings.shared
+        // Create sample salat times for today
+//        let now = Date()
+//        let sampleTimes: [SalatTime] = [
+//            SalatTime(type: .Fajr, time: now.addingTimeInterval(-3600)), // 1 hour ago
+//            SalatTime(type: .Sunrise, time: now.addingTimeInterval(1800)), // 30 min ahead
+//            SalatTime(type: .Dhuhr, time: now.addingTimeInterval(7200)), // 2 hours ahead
+//            SalatTime(type: .Asr, time: now.addingTimeInterval(14400)), // 4 hours ahead
+//            SalatTime(type: .Maghrib, time: now.addingTimeInterval(21600)), // 6 hours ahead
+//            SalatTime(type: .Isha, time: now.addingTimeInterval(28800)) // 8 hours ahead
+//        ]
+        
+//        mockAthanTimings.currentSalatTimes = .success(CurrentSalatTimes(salatTimes: sampleTimes))
+    mockAthanTimings.currentSalatTimes = .failure(NetworkError.AddressNotSet(internalError: "Error"))
+        
+        return PopupWindow()
+            .environmentObject(mockAthanTimings)
+            .frame(width: 230)
 }
