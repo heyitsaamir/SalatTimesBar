@@ -9,33 +9,43 @@ import SwiftUI
 
 struct UserSettingsContentView: View {
     private enum Tabs: Hashable {
-        case LookAndFeel, SalatSettings
+        case LookAndFeel, SalatSettings, Location
     }
     
     @Environment(\.openWindow) private var openWindow
     var body: some View {
-        VStack {
-            Image("IconOfApp").resizable()
-                .frame(width: 64.0, height: 64.0)
-                .safeAreaPadding(EdgeInsets(top: 20.0, leading: 0, bottom: 0, trailing: 0))
-            TabView {
-                Form {
-                    SettingSalatSchoolField(\.salatSchool)
-                    SettingLocationField(\.address)
-                }
-                .tabItem { Label("Salat settings", systemImage: "gear").font(.title3) }
-                .tag(Tabs.SalatSettings)
-                Form {
-                    SettingFormatField(\.format)
-                    SettingVisibleTimeField(\.visibleTime)
-                    SettingsNotifications(\.enableNotifications)
-                }
-                .tabItem { Label("Look and feel", systemImage: "paintpalette").font(.title3) }
-                .tag(Tabs.LookAndFeel)
-            }
-            .frame(width: 300)
-            .padding(20)
-        }
+        CustomTabView(tabBarPosition: .top, 
+                      content: [
+            (
+                tabText: "Location",
+                tabIconName: "location",
+                view: AnyView(
+                    Form {
+                        SettingLocationField(\.address)
+                    }
+                )
+            ),
+            (
+                tabText: "Salat Settings",
+                tabIconName: "gear",
+                view: AnyView(
+                    Form {
+                        SettingSalatSchoolField(\.salatSchool)
+                        SettingsNotifications(\.enableNotifications)
+                    }
+                )
+            ),
+            (
+                tabText: "Look and Feel",
+                tabIconName: "textformat.abc.dottedunderline",
+                view: AnyView(
+                    Form {
+                        SettingFormatField(\.format)
+                        SettingVisibleTimeField(\.visibleTime)
+                    }
+                )
+            )]
+        )
     }
 }
 
@@ -89,8 +99,9 @@ struct SettingLocationField: View {
             HStack {
                 TextField(
                     "Location",
-                    text: $val
-                ).onSubmit {
+                    text: $val,
+                    prompt: Text("City or Location")
+                ).textFieldStyle(.roundedBorder).onSubmit {
                     self.locationSearch.searchTerm = val
                 }.submitLabel(.search)
                 Button {
@@ -110,7 +121,7 @@ struct SettingLocationField: View {
                 }
                 userSettings[keyPath: keyPath] = newValue.title
                 val = newValue.title
-            }.listItemTint(.accentColor).frame(height: 150)
+            }.listItemTint(.accentColor).frame(minHeight: 200)
         }
     }
 }
@@ -212,4 +223,11 @@ struct SettingToggleField: View {
             
         }
     }
+}
+
+#Preview {
+let mockAthanTimings = AthanTimings.shared
+    
+    return UserSettingsContentView()
+        .environmentObject(mockAthanTimings)
 }
