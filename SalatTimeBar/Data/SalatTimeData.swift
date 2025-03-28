@@ -171,8 +171,7 @@ class AthanTimings: ObservableObject {
         RunLoop.main.add(midnightTimer!, forMode: .common)
         midnightTimer?.fire()
         let now = Date()
-            let nextMinute = calendar.date(bySetting: .second, value: 1, of: now)?.addingTimeInterval(60) ?? now
-            let delay = nextMinute.timeIntervalSince(now)
+        let nextMinute = calendar.date(bySetting: .second, value: 1, of: now)?.addingTimeInterval(60) ?? now
         
         uiTimer?.invalidate() // Clean up existing timer if any
         uiTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
