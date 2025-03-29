@@ -43,12 +43,18 @@ public class AppNotifications: ObservableObject {
         formatter.unitsStyle = .full
         formatter.allowedUnits = [.hour, .minute]
         
-        let timeLeft = nextSalat.time.timeIntervalSince(salatTime.time)
         content.title = salatTime.type.longDescription
+        let timeLeft = nextSalat.time.timeIntervalSince(salatTime.time)
         if nextSalat.type == .Sunrise {
-            content.body = "Sunrise in \(formatter.string(from: timeLeft) ?? "")"
+            content.body = "It's time to pray! Sunrise in \(formatter.string(from: timeLeft) ?? "")"
         } else {
-            content.body = "Next salat starts in \(formatter.string(from: timeLeft) ?? "")"
+            if salatTime.type == .Sunrise {
+                content.body = ""
+            } else {
+                content.body = "It's time to pray! "
+            }
+                
+            content.body = content.body + "Next salat in \(formatter.string(from: timeLeft) ?? "")"
         }
         
         // Configure the recurring date.
