@@ -34,15 +34,24 @@ fileprivate struct SingleSalatTimeView: View {
     }
 }
 
+
+
 fileprivate struct SettingsMenu: View {
     @Environment(\.openWindow) private var openWindow
+    @ObservedObject var checkForUpdatesVm = CheckForUpdatesViewModel.shared
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             Spacer()
+            if self.checkForUpdatesVm.canCheckForUpdates {
+                Text("✨").help("New update available!")
+            }
             Menu(content: {
                 Button("Settings") {
                     openWindow(id: "UserSettings")
+                }
+                if self.checkForUpdatesVm.canCheckForUpdates {
+                    CheckForUpdatesView()
                 }
                 Button("Quit") {
                     NSApplication.shared.terminate(nil)
@@ -124,5 +133,5 @@ struct PopupWindow: View {
         
         return PopupWindow()
             .environmentObject(mockAthanTimings)
-            .frame(width: 230)
+            .frame(width: 230, height: 500)
 }

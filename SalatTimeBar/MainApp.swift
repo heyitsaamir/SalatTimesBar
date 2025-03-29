@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import Sparkle
 
 @main
 struct SalatTimeBarApp: App {
     @StateObject var vm = AthanTimings.shared
     @UserSetting(\.address) var address
     @UserSetting(\.salatSchool) var salatSchool
+        
+    init() {
+        SPUStandardUpdaterController.shared.startUpdater()
+    }
     
     var body: some Scene {
         MenuBarExtra {

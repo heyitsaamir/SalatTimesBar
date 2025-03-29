@@ -6,12 +6,9 @@
 //
 
 import SwiftUI
+import Sparkle
 
 struct UserSettingsContentView: View {
-    private enum Tabs: Hashable {
-        case LookAndFeel, SalatSettings, Location
-    }
-    
     @Environment(\.openWindow) private var openWindow
     var body: some View {
         CustomTabView(tabBarPosition: .top, 
@@ -32,6 +29,7 @@ struct UserSettingsContentView: View {
                     Form {
                         SettingSalatSchoolField(\.salatSchool)
                         SettingsNotifications(\.enableNotifications)
+                        CheckForUpdatesView()
                     }
                 )
             ),

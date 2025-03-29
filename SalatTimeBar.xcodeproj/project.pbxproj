@@ -13,6 +13,9 @@
 		372E248D2B2AA33600A05199 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E248C2B2AA33600A05199 /* UserSettings.swift */; };
 		372E248F2B31057D00A05199 /* LocationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E248E2B31057D00A05199 /* LocationSearch.swift */; };
 		372E24942B39C58500A05199 /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E24932B39C58500A05199 /* AppNotifications.swift */; };
+		3741E5C92D93E90500902B3D /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 3741E5C82D93E90500902B3D /* Sparkle */; };
+		3741E5CB2D96838300902B3D /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3741E5CA2D96838300902B3D /* CustomTabView.swift */; };
+		3741E5CD2D988B3C00902B3D /* SparkleUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3741E5CC2D988B3C00902B3D /* SparkleUpdater.swift */; };
 		375306EF2A7DD1650043091F /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375306EE2A7DD1650043091F /* AppIcon.swift */; };
 		376679A82ADB9A4100CF583F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 376679A72ADB9A4100CF583F /* Alamofire */; };
 		376679AB2ADB9D6300CF583F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376679AA2ADB9D6300CF583F /* Date.swift */; };
@@ -34,6 +37,8 @@
 		372E248E2B31057D00A05199 /* LocationSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearch.swift; sourceTree = "<group>"; };
 		372E24902B35F34C00A05199 /* SalatTimeBarRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SalatTimeBarRelease.entitlements; sourceTree = "<group>"; };
 		372E24932B39C58500A05199 /* AppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
+		3741E5CA2D96838300902B3D /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		3741E5CC2D988B3C00902B3D /* SparkleUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleUpdater.swift; sourceTree = "<group>"; };
 		375306EE2A7DD1650043091F /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		376679AA2ADB9D6300CF583F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		376679AC2ADBAA5A00CF583F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				376679A82ADB9A4100CF583F /* Alamofire in Frameworks */,
+				3741E5C92D93E90500902B3D /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +121,8 @@
 				37D25ADD2A7B095A00FFA2C2 /* Assets.xcassets */,
 				37D25AE22A7B095A00FFA2C2 /* SalatTimeBar.entitlements */,
 				37D25ADF2A7B095A00FFA2C2 /* Preview Content */,
+				3741E5CA2D96838300902B3D /* CustomTabView.swift */,
+				3741E5CC2D988B3C00902B3D /* SparkleUpdater.swift */,
 			);
 			path = SalatTimeBar;
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 			name = SalatTimeBar;
 			packageProductDependencies = (
 				376679A72ADB9A4100CF583F /* Alamofire */,
+				3741E5C82D93E90500902B3D /* Sparkle */,
 			);
 			productName = SalatTimeBar;
 			productReference = 37D25AD62A7B095700FFA2C2 /* SalatTimeBar.app */;
@@ -176,6 +185,7 @@
 			mainGroup = 37D25ACD2A7B095700FFA2C2;
 			packageReferences = (
 				376679A62ADB9A4100CF583F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3741E5C72D93E90500902B3D /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = 37D25AD72A7B095700FFA2C2 /* Products */;
 			projectDirPath = "";
@@ -209,12 +219,14 @@
 				372E247C2B1CD7FA00A05199 /* SampleData.swift in Sources */,
 				372E24872B268C9500A05199 /* Color.swift in Sources */,
 				37D25ADC2A7B095700FFA2C2 /* PopupWindow.swift in Sources */,
+				3741E5CD2D988B3C00902B3D /* SparkleUpdater.swift in Sources */,
 				372E24852B2192CD00A05199 /* UserSettingsContentView.swift in Sources */,
 				37F3ADF32B47AAAE005D0A61 /* Visualizer.swift in Sources */,
 				372E24942B39C58500A05199 /* AppNotifications.swift in Sources */,
 				37D25ADA2A7B095700FFA2C2 /* MainApp.swift in Sources */,
 				37C6869E2A7EE1CC00771C45 /* SalatTime.swift in Sources */,
 				375306EF2A7DD1650043091F /* AppIcon.swift in Sources */,
+				3741E5CB2D96838300902B3D /* CustomTabView.swift in Sources */,
 				372E248F2B31057D00A05199 /* LocationSearch.swift in Sources */,
 				372E248D2B2AA33600A05199 /* UserSettings.swift in Sources */,
 			);
@@ -425,6 +437,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3741E5C72D93E90500902B3D /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.0;
+			};
+		};
 		376679A62ADB9A4100CF583F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -436,6 +456,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3741E5C82D93E90500902B3D /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3741E5C72D93E90500902B3D /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
 		376679A72ADB9A4100CF583F /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 376679A62ADB9A4100CF583F /* XCRemoteSwiftPackageReference "Alamofire" */;
