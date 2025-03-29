@@ -54,7 +54,7 @@ enum NetworkError: Error {
         get {
             switch self {
             case .AddressNotSet:
-                return "Address was not set. Please check Settings"
+                return "The location needs to be set in the settings"
             case .InvalidData(let internalError):
                 return "There was some trouble getting information from the service. Please try again in a bit \(internalError != nil ? " - \(internalError!)" : "")"
             case .InvalidDate:

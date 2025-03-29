@@ -40,11 +40,11 @@ struct AppIcon: View {
         case .failure(let error):
             switch error {
             case .AddressNotSet:
-                return AnyView(Text("Update settings"))
+                return AnyView(Image(systemName: "moon.zzz.fill"))
             case .InvalidData:
-                return AnyView(Text("API Error"))
+                return AnyView(Image(systemName: "exclamationmark.triangle.fill"))
             case .NotAsked:
-                return AnyView(ProgressView())
+                return AnyView(Image(systemName: "moon.dust"))
             case .InvalidDate:
                 return AnyView(Text("Unknown"))
             }
