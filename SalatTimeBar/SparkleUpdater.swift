@@ -8,15 +8,6 @@
 import SwiftUI
 import Sparkle
 
-extension SPUStandardUpdaterController {
-    // MainApp will start the updater when the app launches
-    static let shared = SPUStandardUpdaterController(
-        startingUpdater: false,
-        updaterDelegate: nil,
-        userDriverDelegate: nil
-    )
-}
-
 // This view model class publishes when new updates can be checked by the user
 final class CheckForUpdatesViewModel: ObservableObject {
     static let shared = CheckForUpdatesViewModel()

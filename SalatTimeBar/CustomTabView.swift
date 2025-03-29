@@ -7,18 +7,6 @@
 
 import SwiftUI
 
-
-public extension Color {
-
-    #if os(macOS)
-    static let backgroundColor = Color(NSColor.windowBackgroundColor)
-    static let secondaryBackgroundColor = Color(NSColor.controlBackgroundColor)
-    #else
-    static let backgroundColor = Color(UIColor.systemBackground)
-    static let secondaryBackgroundColor = Color(UIColor.secondarySystemBackground)
-    #endif
-}
-
 public struct CustomTabView: View {
     
     public enum TabBarPosition { // Where the tab bar will be located within the view
@@ -54,7 +42,7 @@ public struct CustomTabView: View {
                     
                 .padding()
                 .foregroundColor(self.selection == index ? Color.accentColor : Color.primary)
-                .background(Color.secondaryBackgroundColor)
+                .background(Color.tertiaryBackground)
                 .onTapGesture {
                     self.selection = index
                 }
@@ -62,9 +50,9 @@ public struct CustomTabView: View {
             Spacer()
         }
         .padding(0)
-        .background(Color.secondaryBackgroundColor) // Extra background layer to reset the shadow and stop it applying to every sub-view
+        .background(Color.tertiaryBackground) // Extra background layer to reset the shadow and stop it applying to every sub-view
         .shadow(color: Color.clear, radius: 0, x: 0, y: 0)
-        .background(Color.secondaryBackgroundColor)
+        .background(Color.tertiaryBackground)
         .shadow(
             color: Color.black.opacity(0.25),
             radius: 3,
