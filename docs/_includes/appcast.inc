@@ -7,21 +7,28 @@
         {% for release in site.github.releases %}
             {% unless release.draft %}
                 {% unless release.prerelease and page.release_only %}
-                    <item>
-                        <title>{{ release.name }}</title>
-                        <description><![CDATA[{{ release.body | markdownify }}]]></description>
-                        <pubDate>{{ release.published_at | date_to_rfc822 }}</pubDate>
-                        {% for asset in release.assets limit:1 %}
-                            {% assign version = asset.name | replace_first:'SalatTimeBar','' | replace_first: '.','' | replace_last: '.','' | replace_first:'dmg','' | split:',' %}
-                            {% unless version.size == 0 %}
-                                <enclosure
-                                    url="{{ asset.browser_download_url }}"
-                                    sparkle:version="{{ version[0] }}"
-                                    length="{{ asset.size }}"
-                                    type="application/octet-stream" />
-                            {% endunless %}
-                        {% endfor %}
-                    </item>
+                    {% assign versions = release.name | split: '.' %}
+                    {% if versions.size == 3 %}
+                        {% assign major_version = versions[0] | plus: 0 %}
+                        {% assign minor_version = versions[1] | plus: 0 %}
+                        {% assign patch_version = versions[2] | plus: 0 %}
+                        {% if major_version >= 0 and minor_version >= 0 and patch_version >= 0 %}
+                            <item>
+                                <title>Version {{ release.name }}</title>
+                                <description><![CDATA[{{ release.body | markdownify }}]]></description>
+                                <pubDate>{{ release.published_at | date_to_rfc822 }}</pubDate>
+                                <sparkle:version>{{ release.name }}</sparkle:version>
+                                <link>{{ release.html_url }}</link>
+                                {% for asset in release.assets limit:1 %}
+                                    <enclosure
+                                        url="{{ asset.browser_download_url }}"
+                                        sparkle:version="{{ release.name }}"
+                                        length="{{ asset.size }}"
+                                        type="application/octet-stream" />
+                                {% endfor %}
+                            </item>
+                        {% endif %}
+                    {% endif %}
                 {% endunless %}
             {% endunless %}
         {% endfor %}
