@@ -13,9 +13,11 @@
                         {% assign minor_version = versions[1] | plus: 0 %}
                         {% assign patch_version = versions[2] | plus: 0 %}
                         {% if major_version >= 0 and minor_version >= 0 and patch_version >= 0 %}
-                            {% assign signature_match = release.body | regex_match: 'sparkle:edSignature="([^"]*)"' %}
-                            {% assign length_match = release.body | regex_match: 'length="(\d+)"' %}
-                            {% assign clean_description = release.body | regex_replace: 'sparkle:edSignature="[^"]*"\s*length="\d+"', '' %}
+                            {% assign signature_line = release.body | split: "sparkle:edSignature=" | last | split: '"' %}
+                            {% assign signature = signature_line[1] %}
+                            {% assign length_line = release.body | split: "length=" | last | split: '"' %}
+                            {% assign length = length_line[1] %}
+                            {% assign clean_description = release.body | split: "sparkle:edSignature=" | first %}
                             <item>
                                 <title>Version {{ release.name }}</title>
                                 <description><![CDATA[{{ clean_description | markdownify }}]]></description>
@@ -26,8 +28,8 @@
                                     <enclosure
                                         url="{{ asset.browser_download_url }}"
                                         sparkle:version="{{ release.name }}"
-                                        sparkle:edSignature="{{ signature_match[1] }}"
-                                        length="{{ length_match[1] }}"
+                                        sparkle:edSignature="{{ signature }}"
+                                        length="{{ length }}"
                                         type="application/octet-stream" />
                                 {% endfor %}
                             </item>
