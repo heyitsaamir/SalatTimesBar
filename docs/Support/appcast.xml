@@ -6,6 +6,19 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>en</language>
         <item>
+            <title>Version 0.2.3</title>
+            <description><![CDATA[- Fix sandboxing]]></description>
+            <pubDate>Tue, 01 Apr 2025 16:09:39 -0700</pubDate>
+            <sparkle:version>0.2.3</sparkle:version>
+            <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.3</link>
+            <enclosure
+                url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.3/SalatTimeBar.dmg"
+                sparkle:version="0.2.3"
+                sparkle:edSignature="TOdxjycJj0Ppip61jSCIvosBd28IU2xxbu3J5GZsPsKIteJ7vn0oEEDMDEWvEAn5QigVLz1M/Seu2fVFhRyQDg=="
+                length="2681693"
+                type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.2.2</title>
             <description><![CDATA[- One more attempt. This time we will pause between DMG creation.]]></description>
             <pubDate>Tue, 01 Apr 2025 05:20:55 -0700</pubDate>

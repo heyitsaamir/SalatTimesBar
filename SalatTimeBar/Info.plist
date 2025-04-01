@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleShortVersionString</key>
-	<string>0.2.2</string>
+	<string>0.2.3</string>
 	<key>CFBundleVersion</key>
-	<string>0.2.2</string>
+	<string>0.2.3</string>
+	<key>SUEnableInstallerLauncherService</key>
+	<true/>
 	<key>SUFeedURL</key>
 	<string>https://heyitsaamir.github.io/SalatTimesBar/Support/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>w/RRKycM95pWKnUh3ZRI+6sVs4W/sFlVVQNA2XD7Qro=</string>
-	<key>SUEnableInstallerLauncherService</key>
-	<true/>
 </dict>
 </plist>

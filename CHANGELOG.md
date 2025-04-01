@@ -1,3 +1,9 @@
+# 0.2.3
+
+- Fix sandboxing
+
+---
+
 # 0.2.2
 
 - One more attempt. This time we will pause between DMG creation.
