@@ -35,12 +35,4 @@ create-dmg \
   "Product/$FOLDER_NAME/$PROJECT_NAME.dmg" \
   "Product/$FOLDER_NAME/$PROJECT_NAME.app"
 
-# Check if DMG creation was successful
-if [ $? -eq 0 ]; then
-    echo "DMG created successfully at Product/$FOLDER_NAME/$PROJECT_NAME.dmg"
-else
-    echo "Failed to create DMG"
-    exit 1
-fi
-
-"$SIGN_UPDATE" "Product/$FOLDER_NAME/SalatTimeBar.dmg"
+echo "Product/$FOLDER_NAME/$PROJECT_NAME.dmg"
