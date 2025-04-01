@@ -14,8 +14,7 @@
             <enclosure
                 url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.2/SalatTimeBar.dmg"
                 sparkle:version="0.2.2"
-                sparkle:edSignature="iMvVkgPJzmqFPC6w0O98MK1H31K/ZiSHHvbKK9Y/qDD9m+F2z51ZBFbm5lLy/PsQ/ONwWf/PSsiHam8FehzABw==
-iMvVkgPJzmqFPC6w0O98MK1H31K/ZiSHHvbKK9Y/qDD9m+F2z51ZBFbm5lLy/PsQ/ONwWf/PSsiHam8FehzABw=="
+                sparkle:edSignature="iMvVkgPJzmqFPC6w0O98MK1H31K/ZiSHHvbKK9Y/qDD9m+F2z51ZBFbm5lLy/PsQ/ONwWf/PSsiHam8FehzABw=="
                 length="2681739"
                 type="application/octet-stream" />
         </item>
