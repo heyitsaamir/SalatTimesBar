@@ -13,7 +13,6 @@
             <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.2</link>
             <enclosure
                 url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.2/SalatTimeBar.dmg"
-                sparkle:version="0.2.2"
                 sparkle:edSignature="iMvVkgPJzmqFPC6w0O98MK1H31K/ZiSHHvbKK9Y/qDD9m+F2z51ZBFbm5lLy/PsQ/ONwWf/PSsiHam8FehzABw=="
                 length="2681739"
                 type="application/octet-stream" />
@@ -26,7 +25,6 @@
             <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.1</link>
             <enclosure
                 url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.1/SalatTimeBar.dmg"
-                sparkle:version="0.2.1"
                 sparkle:edSignature="SsyL0TAii/Ahv9WyD8Lb9VHq/4A8aCEQgY55Hudz/qxprm392I20nBylnyyjGV8kSQFZscsRowV+KxI+hJFaDA=="
                 length="2681747"
                 type="application/octet-stream" />
@@ -39,7 +37,6 @@
             <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.0</link>
             <enclosure
                 url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.0/SalatTimeBar.dmg"
-                sparkle:version="0.2.0"
                 sparkle:edSignature="fxGZHu2YZw5Oe2W+t5UPXKsHX2LR6Dt/E3xOtAUP0NjSna3bVs0+bI4cu+GhzavsksbvmYSrHBShE6MN5X3ADQ=="
                 length="2681752"
                 type="application/octet-stream" />
@@ -53,7 +50,6 @@
             <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.1.4</link>
             <enclosure
                 url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.1.4/SalatTimeBar.dmg"
-                sparkle:version="0.1.4"
                 sparkle:edSignature="u/o+sL+LeqKlWyKqm3lMBNxlxpd04sM44QeKYEx1FYmb/7owNXUOYkHqW273O+j/7m+0MuvDLZFOSDbP7y2MDQ=="
                 length="2675508"
                 type="application/octet-stream" />
@@ -66,7 +62,6 @@
 			<pubDate>Mon, 31 Mar 2025 06:34:37 +0000</pubDate>
 			<sparkle:version>0.1.3</sparkle:version>
 			<link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.1.3</link>
-			<enclosure url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.1.3/SalatTimeBar.dmg" sparkle:version="0.1.3" sparkle:edSignature="xJwZOviL4Wai/VvhGg/boBm81LSwFfvEnmKWJV6mthzfeKR1x8UPzUGE8eEhAGwNDIpBdGT0tuljISHjhWNlBQ==" length="2674027" type="application/octet-stream"/>
 		</item>
 		<item>
 			<title>Version 0.1.2</title>
@@ -76,7 +71,6 @@
 			<pubDate>Sun, 30 Mar 2025 22:40:18 +0000</pubDate>
 			<sparkle:version>0.1.2</sparkle:version>
 			<link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.1.2</link>
-			<enclosure url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.1.2/SalatTimeBar.dmg" sparkle:version="0.1.2" sparkle:edSignature="" length="" type="application/octet-stream"/>
 		</item>
 		<item>
 			<title>Version 0.1.1</title>
@@ -86,7 +80,6 @@
 			<pubDate>Sun, 30 Mar 2025 22:05:50 +0000</pubDate>
 			<sparkle:version>0.1.1</sparkle:version>
 			<link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.1.1</link>
-			<enclosure url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.1.1/SalatTimeBar.dmg" sparkle:version="0.1.1" sparkle:edSignature="" length="" type="application/octet-stream"/>
 		</item>
 	</channel>
 </rss>
