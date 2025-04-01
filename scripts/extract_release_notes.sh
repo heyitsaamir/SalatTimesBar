@@ -14,7 +14,6 @@ fi
 VERSION="$1"
 
 # Extract release notes from CHANGELOG.md
-echo "Extracting release notes for version $VERSION from CHANGELOG.md..."
 RELEASE_NOTES=$(awk -v ver="# $VERSION" 'BEGIN{flag=0; buf=""}
     $0 ~ ver {flag=1; next}
     flag && /^# / {exit}
