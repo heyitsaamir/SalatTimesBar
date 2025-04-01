@@ -6,6 +6,19 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>en</language>
         <item>
+            <title>Version 0.2.0</title>
+            <description><![CDATA[- Improve gentle reminder when there is a new version bump]]></description>
+            <pubDate>Tue, 01 Apr 2025 03:37:12 -0700</pubDate>
+            <sparkle:version>0.2.0</sparkle:version>
+            <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.0</link>
+            <enclosure
+                url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.0/SalatTimeBar.dmg"
+                sparkle:version="0.2.0"
+                sparkle:edSignature="fxGZHu2YZw5Oe2W+t5UPXKsHX2LR6Dt/E3xOtAUP0NjSna3bVs0+bI4cu+GhzavsksbvmYSrHBShE6MN5X3ADQ=="
+                length="2681752"
+                type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.1.4</title>
             <description><![CDATA[
 - Fixed Release entitlements]]></description>

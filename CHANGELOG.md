@@ -1,3 +1,9 @@
+# 0.2.0
+
+- Improve gentle reminder when there is a new version bump
+
+---
+
 # 0.1.4
 
 - Fixed Release entitlements
