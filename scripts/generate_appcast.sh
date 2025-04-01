@@ -5,6 +5,7 @@ PROJECT_DIR=$(dirname "$(dirname "$0")")
 PROJECT_NAME=SalatTimeBar
 APPCAST_FILE="$PROJECT_DIR/docs/Support/appcast.xml"
 TEMP_FILE="/tmp/appcast_new_entries.xml"
+SIGNATURE_FILE="$PROJECT_DIR/.sparkle_signatures"
 
 # Check if gh CLI is installed
 if ! command -v gh &> /dev/null; then
@@ -70,19 +71,19 @@ cd "$PROJECT_DIR" && gh release list --limit 100 | while read -r line; do
     BODY=$(echo "$RELEASE_INFO" | jq -r '.body')
     DATE=$(echo "$RELEASE_INFO" | jq -r '.publishedAt')
     ASSET_URL=$(echo "$RELEASE_INFO" | jq -r '.assets[0].url')
+    LENGTH=$(echo "$RELEASE_INFO" | jq -r '.assets[0].size')
     
-    # Extract signature and file size from body
-    SIGNATURE=$(echo "$BODY" | grep "sparkle:edSignature" | sed 's/.*sparkle:edSignature="\([^"]*\)".*/\1/')
-    LENGTH=$(echo "$BODY" | grep "length" | sed 's/.*length="\([^"]*\)".*/\1/')
-    
-    # Check if signature and length were found
-    if [ -z "$SIGNATURE" ] || [ -z "$LENGTH" ]; then
-        echo "Warning: Failed to extract signature or length for release $TAG, skipping"
+    # Get signature from signature file
+    if [ -f "$SIGNATURE_FILE" ]; then
+        SIGNATURE=$(grep "^$TAG:" "$SIGNATURE_FILE" | cut -d':' -f2-)
+        if [ -z "$SIGNATURE" ]; then
+            echo "Warning: No signature found for version $TAG in $SIGNATURE_FILE, skipping"
+            continue
+        fi
+    else
+        echo "Warning: Signature file not found at $SIGNATURE_FILE, skipping"
         continue
     fi
-    
-    # Clean description (remove signature line)
-    CLEAN_DESCRIPTION=$(echo "$BODY" | sed '/sparkle:edSignature/d')
     
     # Format date to RFC822
     RFC_DATE=$(date -jf "%Y-%m-%dT%H:%M:%SZ" "$DATE" "+%a, %d %b %Y %H:%M:%S %z")
@@ -91,7 +92,7 @@ cd "$PROJECT_DIR" && gh release list --limit 100 | while read -r line; do
     cat >> "$TEMP_FILE" << ITEM
         <item>
             <title>Version $NAME</title>
-            <description><![CDATA[$CLEAN_DESCRIPTION]]></description>
+            <description><![CDATA[$BODY]]></description>
             <pubDate>$RFC_DATE</pubDate>
             <sparkle:version>$NAME</sparkle:version>
             <link>https://github.com/$(gh repo view --json nameWithOwner -q .nameWithOwner)/releases/tag/$TAG</link>

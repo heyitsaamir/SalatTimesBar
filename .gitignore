@@ -76,3 +76,5 @@ fastlane/test_output
 V1_0/
 Product/
 Archive/
+
+.sparkle_signatures

@@ -6,6 +6,20 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>en</language>
         <item>
+            <title>Version 0.2.2</title>
+            <description><![CDATA[- One more attempt. This time we will pause between DMG creation.]]></description>
+            <pubDate>Tue, 01 Apr 2025 05:20:55 -0700</pubDate>
+            <sparkle:version>0.2.2</sparkle:version>
+            <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.2</link>
+            <enclosure
+                url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.2/SalatTimeBar.dmg"
+                sparkle:version="0.2.2"
+                sparkle:edSignature="iMvVkgPJzmqFPC6w0O98MK1H31K/ZiSHHvbKK9Y/qDD9m+F2z51ZBFbm5lLy/PsQ/ONwWf/PSsiHam8FehzABw==
+iMvVkgPJzmqFPC6w0O98MK1H31K/ZiSHHvbKK9Y/qDD9m+F2z51ZBFbm5lLy/PsQ/ONwWf/PSsiHam8FehzABw=="
+                length="2681739"
+                type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.2.1</title>
             <description><![CDATA[- Attemping to get auto-updates working. They are currently failing with `The provided EdDSA signature could not be decoded.`]]></description>
             <pubDate>Tue, 01 Apr 2025 04:53:11 -0700</pubDate>

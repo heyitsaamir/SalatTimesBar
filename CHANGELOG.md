@@ -1,3 +1,9 @@
+# 0.2.2
+
+- One more attempt. This time we will pause between DMG creation.
+
+---
+
 # 0.2.1
 
 - Attemping to get auto-updates working. They are currently failing with `The provided EdDSA signature could not be decoded.`

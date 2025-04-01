@@ -8,9 +8,24 @@ INFOPLIST_FILE="Info.plist"
 SCRIPTS_DIR=$(dirname "$0")
 PRODUCT_DIR="$PROJECT_DIR/Product"
 TEMP_DIR="/tmp/salattimebar_release"
+CHANGELOG_FILE="$PROJECT_DIR/CHANGELOG.md"
 
 # Make all scripts executable
 chmod +x "$SCRIPTS_DIR"/*.sh
+
+# Function to verify CHANGELOG contains version
+verify_changelog() {
+    local version=$1
+    if ! grep -q "^# $version" "$CHANGELOG_FILE"; then
+        echo "Error: Version $version not found in CHANGELOG.md"
+        echo "Please add a section for version $version in the format:"
+        echo "# $version"
+        echo "- Your changes here"
+        echo "---"
+        return 1
+    fi
+    return 0
+}
 
 # Function to display usage
 usage() {
@@ -23,6 +38,7 @@ usage() {
     echo "  --release-only     Only create GitHub release (assumes DMG exists)"
     echo "  --appcast-only     Only generate appcast.xml"
     echo "  --skip-bump        Skip version bump"
+    echo "  --continue         Alias for --skip-bump"
     echo "  --skip-dmg         Skip DMG creation"
     echo "  --skip-release     Skip GitHub release"
     echo "  --skip-appcast     Skip appcast.xml generation"
@@ -37,7 +53,7 @@ usage() {
     echo "  6. Generates appcast.xml for auto-updates"
     echo ""
     echo "  Each step can be run independently using the options above."
-    echo "  If a step fails, you can fix the issue and continue from that step."
+    echo "  If a step fails, you can fix the issue and continue from that step using --continue."
     exit 1
 }
 
@@ -80,7 +96,7 @@ while [[ $# -gt 0 ]]; do
             CREATE_RELEASE=false
             shift
             ;;
-        --skip-bump)
+        --skip-bump|--continue)
             BUMP_VERSION=false
             shift
             ;;
@@ -113,15 +129,44 @@ if [ "$BUMP_VERSION" = true ] && [ -z "$VERSION_TYPE" ]; then
     usage
 fi
 
+# Get current version before any operations
+CFBundleVersion=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${PROJECT_DIR}/${PROJECT_NAME}/${INFOPLIST_FILE}")
+
+# If we're bumping version, calculate the next version and verify CHANGELOG
+if [ "$BUMP_VERSION" = true ]; then
+    # Calculate next version (this is simplified, you might want to implement proper version calculation)
+    case $VERSION_TYPE in
+        major)
+            NEXT_VERSION=$(echo $CFBundleVersion | awk -F. '{print $1+1".0.0"}')
+            ;;
+        minor)
+            NEXT_VERSION=$(echo $CFBundleVersion | awk -F. '{print $1"."$2+1".0"}')
+            ;;
+        patch)
+            NEXT_VERSION=$(echo $CFBundleVersion | awk -F. '{print $1"."$2"."$3+1}')
+            ;;
+    esac
+    
+    # Verify CHANGELOG contains the next version before proceeding
+    if ! verify_changelog "$NEXT_VERSION"; then
+        exit 1
+    fi
+else
+    # If not bumping version, verify CHANGELOG contains current version
+    if ! verify_changelog "$CFBundleVersion"; then
+        exit 1
+    fi
+fi
+
 # Step 1: Bump version
 if [ "$BUMP_VERSION" = true ]; then
     echo "Step 1: Bumping version ($VERSION_TYPE)..."
     $SCRIPTS_DIR/bump_build.sh $VERSION_TYPE
     echo "Version bump completed"
+    # Update current version after bump
+    CFBundleVersion=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${PROJECT_DIR}/${PROJECT_NAME}/${INFOPLIST_FILE}")
 fi
 
-# Get current version
-CFBundleVersion=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${PROJECT_DIR}/${PROJECT_NAME}/${INFOPLIST_FILE}")
 FOLDER_NAME=${PROJECT_NAME}.$CFBundleVersion
 
 echo "Current version: $CFBundleVersion"
@@ -171,19 +216,20 @@ if [ "$CREATE_RELEASE" = true ]; then
         echo "Failed to sign DMG. Check if Sparkle framework is properly installed."
         exit 1
     }
+    
+    # Extract just the signature from the signature info
+    SIGNATURE=$(echo "$SIGNATURE_INFO" | grep "sparkle:edSignature" | sed 's/.*sparkle:edSignature="\([^"]*\)".*/\1/')
+    
+    # Store signature in .sparkle_signatures file
+    echo "$CFBundleVersion:$SIGNATURE" >> "$PROJECT_DIR/.sparkle_signatures"
     echo "DMG signed successfully"
     
-    # Combine release notes with signature
-    RELEASE_NOTES_WITH_SIGNATURE="$RELEASE_NOTES
-
-$SIGNATURE_INFO"
-    
-    # Save to temp file for debugging
-    echo "$RELEASE_NOTES_WITH_SIGNATURE" > "$TEMP_DIR/release_notes_$CFBundleVersion.txt"
+    # Save release notes to temp file for debugging
+    echo "$RELEASE_NOTES" > "$TEMP_DIR/release_notes_$CFBundleVersion.txt"
     
     # Create GitHub release
     echo "Step 5: Creating GitHub release..."
-    "$SCRIPTS_DIR/create_github_release.sh" "$CFBundleVersion" "$DMG_PATH" "$RELEASE_NOTES_WITH_SIGNATURE" || {
+    "$SCRIPTS_DIR/create_github_release.sh" "$CFBundleVersion" "$DMG_PATH" "$RELEASE_NOTES" || {
         echo "Failed to create GitHub release. You can try again with:"
         echo "$0 --release-only"
         exit 1
@@ -205,6 +251,6 @@ fi
 echo "Release process completed successfully!"
 echo "Version $CFBundleVersion has been released."
 echo "Remember to push changes to GitHub to update the website."
-echo "  git add $PROJECT_DIR/CHANGELOG.md $PROJECT_DIR/docs/Support/appcast.xml"
+echo "  git add ."
 echo "  git commit -m \"Release $CFBundleVersion\""
 echo "  git push" 
