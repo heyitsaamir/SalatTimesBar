@@ -54,32 +54,5 @@
                 length="2675508"
                 type="application/octet-stream" />
         </item>
-		<item>
-			<title>Version 0.1.3</title>
-			<description>
-				<![CDATA[ <p>Testing downloading</p> ]]>
-			</description>
-			<pubDate>Mon, 31 Mar 2025 06:34:37 +0000</pubDate>
-			<sparkle:version>0.1.3</sparkle:version>
-			<link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.1.3</link>
-		</item>
-		<item>
-			<title>Version 0.1.2</title>
-			<description>
-				<![CDATA[ <p>Testing out auto-updates</p> ]]>
-			</description>
-			<pubDate>Sun, 30 Mar 2025 22:40:18 +0000</pubDate>
-			<sparkle:version>0.1.2</sparkle:version>
-			<link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.1.2</link>
-		</item>
-		<item>
-			<title>Version 0.1.1</title>
-			<description>
-				<![CDATA[ <p>This is more of an official alpha release. I am testing automatic updates to make sure that works as expected.</p> ]]>
-			</description>
-			<pubDate>Sun, 30 Mar 2025 22:05:50 +0000</pubDate>
-			<sparkle:version>0.1.1</sparkle:version>
-			<link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.1.1</link>
-		</item>
 	</channel>
 </rss>
