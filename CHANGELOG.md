@@ -1,3 +1,7 @@
+# 0.2.1
+
+- Attemping to get auto-updates working. They are currently failing with `The provided EdDSA signature could not be decoded.`
+
 # 0.2.0
 
 - Improve gentle reminder when there is a new version bump
