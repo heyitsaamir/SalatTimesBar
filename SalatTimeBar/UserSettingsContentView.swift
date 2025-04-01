@@ -11,39 +11,45 @@ import Sparkle
 struct UserSettingsContentView: View {
     @Environment(\.openWindow) private var openWindow
     var body: some View {
-        CustomTabView(tabBarPosition: .top, 
-                      content: [
-            (
-                tabText: "Location",
-                tabIconName: "location",
-                view: AnyView(
-                    Form {
-                        SettingLocationField(\.address)
-                    }
-                )
-            ),
-            (
-                tabText: "Salat Settings",
-                tabIconName: "gear",
-                view: AnyView(
-                    Form {
-                        SettingSalatSchoolField(\.salatSchool)
-                        SettingsNotifications(\.enableNotifications)
-                        CheckForUpdatesView()
-                    }
-                )
-            ),
-            (
-                tabText: "Look and Feel",
-                tabIconName: "textformat.abc.dottedunderline",
-                view: AnyView(
-                    Form {
-                        SettingFormatField(\.format)
-                        SettingVisibleTimeField(\.visibleTime)
-                    }
-                )
-            )]
-        )
+        VStack {
+            CustomTabView(tabBarPosition: .top,
+                          content: [
+                            (
+                                tabText: "Location",
+                                tabIconName: "location",
+                                view: AnyView(
+                                    Form {
+                                        SettingLocationField(\.address)
+                                    }
+                                )
+                            ),
+                            (
+                                tabText: "Salat Settings",
+                                tabIconName: "gear",
+                                view: AnyView(
+                                    Form {
+                                        SettingSalatSchoolField(\.salatSchool)
+                                        SettingsNotifications(\.enableNotifications)
+                                        CheckForUpdatesView()
+                                    }
+                                )
+                            ),
+                            (
+                                tabText: "Look and Feel",
+                                tabIconName: "textformat.abc.dottedunderline",
+                                view: AnyView(
+                                    Form {
+                                        SettingFormatField(\.format)
+                                        SettingVisibleTimeField(\.visibleTime)
+                                    }
+                                )
+                            )]
+            )
+            Text("Version \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Unknown")")
+                .font(.footnote)
+                .foregroundColor(.secondary)
+                .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+        }
     }
 }
 

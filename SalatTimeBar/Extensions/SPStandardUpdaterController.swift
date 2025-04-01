@@ -12,6 +12,6 @@ extension SPUStandardUpdaterController {
     static let shared = SPUStandardUpdaterController(
         startingUpdater: false,
         updaterDelegate: nil,
-        userDriverDelegate: nil
+        userDriverDelegate: CheckForUpdatesViewModel.shared
     )
 }

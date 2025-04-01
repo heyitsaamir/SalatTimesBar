@@ -9,14 +9,39 @@ import SwiftUI
 import Sparkle
 
 // This view model class publishes when new updates can be checked by the user
-final class CheckForUpdatesViewModel: ObservableObject {
+final class CheckForUpdatesViewModel: NSObject, ObservableObject, SPUStandardUserDriverDelegate {
     static let shared = CheckForUpdatesViewModel()
     
     @Published var canCheckForUpdates = false
+    @Published var updateAvailable = false
+    private var cancellable: Any?
 
-    init() {
-        SPUStandardUpdaterController.shared.updater.publisher(for: \.canCheckForUpdates)
-            .assign(to: &$canCheckForUpdates)
+    override init() {
+        super.init()
+        // Delay setup until next runloop to avoid initialization order issues
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.cancellable = SPUStandardUpdaterController.shared.updater.publisher(for: \.canCheckForUpdates)
+                .assign(to: &self.$canCheckForUpdates)
+        }
+    }
+    
+    // MARK: - SPUStandardUserDriverDelegate
+    
+    var supportsGentleScheduledUpdateReminders: Bool {
+        return true
+    }
+    
+    func standardUserDriverWillHandleShowingUpdate(_ handleShowingUpdate: Bool, forUpdate update: SUAppcastItem, state: SPUUserUpdateState) {
+        DispatchQueue.main.async {
+            self.updateAvailable = true
+        }
+    }
+    
+    func standardUserDriverWillFinishUpdateSession() {
+        DispatchQueue.main.async {
+            self.updateAvailable = false
+        }
     }
 }
 

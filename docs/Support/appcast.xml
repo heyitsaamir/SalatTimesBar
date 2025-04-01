@@ -7,7 +7,7 @@
 		<language>en</language>
         <item>
             <title>Version 0.1.4</title>
-            <description><![CDATA[Extracting release notes for version 0.1.4 from CHANGELOG.md...
+            <description><![CDATA[
 - Fixed Release entitlements]]></description>
             <pubDate>Tue, 01 Apr 2025 00:11:03 -0700</pubDate>
             <sparkle:version>0.1.4</sparkle:version>

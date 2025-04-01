@@ -34,8 +34,6 @@ fileprivate struct SingleSalatTimeView: View {
     }
 }
 
-
-
 fileprivate struct SettingsMenu: View {
     @Environment(\.openWindow) private var openWindow
     @ObservedObject var checkForUpdatesVm = CheckForUpdatesViewModel.shared
@@ -43,16 +41,14 @@ fileprivate struct SettingsMenu: View {
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
-            if self.checkForUpdatesVm.canCheckForUpdates {
-                Text("✨").help("New update available!")
+            if self.checkForUpdatesVm.updateAvailable {
+                Text("✨").help("New update available!").glow(radius: 5).font(.system(size: 10))
             }
             Menu(content: {
                 Button("Settings") {
                     openWindow(id: "UserSettings")
                 }
-                if self.checkForUpdatesVm.canCheckForUpdates {
-                    CheckForUpdatesView()
-                }
+                CheckForUpdatesView()
                 Button("Quit") {
                     NSApplication.shared.terminate(nil)
                 }
