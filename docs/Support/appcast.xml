@@ -31,54 +31,5 @@
                 length="2681693"
                 type="application/octet-stream" />
         </item>
-        <item>
-            <title>Version 0.2.2</title>
-            <description><![CDATA[- One more attempt. This time we will pause between DMG creation.]]></description>
-            <pubDate>Tue, 01 Apr 2025 05:20:55 -0700</pubDate>
-            <sparkle:version>0.2.2</sparkle:version>
-            <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.2</link>
-            <enclosure
-                url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.2/SalatTimeBar.dmg"
-                sparkle:edSignature="iMvVkgPJzmqFPC6w0O98MK1H31K/ZiSHHvbKK9Y/qDD9m+F2z51ZBFbm5lLy/PsQ/ONwWf/PSsiHam8FehzABw=="
-                length="2681739"
-                type="application/octet-stream" />
-        </item>
-        <item>
-            <title>Version 0.2.1</title>
-            <description><![CDATA[- Attemping to get auto-updates working. They are currently failing with `The provided EdDSA signature could not be decoded.`]]></description>
-            <pubDate>Tue, 01 Apr 2025 04:53:11 -0700</pubDate>
-            <sparkle:version>0.2.1</sparkle:version>
-            <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.1</link>
-            <enclosure
-                url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.1/SalatTimeBar.dmg"
-                sparkle:edSignature="SsyL0TAii/Ahv9WyD8Lb9VHq/4A8aCEQgY55Hudz/qxprm392I20nBylnyyjGV8kSQFZscsRowV+KxI+hJFaDA=="
-                length="2681747"
-                type="application/octet-stream" />
-        </item>
-        <item>
-            <title>Version 0.2.0</title>
-            <description><![CDATA[- Improve gentle reminder when there is a new version bump]]></description>
-            <pubDate>Tue, 01 Apr 2025 03:37:12 -0700</pubDate>
-            <sparkle:version>0.2.0</sparkle:version>
-            <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.0</link>
-            <enclosure
-                url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.0/SalatTimeBar.dmg"
-                sparkle:edSignature="fxGZHu2YZw5Oe2W+t5UPXKsHX2LR6Dt/E3xOtAUP0NjSna3bVs0+bI4cu+GhzavsksbvmYSrHBShE6MN5X3ADQ=="
-                length="2681752"
-                type="application/octet-stream" />
-        </item>
-        <item>
-            <title>Version 0.1.4</title>
-            <description><![CDATA[
-- Fixed Release entitlements]]></description>
-            <pubDate>Tue, 01 Apr 2025 00:11:03 -0700</pubDate>
-            <sparkle:version>0.1.4</sparkle:version>
-            <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.1.4</link>
-            <enclosure
-                url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.1.4/SalatTimeBar.dmg"
-                sparkle:edSignature="u/o+sL+LeqKlWyKqm3lMBNxlxpd04sM44QeKYEx1FYmb/7owNXUOYkHqW273O+j/7m+0MuvDLZFOSDbP7y2MDQ=="
-                length="2675508"
-                type="application/octet-stream" />
-        </item>
 	</channel>
 </rss>
