@@ -1,55 +1,57 @@
 ---
 layout: default
 title: "Simple Salat Menubar"
+description: "A simple and elegant Mac menubar app that displays Islamic prayer times. Get accurate salat times with a clean, native interface supporting both light and dark modes."
+keywords: "salat times, prayer times, mac app, menubar, islamic prayer, muslim app, macos"
+permalink: /
 ---
 
-<img src="{{site.baseurl}}/assets/images/dark-screenshot-large.png" alt="Screenshot for the menubar" class="image-full"/>
+<img src="{{site.baseurl}}/assets/images/dark-screenshot-large.png" alt="Simple Salat Times Mac menubar app showing prayer times" class="image-full"/>
 
+Simple Salat Times is a delightful menubar app for Mac that keeps you connected with your prayer times in a clean, native interface. 🕌
 
-Simple Salat Times is a small menubar for Mac that displays the upcoming salat times.
+# Features ✨
 
-# Features
+Simple Salat Times focuses on what truly matters, helping you stay on track with your prayers in a timely manner. We've kept it intentionally simple and focused.
 
-Simple Salat Times keeps features to what is essential so that you can keep up with your prayers in a timely manner. It intentionally does not contain extra features for the sake of simplicity.
+## Accurate Salat Times 🕋
 
-## Accurate Salat Times
+Powered by the excellent [AlAthan API](https://aladhan.com/prayer-times-api), which is an actively supported API trusted by countless prayer times apps. It supports a wide range of features, and while we've kept it simple, we're always open to suggestions! Feel free to post an [issue](#issues) if you have ideas for improvement.
 
-Powered by the excellent [AlAthan api](https://aladhan.com/prayer-times-api), which is an actively supported API used by a miriad of prayer times apps out there. It supports a tremendous number of toggles and features. This app only exposes a number of them, but if you feel like it's lacking, please feel free to post an [issue](#issues).
+### Native Look & Feel 🎨
 
-### Native Look & Feel
-
-The app follows Apple's guidance on clean, simple design and style. It supports both light and dark mode.
+The app embraces Apple's design philosophy with a clean, simple interface that feels right at home on your Mac. It gracefully adapts to both light and dark mode.
 
 <section class="info">
-<img src="{{site.baseurl}}/assets/images/dark-screenshot.png" alt="Dark screenshot for the menubar"/>
-<img src="{{site.baseurl}}/assets/images/light-screenshot.png" alt="Light screenshot for the menubar"/>
+<img src="{{site.baseurl}}/assets/images/dark-screenshot.png" alt="Simple Salat Times app in dark mode showing prayer times"/>
+<img src="{{site.baseurl}}/assets/images/light-screenshot.png" alt="Simple Salat Times app in light mode showing prayer times"/>
 </section>
 
-### Introduce more simplicity as needed
+### Customizable Prayer Labels 🏷️
 
-You can choose how long you would like the salat label to be
+Tailor your prayer labels to your preference, making it easy to read at a glance.
 
-<img src="{{site.baseurl}}/assets/images/label-demo.gif" alt="Screenshot showing different sized labels" class="image-full"/>
+<img src="{{site.baseurl}}/assets/images/label-demo.gif" alt="Demonstration of customizable prayer time labels" class="image-full"/>
 
-### Notifications
+### Prayer Time Notifications 🔔
 
-Not enabled by default, but if you choose, you can enable notifications to alert you when the salat time comes and also when the next one will begin.
+Not enabled by default, but you can choose to receive gentle reminders when it's time for prayer and when the next prayer is approaching.
 
-<img src="{{site.baseurl}}/assets/images/notification-demo.png" alt="Screenshot of notifications" style="width:350px;margin-left: auto;margin-right: auto;display:block;"/>
+<img src="{{site.baseurl}}/assets/images/notification-demo.png" alt="Example of prayer time notifications" style="width:350px;margin-left: auto;margin-right: auto;display:block;"/>
 
-# Download
+# Download 📥
 
-The app is distributed directly on Github. [Check out the releases page](https://github.com/heyitsaamir/SalatTimesBar/releases). 
-Simply go to the latest release, download the dmg file and run it to install.
+The app is available directly on GitHub. [Check out the releases page](https://github.com/heyitsaamir/SalatTimesBar/releases). 
+Simply download the latest DMG file and you're ready to go!
 
-# Issues
+# Issues 🐛
 
-If you notice problems or issues, feel free to post an issue on Github. [Issues](https://github.com/heyitsaamir/SalatTimesBar/issues)
+Found something that could be better? We'd love to hear from you! Feel free to post an issue on GitHub. [Issues](https://github.com/heyitsaamir/SalatTimesBar/issues)
 
-# Why?
+# Why? 🤔
 
-I'm a developer and I wanted to learn SwiftUI. This seemed like a simple and yet very helpful project to help me do that. 
+As a developer passionate about learning SwiftUI, I created this app as a way to combine my technical interests with something meaningful. It's been a wonderful journey building something that helps others stay connected with their prayers.
 
 Inspirations:
-- [ThePillarsApp](https://www.thepillarsapp.com/) - I loved their the simple approach to solving this problem
-- [ItsyCal](https://www.mowglii.com/itsycal/) - One of my favorite app-bar apps. I use this on a daily basis.
+- [ThePillarsApp](https://www.thepillarsapp.com/) - Their elegant simplicity inspired this project
+- [ItsyCal](https://www.mowglii.com/itsycal/) - One of my favorite menubar apps that I use daily
