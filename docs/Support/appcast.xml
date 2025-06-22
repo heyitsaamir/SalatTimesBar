@@ -6,6 +6,19 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>en</language>
         <item>
+            <title>Version 0.2.6</title>
+            <description><![CDATA[- Improve notification content - Now it shows what the next salat is as well.]]></description>
+            <pubDate>Sun, 22 Jun 2025 20:50:10 -0700</pubDate>
+            <sparkle:version>0.2.6</sparkle:version>
+            <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.6</link>
+            <enclosure
+                url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.6/SalatTimeBar.dmg"
+                sparkle:version="0.2.6"
+                sparkle:edSignature="l7rM0QJRJA4yR8/Pr717NsINU6vKgnGHiDlxdJC/D74BV9Vwv7QdyDzpBXkZeE1GGyb2ORNJeh6cFAZgtQXKBg=="
+                length="2678928"
+                type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.2.5</title>
             <description><![CDATA[- Fix notifications - Notifications were firing too often for the same salat time.]]></description>
             <pubDate>Sun, 22 Jun 2025 20:35:45 -0700</pubDate>
