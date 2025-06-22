@@ -6,6 +6,19 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>en</language>
         <item>
+            <title>Version 0.2.5</title>
+            <description><![CDATA[- Fix notifications - Notifications were firing too often for the same salat time.]]></description>
+            <pubDate>Sun, 22 Jun 2025 20:35:45 -0700</pubDate>
+            <sparkle:version>0.2.5</sparkle:version>
+            <link>https://github.com/heyitsaamir/SalatTimesBar/releases/tag/0.2.5</link>
+            <enclosure
+                url="https://github.com/heyitsaamir/SalatTimesBar/releases/download/0.2.5/SalatTimeBar.dmg"
+                sparkle:version="0.2.5"
+                sparkle:edSignature="0g++KBGib2bo4o2oHb39r0nESowlaNmWmyMvF2wYq+/cjiBwHrRXGqpA3DIUaoUcCiY9TtJfb6d0D8vOZYNVBw=="
+                length="2677697"
+                type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.2.4</title>
             <description><![CDATA[- Test update]]></description>
             <pubDate>Tue, 01 Apr 2025 16:15:36 -0700</pubDate>
