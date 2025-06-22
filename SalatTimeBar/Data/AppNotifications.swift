@@ -32,61 +32,44 @@ public class AppNotifications: ObservableObject {
         }
     }
     
-    func scheduleNotification(for salatTime: SalatTime, nextSalat: SalatTime) {
+    func scheduleNotifications(for salatTimes: [SalatTime]) {
         guard self.error == nil else {
-            print("Notification not scheduled because \(error ?? "")")
+            print("Notifications not scheduled because \(error ?? "")")
             return
         }
-        let content = UNMutableNotificationContent()
-        let formatter = DateComponentsFormatter()
         
-        formatter.unitsStyle = .full
-        formatter.allowedUnits = [.hour, .minute]
+        resetNotifications()
         
-        content.title = salatTime.type.longDescription
-        let timeLeft = nextSalat.time.timeIntervalSince(salatTime.time)
-        if nextSalat.type == .Sunrise {
-            content.body = "It's time to pray! Sunrise in \(formatter.string(from: timeLeft) ?? "")"
-        } else {
-            if salatTime.type == .Sunrise {
-                content.body = ""
-            } else {
-                content.body = "It's time to pray! "
-            }
+        let upcomingTimes = salatTimes.filter { $0.time > Date() }
+        
+        func scheduleAllNotifications() {
+            for salatTime in upcomingTimes {
+                let content = UNMutableNotificationContent()
+                content.title = "Prayer Time"
+                content.body = "\(salatTime.type.longDescription) time"
+                content.sound = .default
                 
-            content.body = content.body + "Next salat in \(formatter.string(from: timeLeft) ?? "")"
-        }
-        
-        // Configure the recurring date.
-        var dateComponents = DateComponents()
-        dateComponents.calendar = Calendar.current
-        
-        let components = salatTime.time.computeDate(byAdding: .second, value: 10).get(.year, .month, .day, .hour, .minute, .second)
-        dateComponents.year = components.year
-        dateComponents.month = components.month
-        dateComponents.day = components.day
-        dateComponents.hour = components.hour
-        dateComponents.minute = components.minute
-        dateComponents.second = components.second
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        
-        let uuidString = "\(salatTime.time.timeIntervalSince1970)|\(salatTime.type.shortDescription)"
-        let request = UNNotificationRequest(identifier: uuidString,
-                                            content: content, trigger: trigger)
-        
-        
-        func completion() {
-            notificationCenter.add(request) { (error) in
-                if error != nil {
-                    print("Error queuing a notification \(error?.localizedDescription ?? "")")
+                let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute],
+                                                              from: salatTime.time)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+                
+                let identifier = "prayer-\(salatTime.type.rawValue)-\(salatTime.time.timeIntervalSince1970)"
+                let request = UNNotificationRequest(identifier: identifier,
+                                                    content: content,
+                                                    trigger: trigger)
+                
+                notificationCenter.add(request) { error in
+                    if let error = error {
+                        print("Failed to schedule \(salatTime.type.rawValue): \(error)")
+                    }
                 }
             }
         }
-        if (self.error ?? "") != "" {
-            completion()
+        
+        if self.error != nil {
+            self.requestAuth(onSuccess: scheduleAllNotifications)
         } else {
-            self.requestAuth(onSuccess: completion)
+            scheduleAllNotifications()
         }
     }
     

@@ -98,11 +98,6 @@ class AthanTimings: ObservableObject {
         self.userSettings = userSettings
         self.notifications = notifications
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
-                if let error = error {
-                    print("Notification permission error: \(error)")
-                }
-            }
     }
     
     func refresh() {
@@ -140,9 +135,8 @@ class AthanTimings: ObservableObject {
                     let currentSalatTimes = CurrentSalatTimes(salatTimes: salatTimes)
                     self.currentSalatTimes = .success(currentSalatTimes)
                     self.computeCurrentSalatIndex()
+                    self.scheduleNotifications()
                 }
-                
-                self.scheduleNotification()
             }
         } catch let error {
             print(error.localizedDescription)
@@ -150,9 +144,6 @@ class AthanTimings: ObservableObject {
     }
     
     private func setupTimers() {
-        // Schedule notifications immediately
-        scheduleAllNotifications()
-        
         // Setup midnight timer for next refresh
         let calendar = Calendar.current
         let midnight = calendar.startOfDay(for: Date().addingTimeInterval(86400))
@@ -165,7 +156,6 @@ class AthanTimings: ObservableObject {
             
             Task {
                 await self.fetch()
-                self.scheduleAllNotifications()
             }
         }
         RunLoop.main.add(midnightTimer!, forMode: .common)
@@ -185,39 +175,6 @@ class AthanTimings: ObservableObject {
     }
     
     
-    private func scheduleAllNotifications() {
-        guard case .success(let times) = self.currentSalatTimes else { return }
-        
-        // Clear existing notifications
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        
-        // Schedule only future prayers for today
-        let upcomingTimes = times.salatTimes.filter { $0.time > Date() }
-        
-        upcomingTimes.forEach { time in
-            let content = UNMutableNotificationContent()
-            content.title = "Prayer Time"
-            content.body = "\(time.type.rawValue) time"
-            content.sound = .default
-            
-            let components = Calendar.current.dateComponents([.hour, .minute],
-                                                          from: time.time)
-            let trigger = UNCalendarNotificationTrigger(dateMatching: components,
-                                                      repeats: false)
-            
-            let request = UNNotificationRequest(
-                identifier: "prayer-\(time.type.rawValue)-\(time.time.timeIntervalSince1970)",
-                content: content,
-                trigger: trigger
-            )
-            
-            UNUserNotificationCenter.current().add(request) { error in
-                if let error = error {
-                    print("Failed to schedule \(time.type.rawValue): \(error)")
-                }
-            }
-        }
-    }
     
     private var shouldRun: Bool {
         if let currentParameter = self.currentParameter, (currentParameter.address != self.userSettings.address || currentParameter.salatSchool != self.userSettings.salatSchool) {
@@ -247,7 +204,7 @@ class AthanTimings: ObservableObject {
         }
     }
     
-    private func scheduleNotification() {
+    private func scheduleNotifications() {
         guard self.userSettings.enableNotifications else {
             print("Notifications are disabled")
             return
@@ -255,10 +212,7 @@ class AthanTimings: ObservableObject {
         
         switch (self.currentSalatTimes) {
         case .success(let salatTimes):
-            if let currentSalatTime = salatTimes.currentSalatTime, let nextSalatTime = salatTimes.nextSalatTime {
-                notifications.resetNotifications()
-                notifications.scheduleNotification(for: currentSalatTime, nextSalat: nextSalatTime)
-            }
+            notifications.scheduleNotifications(for: salatTimes.salatTimes)
         case .failure:
             break
         }
