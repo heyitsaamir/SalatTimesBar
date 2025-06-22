@@ -43,11 +43,39 @@ public class AppNotifications: ObservableObject {
         let upcomingTimes = salatTimes.filter { $0.time > Date() }
         
         func scheduleAllNotifications() {
-            for salatTime in upcomingTimes {
+            let formatter = DateComponentsFormatter()
+            formatter.unitsStyle = .full
+            formatter.allowedUnits = [.hour, .minute]
+            
+            for (index, salatTime) in upcomingTimes.enumerated() {
                 let content = UNMutableNotificationContent()
-                content.title = "Prayer Time"
-                content.body = "\(salatTime.type.longDescription) time"
+                content.title = salatTime.type.longDescription
                 content.sound = .default
+                
+                // Find next salat for time calculation
+                let nextSalat = index + 1 < upcomingTimes.count ? upcomingTimes[index + 1] : nil
+                
+                if let nextSalat = nextSalat {
+                    let timeLeft = nextSalat.time.timeIntervalSince(salatTime.time)
+                    
+                    if nextSalat.type == .Sunrise {
+                        content.body = "It's time to pray! Sunrise in \(formatter.string(from: timeLeft) ?? "")"
+                    } else {
+                        if salatTime.type == .Sunrise {
+                            content.body = ""
+                        } else {
+                            content.body = "It's time to pray! "
+                        }
+                        content.body = content.body + "Next salat in \(formatter.string(from: timeLeft) ?? "")"
+                    }
+                } else {
+                    // Last prayer of the sequence
+                    if salatTime.type == .Sunrise {
+                        content.body = ""
+                    } else {
+                        content.body = "It's time to pray!"
+                    }
+                }
                 
                 let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute],
                                                               from: salatTime.time)
